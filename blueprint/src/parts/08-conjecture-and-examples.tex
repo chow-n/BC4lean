@@ -260,6 +260,29 @@ No assembly-bijectivity premise occurs. Transport to arbitrary subsingleton
 groups would require an additional group-isomorphism invariance construction.
 \end{proof}
 
+\begin{proposition}\label{prop:kk-group-restriction}
+\uses{def:equivariant-kk}
+\lean{BC4lean.KKTheory.GroupRestriction.cycleComap,BC4lean.KKTheory.GroupRestriction.evenComap,BC4lean.KKTheory.GroupRestriction.oddComap,BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv}
+\leanok
+Let $f\colon \Gamma\to\Gamma'$ be a group homomorphism. Precomposing every
+group action with $f$ sends $\Gamma'$-equivariant even and odd Kasparov cycles to
+$\Gamma$-equivariant ones on the same module, with the same grading,
+representation and operator. This respects isomorphisms and full interval
+homotopies, so it defines additive restriction maps on both parity groups.
+If $\Gamma$ has exactly one element and both coefficient actions are trivial,
+restriction along $\mathrm{Unit}\to\Gamma$ is an additive equivalence
+$KK^{\Gamma}_p(A,B)\cong KK_p(A,B)$ in both parities, with inverse the
+restriction along $\Gamma\to\mathrm{Unit}$.
+\end{proposition}
+\begin{proof}
+\leanok
+Only the action field changes, and $f(g^{-1})=f(g)^{-1}$ gives the conjugation
+identity; interval sections and evaluated fibres restrict definitionally. For a
+one-element group both composites of the two restrictions change the action
+only by $g\mapsto 1$, which is the identity, so each composite is the identity
+cycle isomorphism.
+\end{proof}
+
 \section{Research and formalization status}
 Keep established mathematics, completed Lean work, and open mathematical
 questions separate. Completed Lean work includes the universal proper-space
