@@ -941,3 +941,5 @@ import BC4lean.TrivialAnalyticCalibration
 import BC4lean.UnitPointCutoff
 import BC4lean.UnitScalarDescent
 import BC4lean.UnitAssemblyEquivalence
+
+import BC4lean.FiniteReducedGroupCStar
