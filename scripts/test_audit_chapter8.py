@@ -58,7 +58,7 @@ class InventoryBlueprintTests(unittest.TestCase):
     def load(self, value):
         return audit.load_inventory(Path('not-read'), json.dumps(value).encode())
 
-    def test_inventory_preserves_milestone_policy_and_exact_ten_modules(self):
+    def test_inventory_preserves_milestone_policy_and_exact_registered_modules(self):
         value = self.load(inventory())
         self.assertEqual(value['modules'], audit.MODULES)
         self.assertIn(value['targets']['def:baum-connes-property']['status'], {'candidate','implemented'})
@@ -448,7 +448,7 @@ class EvidenceRejectionTests(unittest.TestCase):
             build={'status':'passed','sources_unchanged_during_build':True,'sequential_leaf_builds':True,
                    'environment':{'LEAN_NUM_THREADS':'1'},'combined_log_sha256':audit.sha(raw),'runs':runs,
                    'all_input_sha256':dict(hashes),'source_sha256':{m:hashes[m.replace('.','/')+'.lean'] for m in modules},
-                   'order_validation':{'status':'verified_actual_source_order_only','library_module_count':940,'module_count':10,
+                   'order_validation':{'status':'verified_actual_source_order_only','library_module_count':930+len(modules),'module_count':len(modules),
                        'order_sha256':queue,'inventory_sha256':hashes[audit.INVENTORY],'aggregate_sha256':hashes['BC4lean.lean'],
                        'frozen_prefix_sha256':audit.PREFIX7_SHA,'parser_sha256':hashes['scripts/audit_chapter6.py'],
                        'generated_order_sha256':queue,'internal_dependency_edges':0,'provided_order_path':None}}

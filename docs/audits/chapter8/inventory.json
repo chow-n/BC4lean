@@ -7,8 +7,19 @@
     "BC4lean.BaumConnesProperty",
     "BC4lean.CompactModelColimitCalibration",
     "BC4lean.FiniteGroupPointCalibration",
+    "BC4lean.FinitePointCutoff",
+    "BC4lean.FiniteReducedGroupCStar",
+    "BC4lean.KKGroupRestriction",
+    "BC4lean.ScalarIdentityUniverse",
+    "BC4lean.ScalarOperatorK0",
+    "BC4lean.ScalarOperatorK1",
+    "BC4lean.ScalarOperatorKNonunital",
+    "BC4lean.ScalarProjectionRank",
     "BC4lean.ScalarUnitProjection",
+    "BC4lean.SubsingletonAssemblyEquivalence",
+    "BC4lean.SubsingletonScalarDescent",
     "BC4lean.TrivialAnalyticCalibration",
+    "BC4lean.TrivialAnalyticScalar",
     "BC4lean.UnitAssemblyEquivalence",
     "BC4lean.UnitPointCutoff",
     "BC4lean.UnitScalarDescent"
@@ -24,7 +35,7 @@
     "BC4lean.Assembly.BaumConnesConjecture": "definition",
     "BC4lean.Chapter8Examples.baumConnesProperty_unit": "theorem"
   },
-  "expected_type_examples": 67,
+  "expected_type_examples": 96,
   "targets": {
     "def:baum-connes-property": {
       "status": "implemented",
@@ -87,6 +98,16 @@
         "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary"
       ]
     },
+    "prop:trivial-group-scalar-k-groups": {
+      "status": "implemented",
+      "statement_kind": "proposition",
+      "description": "Constructed mathematical endpoints; native verification is recorded separately by the strict audit.",
+      "required_declarations": [
+        "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+        "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+        "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero"
+      ]
+    },
     "prop:compact-model-colimit-calibration": {
       "status": "implemented",
       "statement_kind": "proposition",
@@ -130,6 +151,22 @@
         "BC4lean.KKTheory.UnitPointCutoff.reducedCutoffProjection_eq_scalarCoefficient"
       ]
     },
+    "prop:finite-point-cutoff-averaging": {
+      "status": "implemented",
+      "statement_kind": "proposition",
+      "description": "Constructed mathematical endpoints; native verification is recorded separately by the strict audit.",
+      "required_declarations": [
+        "BC4lean.KKTheory.FinitePointCutoff.averaging",
+        "BC4lean.KKTheory.FinitePointCutoff.averaging_coe",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoff_apply",
+        "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom",
+        "BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging"
+      ]
+    },
     "prop:unit-scalar-descent-calibration": {
       "status": "implemented",
       "statement_kind": "proposition",
@@ -149,6 +186,45 @@
         "BC4lean.Chapter8Examples.baumConnesProperty_unit",
         "BC4lean.Chapter8Examples.reducedAssemblyHom_unit_eq",
         "BC4lean.Chapter8Examples.unitAssemblyAddEquiv"
+      ]
+    },
+    "prop:kk-group-restriction": {
+      "status": "implemented",
+      "statement_kind": "proposition",
+      "description": "Constructed mathematical endpoints; native verification is recorded separately by the strict audit.",
+      "required_declarations": [
+        "BC4lean.KKTheory.GroupRestriction.cycleComap",
+        "BC4lean.KKTheory.GroupRestriction.evenComap",
+        "BC4lean.KKTheory.GroupRestriction.oddComap",
+        "BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv"
+      ]
+    },
+    "prop:subsingleton-scalar-descent-calibration": {
+      "status": "implemented",
+      "statement_kind": "proposition",
+      "description": "Constructed mathematical endpoints; native verification is recorded separately by the strict audit.",
+      "required_declarations": [
+        "BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction",
+        "BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction"
+      ]
+    },
+    "prop:scalar-unit-projection-identity-universe": {
+      "status": "implemented",
+      "statement_kind": "proposition",
+      "description": "Constructed mathematical endpoints; native verification is recorded separately by the strict audit.",
+      "required_declarations": [
+        "BC4lean.KKTheory.ScalarUnitProjection.identity_universe",
+        "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe"
+      ]
+    },
+    "thm:baum-connes-subsingleton": {
+      "status": "implemented",
+      "statement_kind": "theorem",
+      "description": "Constructed mathematical endpoints; native verification is recorded separately by the strict audit.",
+      "required_declarations": [
+        "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv",
+        "BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton",
+        "BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq"
       ]
     }
   },
@@ -176,6 +252,9 @@
     "BC4lean.Assembly.modelAssemblyProperty_iff_homotopyEquiv",
     "BC4lean.Assembly.modelAssemblyProperty_iff_universalModels",
     "BC4lean.Chapter8Examples.FiniteGroupPoint",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq",
     "BC4lean.Chapter8Examples.assemblyHom_eq_compactSpaceAssembly",
     "BC4lean.Chapter8Examples.baumConnesProperty_unit",
     "BC4lean.Chapter8Examples.compactSpaceGroupEquiv",
@@ -203,13 +282,33 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv_projection",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
     "BC4lean.Chapter8Examples.unitPointSourceEquiv",
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv",
     "BC4lean.Chapter8Examples.wholeCompactPiece",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging_coe",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoff_apply",
+    "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom",
+    "BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging",
+    "BC4lean.KKTheory.GroupRestriction.cycleComap",
+    "BC4lean.KKTheory.GroupRestriction.evenComap",
+    "BC4lean.KKTheory.GroupRestriction.oddComap",
+    "BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv",
+    "BC4lean.KKTheory.ScalarUnitProjection.identity_universe",
     "BC4lean.KKTheory.ScalarUnitProjection.relativeMap_nonunitalUnitProjection",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity",
+    "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso",
+    "BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction",
+    "BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction",
     "BC4lean.KKTheory.UnitPointCutoff.algebraicProjection_eq_single",
     "BC4lean.KKTheory.UnitPointCutoff.cutoffKKClass_eq_homClass",
     "BC4lean.KKTheory.UnitPointCutoff.cutoff_square_one",
@@ -243,6 +342,9 @@
     "BC4lean.Assembly.modelAssemblyProperty_iff_homotopyEquiv",
     "BC4lean.Assembly.modelAssemblyProperty_iff_universalModels",
     "BC4lean.Chapter8Examples.FiniteGroupPoint",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq",
     "BC4lean.Chapter8Examples.assemblyHom_eq_compactSpaceAssembly",
     "BC4lean.Chapter8Examples.baumConnesProperty_unit",
     "BC4lean.Chapter8Examples.compactSpaceGroupEquiv",
@@ -270,13 +372,33 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv_projection",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
     "BC4lean.Chapter8Examples.unitPointSourceEquiv",
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv",
     "BC4lean.Chapter8Examples.wholeCompactPiece",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging_coe",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoff_apply",
+    "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom",
+    "BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging",
+    "BC4lean.KKTheory.GroupRestriction.cycleComap",
+    "BC4lean.KKTheory.GroupRestriction.evenComap",
+    "BC4lean.KKTheory.GroupRestriction.oddComap",
+    "BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv",
+    "BC4lean.KKTheory.ScalarUnitProjection.identity_universe",
     "BC4lean.KKTheory.ScalarUnitProjection.relativeMap_nonunitalUnitProjection",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity",
+    "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso",
+    "BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction",
+    "BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction",
     "BC4lean.KKTheory.UnitPointCutoff.algebraicProjection_eq_single",
     "BC4lean.KKTheory.UnitPointCutoff.cutoffKKClass_eq_homClass",
     "BC4lean.KKTheory.UnitPointCutoff.cutoff_square_one",
@@ -302,6 +424,9 @@
     "BC4lean.Assembly.indexedAssemblyProperty_iff_cofinalComparison",
     "BC4lean.Assembly.modelAssemblyProperty_iff_baumConnesProperty",
     "BC4lean.Chapter8Examples.FiniteGroupPoint",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq",
     "BC4lean.Chapter8Examples.assemblyHom_eq_compactSpaceAssembly",
     "BC4lean.Chapter8Examples.baumConnesProperty_unit",
     "BC4lean.Chapter8Examples.compactSpaceGroupEquiv",
@@ -315,11 +440,31 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv_projection",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
     "BC4lean.Chapter8Examples.wholeCompactPiece",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging_coe",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoff_apply",
+    "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom",
+    "BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging",
+    "BC4lean.KKTheory.GroupRestriction.cycleComap",
+    "BC4lean.KKTheory.GroupRestriction.evenComap",
+    "BC4lean.KKTheory.GroupRestriction.oddComap",
+    "BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv",
+    "BC4lean.KKTheory.ScalarUnitProjection.identity_universe",
     "BC4lean.KKTheory.ScalarUnitProjection.relativeMap_nonunitalUnitProjection",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity",
+    "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso",
+    "BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction",
+    "BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction",
     "BC4lean.KKTheory.UnitPointCutoff.cutoffKKClass_eq_homClass",
     "BC4lean.KKTheory.UnitPointCutoff.pointCZeroEquiv",
     "BC4lean.KKTheory.UnitPointCutoff.reducedCutoffProjection_eq_scalarCoefficient",
@@ -332,5 +477,5 @@
     "BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso": "definition",
     "BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso": "definition"
   },
-  "coverage_note": "The 67 independent typed examples cover 65 endpoints; 40 blueprint links contain 38 of those plus two explicit coefficient-restriction cycle-isomorphism data definitions. These two definitions receive exact native kind/origin/axiom checks and semantic source review, without a separate expected-type example."
+  "coverage_note": "The 96 independent typed examples cover 88 endpoints; 63 blueprint links contain 61 of those plus two explicit coefficient-restriction cycle-isomorphism data definitions. These two definitions receive exact native kind/origin/axiom checks and semantic source review, without a separate expected-type example."
 }

@@ -399,6 +399,43 @@ Then $\rho(z\delta_e)=zI$ and $\|zI\|=|z|$.
 The image is complete and hence closed, so taking its closure adds nothing.
 \end{proof}
 
+\begin{proposition}[Finite groups]\label{prop:reduced-group-cstar-finite}
+\lean{BC4lean.integratedToReduced_surjective,BC4lean.finiteReducedEquiv,BC4lean.finiteReducedEquiv_apply,BC4lean.finiteReducedEquiv_delta}
+\leanok
+\uses{prop:integrated-faithful,prop:reduced-group-cstar-completion}
+If $\Gamma$ is finite, then $\rho$, with codomain restricted to
+$C_r^*(\Gamma)$, is a unital $*$-isomorphism
+$\mathbb C[\Gamma]\to C_r^*(\Gamma)$ sending $\delta_g$ to $\lambda_g$.
+\end{proposition}
+\begin{proof}
+\leanok
+Injectivity is faithfulness of $\rho$. The image of $\rho$ is a
+finite-dimensional subspace of $C_r^*(\Gamma)$, hence closed. It is also
+dense, so it is all of $C_r^*(\Gamma)$.
+\end{proof}
+
+\begin{proposition}[Groups of order two]\label{prop:reduced-group-cstar-order-two}
+\lean{BC4lean.orderTwoSign,BC4lean.orderTwoSign_one,BC4lean.orderTwoSign_of_ne_one,BC4lean.star_orderTwoSign,BC4lean.orderTwoSign_inv,BC4lean.orderTwoCharacters,BC4lean.orderTwoCharacters_single,BC4lean.orderTwoCharacters_delta,BC4lean.orderTwoCharacters_surjective,BC4lean.orderTwoCharacters_injective,BC4lean.orderTwoGroupAlgebraEquiv,BC4lean.orderTwoGroupAlgebraEquiv_apply,BC4lean.orderTwoReducedEquiv,BC4lean.orderTwoReducedEquiv_symm_regularOperator,BC4lean.orderTwoReducedEquiv_symm_regularOperator_of_ne_one,BC4lean.orderTwoReducedEquiv_apply}
+\leanok
+\uses{prop:group-algebra-star-laws,prop:reduced-group-cstar-finite}
+Let $\Gamma$ have exactly two elements, $e$ and $g$, and put
+$P_\pm=\tfrac12(I\pm\lambda_g)$. Then $(z,w)\mapsto zP_++wP_-$ is a unital
+$*$-isomorphism $\mathbb C\times\mathbb C\to C_r^*(\Gamma)$. Its inverse
+sends $\lambda_g$ to $(1,-1)$.
+\end{proposition}
+\begin{proof}
+\leanok
+Since $g^2=e$, the sign $\varepsilon(e)=1$, $\varepsilon(g)=-1$ is a
+character of $\Gamma$. Together with the trivial character it defines a
+unital algebra homomorphism $\chi:\mathbb C[\Gamma]\to\mathbb C\times\mathbb C$,
+$\chi(\delta_h)=(1,\varepsilon(h))$. It preserves the involution because
+$g^{-1}=g$ and $\varepsilon$ is real. It is onto, since
+$(z,w)=\chi\bigl(\tfrac{z+w}2\delta_e+\tfrac{z-w}2\delta_g\bigr)$, and both
+spaces have dimension two, so $\chi$ is bijective. Compose $\chi^{-1}$ with
+the isomorphism for finite groups. The formula for $(z,w)$ follows from
+$\chi(\delta_e)=(1,1)$ and $\chi(\delta_g)=(1,-1)$.
+\end{proof}
+
 \section{Interface for subsequent parts}
 Subsequent sections may use the unital complex $C^*$-algebra structure,
 the dense isometric group-algebra embedding, and separability when

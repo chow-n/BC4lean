@@ -460,6 +460,61 @@ identities, inverses, and composition.
 Apply the identity and composition laws to $e$ and its inverse.
 \end{proof}
 
+\begin{proposition}\label{prop:scalar-projection-rank-classification}
+\uses{def:rectangular-projection-equivalence,def:cstar-matrix-projection,def:stable-projection-monoid}
+\lean{BC4lean.OperatorKTheory.Matrix.IsHermitian.exists_isometry_of_isIdempotentElem,BC4lean.OperatorKTheory.Scalar.rectEquivalent_one_of_projection,BC4lean.OperatorKTheory.Scalar.rank_eq_of_rectEquivalent,BC4lean.OperatorKTheory.Scalar.projectionRank,BC4lean.OperatorKTheory.Scalar.projectionRank_blockSum,BC4lean.OperatorKTheory.scalarRankHom}
+\leanok
+Every projection $P\in M_n(\mathbb C)$ is rectangularly equivalent to the
+identity block of size $\operatorname{rank}P$. Rank is invariant under
+rectangular equivalence and additive on block sums, so it defines an additive
+map $V(\mathbb C)\to\mathbb Z$.
+\end{proposition}
+\begin{proof}
+\leanok
+By the spectral theorem $P=UDU^*$ with $U$ unitary and $D$ diagonal; $P^2=P$
+forces the diagonal entries to be $0$ or $1$. Keeping the columns of $U$ at the
+nonzero entries gives $v$ with $vv^*=P$ and $v^*v=1$, on an index set of size
+$\operatorname{rank}P$. If $vv^*=P$ and $v^*v=Q$, then
+$\operatorname{rank}P=\operatorname{rank}v=\operatorname{rank}Q$. Additivity
+follows by replacing both summands with identity blocks.
+\end{proof}
+
+\begin{theorem}\label{thm:scalar-k0}
+\uses{def:operator-k0,prop:operator-k0-universal,prop:scalar-projection-rank-classification}
+\lean{BC4lean.OperatorKTheory.complexOrder_eq_spectralOrder,BC4lean.OperatorKTheory.k0ScalarOne,BC4lean.OperatorKTheory.k0ScalarEquiv,BC4lean.OperatorKTheory.k0ScalarEquiv_projection,BC4lean.OperatorKTheory.k0ScalarEquiv_one,BC4lean.OperatorKTheory.Scalar.of_eq_rank_nsmul}
+\leanok
+There is an additive isomorphism $K_0(\mathbb C)\cong\mathbb Z$ sending the
+class of a matrix projection to its rank; in particular it sends the class
+$[1]$ of the $1\times1$ identity to $1$. There is exactly one order making
+$\mathbb C$ a star-ordered ring. BC4lean uses two presentations of it, the
+usual order and the spectral order, that are not definitionally equal, so the
+Lean statements take the order as an argument.
+\end{theorem}
+\begin{proof}
+\leanok
+The rank map extends to $K_0(\mathbb C)$ by the universal property. By the
+classification every class in $V(\mathbb C)$ is $(\operatorname{rank}p)[1]$,
+so $n\mapsto n[1]$ is a two-sided inverse. No cancellation in $V(\mathbb C)$
+is used.
+\end{proof}
+
+\begin{theorem}\label{thm:scalar-k1}
+\uses{def:operator-k1,def:unitary-norm-homotopy}
+\lean{BC4lean.OperatorKTheory.Unitary.joined_one_of_neg_one_notMem,BC4lean.OperatorKTheory.Unitary.joined_one_of_finite_spectrum,BC4lean.OperatorKTheory.Scalar.matrixUnitary_joined_one,BC4lean.OperatorKTheory.k1Scalar_eq_zero}
+\leanok
+Every matrix unitary over $\mathbb C$ is norm-homotopic to the identity, and
+$K_1(\mathbb C)=0$. As in Theorem~\ref{thm:scalar-k0}, the Lean statement takes
+the order on $\mathbb C$ as an argument.
+\end{theorem}
+\begin{proof}
+\leanok
+A matrix unitary $u$ has finite spectrum on the unit circle. Choose $z$ on the
+circle outside the spectrum with $z\neq1$. Then $-1$ lies in the spectrum
+neither of the scalar unitary $-z$ nor of $(-\bar z)u$, so each is at norm
+distance less than $2$ from $1$ and is joined to $1$. Their product is $u$.
+The class of $u$ is then that of an identity, which is zero.
+\end{proof}
+
 \section{Nonunital algebras and structural properties}
 
 \begin{proposition}\label{prop:k-product-decomposition}
@@ -507,6 +562,18 @@ They send a kernel class by the map induced by $(r,a)\mapsto r1_A+a$.
 The star-algebra isomorphism $A^+\cong\mathbb C\times A$ sends $(r,a)$ to
 $(r,r1_A+a)$. Under the verified product decomposition, the scalar quotient
 induces projection onto $K_i(\mathbb C)$. Its kernel is the second factor.
+\end{proof}
+
+\begin{corollary}\label{cor:scalar-operator-k-nonunital}
+\uses{prop:operator-k-unital-agreement,thm:scalar-k0,thm:scalar-k1}
+\lean{BC4lean.OperatorKTheory.operatorK0ScalarEquiv,BC4lean.OperatorKTheory.operatorK1Scalar_eq_zero}
+\leanok
+$K_0^{\mathrm{op}}(\mathbb C)\cong\mathbb Z$ and $K_1^{\mathrm{op}}(\mathbb C)=0$.
+\end{corollary}
+\begin{proof}
+\leanok
+Compose the unital agreement isomorphisms, taken at the spectral order, with
+the scalar computations.
 \end{proof}
 
 \begin{proposition}\label{prop:operator-k-functoriality}

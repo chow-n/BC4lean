@@ -117,6 +117,22 @@ stable-unitary $K_1$ to the actual scalar star-algebra equivalence, retaining
 the spectral orders used by the reduced analytic targets.
 \end{proof}
 
+\begin{proposition}\label{prop:trivial-group-scalar-k-groups}
+\uses{prop:trivial-group-analytic-calibration,thm:scalar-k0,thm:scalar-k1}
+\lean{BC4lean.Chapter8Examples.trivialReducedK0Equiv,BC4lean.Chapter8Examples.trivialReducedK0Equiv_one,BC4lean.Chapter8Examples.trivialReducedK1_eq_zero}
+\leanok
+For every group $\Gamma$ with exactly one element,
+$K_0(C^*_r(\Gamma))\cong\mathbb Z$, with the image of $[1]$ under the
+calibration sent to $1$, and $K_1(C^*_r(\Gamma))=0$. These computations
+complete Proposition~\ref{prop:trivial-group-analytic-calibration}. Assembly
+is not identified here.
+\end{proposition}
+\begin{proof}
+\leanok
+Compose the calibration equivalences with Theorems~\ref{thm:scalar-k0} and
+\ref{thm:scalar-k1}, taken at the order on $\mathbb C$ used by the calibration.
+\end{proof}
+
 \begin{proposition}\label{prop:compact-model-colimit-calibration}
 \uses{def:assembly-map,prop:piece-assembly-transition}
 \lean{BC4lean.Chapter8Examples.wholeCompactPiece,BC4lean.Chapter8Examples.terminalColimitEquiv,BC4lean.Chapter8Examples.compactSpaceGroupEquiv,BC4lean.Chapter8Examples.assemblyHom_eq_compactSpaceAssembly}
@@ -195,6 +211,36 @@ uses the literal Unit group and does not identify nontrivial finite-group
 averaging with the unit.
 \end{proof}
 
+\begin{proposition}\label{prop:finite-point-cutoff-averaging}
+\uses{prop:scalar-unit-projection-identity,def:cutoff-projection,prop:finite-group-point-reduction}
+\lean{BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom,BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass,BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback,BC4lean.KKTheory.FinitePointCutoff.cutoff_apply,BC4lean.KKTheory.FinitePointCutoff.averaging,BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging,BC4lean.KKTheory.FinitePointCutoff.averaging_coe,BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass,BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback}
+\leanok
+Let a countable discrete group $\Gamma$ act properly on a second countable
+locally compact Hausdorff space $X$, and let $c$ be a normalized cutoff (one
+exists exactly when the action is cocompact), with projection
+$p_c$ in the reduced crossed product. Let $f\colon\mathbb C\to
+C_0(X)\rtimes_r\Gamma$ be a $*$-homomorphism with $f(1)=p_c$. Then the scalar
+KK lift of $[p_c]$ is the homomorphism class $[f]$, and the cutoff product
+$[p_c]\otimes(-)$ is the source pullback $f^*$ in both degrees.
+If $\Gamma$ is finite and $X$ is the point, every normalized cutoff is the
+constant $|\Gamma|^{-1/2}$, and $p_c$ is the averaging projection
+$e=\sum_{g\in\Gamma}|\Gamma|^{-1}\delta_g$. Hence the cutoff class is the
+class of $z\mapsto ze$, and the cutoff product is pullback along it.
+\end{proposition}
+\begin{proof}
+\leanok
+The first part is the argument of
+Proposition~\ref{prop:unit-point-cutoff-hom-class}, which does not use the
+group: scalar index naturality for the native coefficient pushforward of the
+scalar identity, the scalar unit-projection identity and functoriality of the
+singleton projection class give $[f]\mapsto[f(1)]=[p_c]$. The cutoff product
+is the left even product with $[f]$, which is the source pullback by
+definition. On the point the action is trivial, so normalization reads
+$|\Gamma|\,c(x)^2=1$; with $c\ge0$ this gives $c(x)=|\Gamma|^{-1/2}$, and
+every coefficient $c(x)c(g^{-1}x)$ of the algebraic projection equals
+$|\Gamma|^{-1}$.
+\end{proof}
+
 \begin{proposition}\label{prop:unit-scalar-descent-calibration}
 \uses{def:reduced-descent,prop:descent-source-naturality}
 \lean{BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.evenClass_coefficientRestriction,BC4lean.KKTheory.UnitScalarDescent.oddClass_coefficientRestriction}
@@ -226,8 +272,96 @@ pullback equivalence, the genuine Unit cutoff and descent identifications,
 and the separately constructed even and odd scalar-to-analytic equivalences.
 Prove that their composite equals Chapter~7's actual canonical assembly map.
 Its explicit additive equivalence then supplies injectivity and surjectivity.
-No assembly-bijectivity premise occurs. Transport to arbitrary subsingleton
-groups would require an additional group-isomorphism invariance construction.
+No assembly-bijectivity premise occurs. Theorem~\ref{thm:baum-connes-subsingleton}
+extends this to every group with one element, in every universe, without
+group-isomorphism invariance.
+\end{proof}
+
+\begin{proposition}\label{prop:kk-group-restriction}
+\uses{def:equivariant-kk}
+\lean{BC4lean.KKTheory.GroupRestriction.cycleComap,BC4lean.KKTheory.GroupRestriction.evenComap,BC4lean.KKTheory.GroupRestriction.oddComap,BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv}
+\leanok
+Let $f\colon \Gamma\to\Gamma'$ be a group homomorphism. Precomposing every
+group action with $f$ sends $\Gamma'$-equivariant even and odd Kasparov cycles to
+$\Gamma$-equivariant ones on the same module, with the same grading,
+representation and operator. This respects isomorphisms and full interval
+homotopies, so it defines additive restriction maps on both parity groups.
+If $\Gamma$ has exactly one element and both coefficient actions are trivial,
+restriction along $\mathrm{Unit}\to\Gamma$ is an additive equivalence
+$KK^{\Gamma}_p(A,B)\cong KK_p(A,B)$ in both parities, with inverse the
+restriction along $\Gamma\to\mathrm{Unit}$.
+\end{proposition}
+\begin{proof}
+\leanok
+Only the action field changes, and $f(g^{-1})=f(g)^{-1}$ gives the conjugation
+identity; interval sections and evaluated fibres restrict definitionally. For a
+one-element group both composites of the two restrictions change the action
+only by $g\mapsto 1$, which is the identity, so each composite is the identity
+cycle isomorphism.
+\end{proof}
+
+\begin{proposition}\label{prop:subsingleton-scalar-descent-calibration}
+\uses{prop:kk-group-restriction,def:reduced-descent,prop:unit-scalar-descent-calibration}
+\lean{BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction,BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction}
+\leanok
+Let $\Gamma$ be a countable group acting trivially on $\mathbb C$ and on $B$.
+For $x\in KK^{\Gamma}_p(\mathbb C,B)$, the pullback of the descended class
+$j_r(x)$ along the scalar coefficient inclusion
+$\mathbb C\to\mathbb C\rtimes_r\Gamma$ is the ordinary coefficient extension,
+along $B\to B\rtimes_r\Gamma$, of the restriction of $x$ to $\mathrm{Unit}$.
+\end{proposition}
+\begin{proof}
+\leanok
+As for $\mathrm{Unit}$ (Proposition~\ref{prop:unit-scalar-descent-calibration}):
+both cycles live on the completed module $E\otimes_B(B\rtimes_r\Gamma)$, and
+the identity map intertwines every datum. Restriction changes only the group
+action, which neither side uses. No hypothesis on the size of $\Gamma$ enters.
+\end{proof}
+
+\begin{proposition}\label{prop:scalar-unit-projection-identity-universe}
+\uses{prop:scalar-unit-projection-identity}
+\lean{BC4lean.KKTheory.ScalarUnitProjection.identity_universe,BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe}
+\leanok
+In every module universe, the scalar index of the identity class of
+$\mathbb C$ is the class of the projection $1$.
+\end{proposition}
+\begin{proof}
+\leanok
+The identity class in a given module universe is the module-universe change of
+the identity class in the smallest one, because on graded classes the two
+universe changes (by shrinking and by lifting) agree. The scalar index is
+invariant under module-universe change, so
+Proposition~\ref{prop:scalar-unit-projection-identity} applies.
+\end{proof}
+
+\begin{theorem}\label{thm:baum-connes-subsingleton}
+\uses{def:baum-connes-property,prop:finite-group-point-reduction,prop:kk-group-restriction,prop:subsingleton-scalar-descent-calibration,prop:scalar-unit-projection-identity-universe,prop:reduced-group-cstar-trivial}
+\lean{BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv,BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq,BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton}
+\leanok
+The coefficient-free reduced assembly map of every discrete group with exactly
+one element, in every universe, is an isomorphism in both degrees. In
+particular this holds for $\mathrm{ULift}\,\mathrm{Unit}$ in every universe and
+for the trivial subgroup of any discrete group.
+\end{theorem}
+\begin{proof}
+\leanok
+Run the proof of Theorem~\ref{thm:baum-connes-unit} with $\Gamma$ in place of
+$\mathrm{Unit}$. A finite group reduces to the one-point model
+(Proposition~\ref{prop:finite-group-point-reduction}). For a one-element group
+normalization gives $c(x)^2=1$, so the cutoff projection is the scalar
+coefficient $1$ and the cutoff product is the source pullback along
+$\mathbb C\to C_0(X)\rtimes_r\Gamma$; in a general universe this uses
+Proposition~\ref{prop:scalar-unit-projection-identity-universe}. Source
+naturality of descent and
+Proposition~\ref{prop:subsingleton-scalar-descent-calibration} identify the
+cutoff product of the descended class with the coefficient extension of its
+restriction to $\mathrm{Unit}$. Restriction is invertible
+(Proposition~\ref{prop:kk-group-restriction}), and the scalar index maps
+together with $\mathbb C\cong C^*_r\Gamma$
+(Proposition~\ref{prop:reduced-group-cstar-trivial}) identify
+$KK_p(\mathbb C,\mathbb C)$ with $K_p(C^*_r\Gamma)$. The composite of these
+equivalences equals the canonical assembly map, so it is bijective. No
+isomorphism invariance of the Baum--Connes property is used.
 \end{proof}
 
 \section{Research and formalization status}
@@ -244,8 +378,11 @@ a proof of the general conjecture remains a later milestone.
 The verified Chapter~8 milestone consists of the exact property and conjecture
 definitions, the proved model and cofinal-index comparison theorems, exact
 piecewise bijectivity criteria, the geometric and analytic calibrations,
-and the genuine assembly isomorphism for the literal Unit group. The general
+and the genuine assembly isomorphism for the literal Unit group and for
+every group with exactly one element. The general
 conjecture remains unproved, so the chapter is a verified milestone rather
-than a completed proof of all its targets. No numerical scalar $K$-group
-calculation, nontrivial finite-group assembly isomorphism, $\mathbb Z$ case,
-or $\mathrm{SL}(3,\mathbb Z)$ result is asserted by this milestone.
+than a completed proof of all its targets. The scalar $K$-groups
+$K_0(\mathbb C)\cong\mathbb Z$ and $K_1(\mathbb C)=0$ are computed, and with
+them the reduced $K$-groups of every group with exactly one element. No
+nontrivial finite-group assembly isomorphism, $\mathbb Z$ case, or
+$\mathrm{SL}(3,\mathbb Z)$ result is asserted by this milestone.

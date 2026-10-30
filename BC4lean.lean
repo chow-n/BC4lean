@@ -939,5 +939,17 @@ import BC4lean.FiniteGroupPointCalibration
 import BC4lean.ScalarUnitProjection
 import BC4lean.TrivialAnalyticCalibration
 import BC4lean.UnitPointCutoff
+import BC4lean.FinitePointCutoff
 import BC4lean.UnitScalarDescent
 import BC4lean.UnitAssemblyEquivalence
+import BC4lean.KKGroupRestriction
+import BC4lean.SubsingletonScalarDescent
+import BC4lean.ScalarIdentityUniverse
+import BC4lean.SubsingletonAssemblyEquivalence
+
+import BC4lean.FiniteReducedGroupCStar
+import BC4lean.ScalarProjectionRank
+import BC4lean.ScalarOperatorK0
+import BC4lean.ScalarOperatorK1
+import BC4lean.ScalarOperatorKNonunital
+import BC4lean.TrivialAnalyticScalar
