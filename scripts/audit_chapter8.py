@@ -32,7 +32,7 @@ RETAINED = "scripts/check_chapter7_retained.py"
 RETAINED_PROVIDER_SHA = "dcc7a783f842e8196b71bd6e1499e00821e98214e8efbc81bc648ca41628d7d8"
 # Candidate independently reviewed formulas. A native syntax repair must retain
 # the actual assembly signatures and receive a new explicit reviewed binding.
-EXPECTED_TYPES_SHA = "44b70453df6cb3bc0508e046c5195f13cea2cfaf0bfbf871e4220d2b5da2e24e"
+EXPECTED_TYPES_SHA = "26e980d4fb7e31a616d39c107bfef1d09652d20393ed007a5ffe33367fc9df10"
 SOURCE7 = "4daf13f6be649ef3e7f9fe90122bcbee4707b1b2"
 PUBLICATION7 = "e1afa3d693e0a95cd568f517578d109995d80442"
 PREFIX7_SHA = "309158d81f7d7994edab43ce59a9e7820f1fa5c5f364321cd3bf6f327c7f00bc"
@@ -50,7 +50,8 @@ MODULES = sorted("BC4lean." + name for name in (
     "TrivialAnalyticCalibration", "CompactModelColimitCalibration", "FiniteGroupPointCalibration",
     "UnitScalarDescent", "ScalarUnitProjection", "UnitPointCutoff", "UnitAssemblyEquivalence",
     "FinitePointCutoff", "FiniteReducedGroupCStar", "KKGroupRestriction", "SubsingletonScalarDescent",
-    "ScalarIdentityUniverse", "SubsingletonAssemblyEquivalence"))
+    "ScalarIdentityUniverse", "SubsingletonAssemblyEquivalence", "ScalarProjectionRank",
+    "ScalarOperatorK0", "ScalarOperatorK1", "ScalarOperatorKNonunital", "TrivialAnalyticScalar"))
 NAME = re.compile(r"BC4lean(?:\.[A-Za-z_][A-Za-z0-9_']*)+\Z")
 HASH = re.compile(r"[0-9a-f]{64}\Z")
 REV = re.compile(r"[0-9a-f]{40}\Z")

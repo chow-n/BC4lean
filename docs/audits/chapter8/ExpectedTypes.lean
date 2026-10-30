@@ -13,6 +13,7 @@ import BC4lean.KKGroupRestriction
 import BC4lean.SubsingletonScalarDescent
 import BC4lean.ScalarIdentityUniverse
 import BC4lean.SubsingletonAssemblyEquivalence
+import BC4lean.TrivialAnalyticScalar
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -21,8 +22,9 @@ set_option warningAsError true
 /-!
 Independent source-only expected mathematical signatures, prepared without a
 Lean invocation. The first ten imports denote the ten proposed final module
-locations; the eleventh supplies the finite-point cutoff endpoints and the
-last four the endpoints for groups with one element.
+locations; the eleventh supplies the finite-point cutoff endpoints, the next
+four the endpoints for groups with one element, and the last their scalar
+K-group endpoints.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -263,6 +265,22 @@ example (v : FiniteUnitary ℂ) :
   trivialAnalyticK1Equiv_unitary Γ v
 
 end TrivialAnalyticTarget
+
+section TrivialScalarKGroups
+variable (Γ : Type u) [Group Γ] [Subsingleton Γ]
+
+-- endpoint: BC4lean.Chapter8Examples.trivialReducedK0Equiv
+example : ReducedK0 Γ ≃+ ℤ := trivialReducedK0Equiv Γ
+
+-- endpoint: BC4lean.Chapter8Examples.trivialReducedK0Equiv_one
+example : trivialReducedK0Equiv Γ (trivialAnalyticK0Equiv Γ
+    (k0Projection (FiniteProjection.ofProjection (Projection.one : MatrixProjection ℂ Unit)))) = 1 :=
+  trivialReducedK0Equiv_one Γ
+
+-- endpoint: BC4lean.Chapter8Examples.trivialReducedK1_eq_zero
+example (x : ReducedK1 Γ) : x = 0 := trivialReducedK1_eq_zero Γ x
+
+end TrivialScalarKGroups
 
 section TerminalDiagram
 variable {I : Type uI} [Preorder I] [Nonempty I] [IsDirectedOrder I]

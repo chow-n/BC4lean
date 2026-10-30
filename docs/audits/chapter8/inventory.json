@@ -11,10 +11,15 @@
     "BC4lean.FiniteReducedGroupCStar",
     "BC4lean.KKGroupRestriction",
     "BC4lean.ScalarIdentityUniverse",
+    "BC4lean.ScalarOperatorK0",
+    "BC4lean.ScalarOperatorK1",
+    "BC4lean.ScalarOperatorKNonunital",
+    "BC4lean.ScalarProjectionRank",
     "BC4lean.ScalarUnitProjection",
     "BC4lean.SubsingletonAssemblyEquivalence",
     "BC4lean.SubsingletonScalarDescent",
     "BC4lean.TrivialAnalyticCalibration",
+    "BC4lean.TrivialAnalyticScalar",
     "BC4lean.UnitAssemblyEquivalence",
     "BC4lean.UnitPointCutoff",
     "BC4lean.UnitScalarDescent"
@@ -30,7 +35,7 @@
     "BC4lean.Assembly.BaumConnesConjecture": "definition",
     "BC4lean.Chapter8Examples.baumConnesProperty_unit": "theorem"
   },
-  "expected_type_examples": 93,
+  "expected_type_examples": 96,
   "targets": {
     "def:baum-connes-property": {
       "status": "implemented",
@@ -91,6 +96,16 @@
         "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv_projection",
         "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv",
         "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary"
+      ]
+    },
+    "prop:trivial-group-scalar-k-groups": {
+      "status": "implemented",
+      "statement_kind": "proposition",
+      "description": "Constructed mathematical endpoints; native verification is recorded separately by the strict audit.",
+      "required_declarations": [
+        "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+        "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+        "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero"
       ]
     },
     "prop:compact-model-colimit-calibration": {
@@ -267,6 +282,9 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv_projection",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
     "BC4lean.Chapter8Examples.unitPointSourceEquiv",
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv",
@@ -354,6 +372,9 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv_projection",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
     "BC4lean.Chapter8Examples.unitPointSourceEquiv",
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv",
@@ -419,6 +440,9 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv_projection",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
     "BC4lean.Chapter8Examples.wholeCompactPiece",
     "BC4lean.KKTheory.FinitePointCutoff.averaging",
@@ -453,5 +477,5 @@
     "BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso": "definition",
     "BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso": "definition"
   },
-  "coverage_note": "The 93 independent typed examples cover 85 endpoints; 60 blueprint links contain 58 of those plus two explicit coefficient-restriction cycle-isomorphism data definitions. These two definitions receive exact native kind/origin/axiom checks and semantic source review, without a separate expected-type example."
+  "coverage_note": "The 96 independent typed examples cover 88 endpoints; 63 blueprint links contain 61 of those plus two explicit coefficient-restriction cycle-isomorphism data definitions. These two definitions receive exact native kind/origin/axiom checks and semantic source review, without a separate expected-type example."
 }
