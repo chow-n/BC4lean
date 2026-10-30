@@ -283,6 +283,24 @@ only by $g\mapsto 1$, which is the identity, so each composite is the identity
 cycle isomorphism.
 \end{proof}
 
+\begin{proposition}\label{prop:subsingleton-scalar-descent-calibration}
+\uses{prop:kk-group-restriction,def:reduced-descent,prop:unit-scalar-descent-calibration}
+\lean{BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction,BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction}
+\leanok
+Let $\Gamma$ be a countable group acting trivially on $\mathbb C$ and on $B$.
+For $x\in KK^{\Gamma}_p(\mathbb C,B)$, the pullback of the descended class
+$j_r(x)$ along the scalar coefficient inclusion
+$\mathbb C\to\mathbb C\rtimes_r\Gamma$ is the ordinary coefficient extension,
+along $B\to B\rtimes_r\Gamma$, of the restriction of $x$ to $\mathrm{Unit}$.
+\end{proposition}
+\begin{proof}
+\leanok
+As for $\mathrm{Unit}$ (Proposition~\ref{prop:unit-scalar-descent-calibration}):
+both cycles live on the completed module $E\otimes_B(B\rtimes_r\Gamma)$, and
+the identity map intertwines every datum. Restriction changes only the group
+action, which neither side uses. No hypothesis on the size of $\Gamma$ enters.
+\end{proof}
+
 \section{Research and formalization status}
 Keep established mathematics, completed Lean work, and open mathematical
 questions separate. Completed Lean work includes the universal proper-space
