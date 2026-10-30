@@ -256,8 +256,9 @@ pullback equivalence, the genuine Unit cutoff and descent identifications,
 and the separately constructed even and odd scalar-to-analytic equivalences.
 Prove that their composite equals Chapter~7's actual canonical assembly map.
 Its explicit additive equivalence then supplies injectivity and surjectivity.
-No assembly-bijectivity premise occurs. Transport to arbitrary subsingleton
-groups would require an additional group-isomorphism invariance construction.
+No assembly-bijectivity premise occurs. Theorem~\ref{thm:baum-connes-subsingleton}
+extends this to every group with one element, in every universe, without
+group-isomorphism invariance.
 \end{proof}
 
 \begin{proposition}\label{prop:kk-group-restriction}
@@ -317,6 +318,36 @@ invariant under module-universe change, so
 Proposition~\ref{prop:scalar-unit-projection-identity} applies.
 \end{proof}
 
+\begin{theorem}\label{thm:baum-connes-subsingleton}
+\uses{def:baum-connes-property,prop:finite-group-point-reduction,prop:kk-group-restriction,prop:subsingleton-scalar-descent-calibration,prop:scalar-unit-projection-identity-universe,prop:reduced-group-cstar-trivial}
+\lean{BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv,BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq,BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton}
+\leanok
+The coefficient-free reduced assembly map of every discrete group with exactly
+one element, in every universe, is an isomorphism in both degrees. In
+particular this holds for $\mathrm{ULift}\,\mathrm{Unit}$ in every universe and
+for the trivial subgroup of any discrete group.
+\end{theorem}
+\begin{proof}
+\leanok
+Run the proof of Theorem~\ref{thm:baum-connes-unit} with $\Gamma$ in place of
+$\mathrm{Unit}$. A finite group reduces to the one-point model
+(Proposition~\ref{prop:finite-group-point-reduction}). For a one-element group
+normalization gives $c(x)^2=1$, so the cutoff projection is the scalar
+coefficient $1$ and the cutoff product is the source pullback along
+$\mathbb C\to C_0(X)\rtimes_r\Gamma$; in a general universe this uses
+Proposition~\ref{prop:scalar-unit-projection-identity-universe}. Source
+naturality of descent and
+Proposition~\ref{prop:subsingleton-scalar-descent-calibration} identify the
+cutoff product of the descended class with the coefficient extension of its
+restriction to $\mathrm{Unit}$. Restriction is invertible
+(Proposition~\ref{prop:kk-group-restriction}), and the scalar index maps
+together with $\mathbb C\cong C^*_r\Gamma$
+(Proposition~\ref{prop:reduced-group-cstar-trivial}) identify
+$KK_p(\mathbb C,\mathbb C)$ with $K_p(C^*_r\Gamma)$. The composite of these
+equivalences equals the canonical assembly map, so it is bijective. No
+isomorphism invariance of the Baum--Connes property is used.
+\end{proof}
+
 \section{Research and formalization status}
 Keep established mathematics, completed Lean work, and open mathematical
 questions separate. Completed Lean work includes the universal proper-space
@@ -331,7 +362,8 @@ a proof of the general conjecture remains a later milestone.
 The verified Chapter~8 milestone consists of the exact property and conjecture
 definitions, the proved model and cofinal-index comparison theorems, exact
 piecewise bijectivity criteria, the geometric and analytic calibrations,
-and the genuine assembly isomorphism for the literal Unit group. The general
+and the genuine assembly isomorphism for the literal Unit group and for
+every group with exactly one element. The general
 conjecture remains unproved, so the chapter is a verified milestone rather
 than a completed proof of all its targets. No numerical scalar $K$-group
 calculation, nontrivial finite-group assembly isomorphism, $\mathbb Z$ case,
