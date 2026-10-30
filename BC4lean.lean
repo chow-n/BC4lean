@@ -948,3 +948,8 @@ import BC4lean.ScalarIdentityUniverse
 import BC4lean.SubsingletonAssemblyEquivalence
 
 import BC4lean.FiniteReducedGroupCStar
+import BC4lean.ScalarProjectionRank
+import BC4lean.ScalarOperatorK0
+import BC4lean.ScalarOperatorK1
+import BC4lean.ScalarOperatorKNonunital
+import BC4lean.TrivialAnalyticScalar

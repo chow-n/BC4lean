@@ -117,6 +117,22 @@ stable-unitary $K_1$ to the actual scalar star-algebra equivalence, retaining
 the spectral orders used by the reduced analytic targets.
 \end{proof}
 
+\begin{proposition}\label{prop:trivial-group-scalar-k-groups}
+\uses{prop:trivial-group-analytic-calibration,thm:scalar-k0,thm:scalar-k1}
+\lean{BC4lean.Chapter8Examples.trivialReducedK0Equiv,BC4lean.Chapter8Examples.trivialReducedK0Equiv_one,BC4lean.Chapter8Examples.trivialReducedK1_eq_zero}
+\leanok
+For every group $\Gamma$ with exactly one element,
+$K_0(C^*_r(\Gamma))\cong\mathbb Z$, with the image of $[1]$ under the
+calibration sent to $1$, and $K_1(C^*_r(\Gamma))=0$. These computations
+complete Proposition~\ref{prop:trivial-group-analytic-calibration}. Assembly
+is not identified here.
+\end{proposition}
+\begin{proof}
+\leanok
+Compose the calibration equivalences with Theorems~\ref{thm:scalar-k0} and
+\ref{thm:scalar-k1}, taken at the order on $\mathbb C$ used by the calibration.
+\end{proof}
+
 \begin{proposition}\label{prop:compact-model-colimit-calibration}
 \uses{def:assembly-map,prop:piece-assembly-transition}
 \lean{BC4lean.Chapter8Examples.wholeCompactPiece,BC4lean.Chapter8Examples.terminalColimitEquiv,BC4lean.Chapter8Examples.compactSpaceGroupEquiv,BC4lean.Chapter8Examples.assemblyHom_eq_compactSpaceAssembly}
@@ -365,6 +381,8 @@ piecewise bijectivity criteria, the geometric and analytic calibrations,
 and the genuine assembly isomorphism for the literal Unit group and for
 every group with exactly one element. The general
 conjecture remains unproved, so the chapter is a verified milestone rather
-than a completed proof of all its targets. No numerical scalar $K$-group
-calculation, nontrivial finite-group assembly isomorphism, $\mathbb Z$ case,
-or $\mathrm{SL}(3,\mathbb Z)$ result is asserted by this milestone.
+than a completed proof of all its targets. The scalar $K$-groups
+$K_0(\mathbb C)\cong\mathbb Z$ and $K_1(\mathbb C)=0$ are computed, and with
+them the reduced $K$-groups of every group with exactly one element. No
+nontrivial finite-group assembly isomorphism, $\mathbb Z$ case, or
+$\mathrm{SL}(3,\mathbb Z)$ result is asserted by this milestone.
