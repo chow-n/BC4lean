@@ -9,6 +9,10 @@ import BC4lean.ScalarUnitProjection
 import BC4lean.UnitPointCutoff
 import BC4lean.UnitAssemblyEquivalence
 import BC4lean.FinitePointCutoff
+import BC4lean.KKGroupRestriction
+import BC4lean.SubsingletonScalarDescent
+import BC4lean.ScalarIdentityUniverse
+import BC4lean.SubsingletonAssemblyEquivalence
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -17,7 +21,8 @@ set_option warningAsError true
 /-!
 Independent source-only expected mathematical signatures, prepared without a
 Lean invocation. The first ten imports denote the ten proposed final module
-locations; the last one supplies the finite-point cutoff endpoints.
+locations; the eleventh supplies the finite-point cutoff endpoints and the
+last four the endpoints for groups with one element.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -639,4 +644,152 @@ example : ∀ p : Bool, Function.Bijective (Assembly.reducedAssemblyHom Unit p) 
 example : Assembly.BaumConnesProperty Unit := baumConnesProperty_unit
 
 end UnitAssembly
+
+section GroupRestriction
+open BC4lean.KKTheory.GroupRestriction
+open BC4lean.KKTheory.GroupUniverseParityGroup
+universe uA uG
+variable {Γ : Type uΓ} {Γ' : Type uG} [Group Γ] [Group Γ'] (f : Γ →* Γ')
+  {A : Type uA} {B : Type uB} [NonUnitalCStarAlgebra A] [NonUnitalCStarAlgebra B]
+  [PartialOrder B] [StarOrderedRing B]
+  {α : CStarAlgebraAction Γ' A} {β : CStarAlgebraAction Γ' B}
+
+-- endpoint: BC4lean.KKTheory.GroupRestriction.cycleComap
+example {E : Type uE} [NormedAddCommGroup E] [NormedSpace ℂ E] [SMul Bᵐᵒᵖ E]
+    [CStarModule Bᵐᵒᵖ E] [CompleteSpace E] (c : KasparovCycle α β E) :
+    KasparovCycle (actionComap f α) (actionComap f β) E := cycleComap f c
+
+-- endpoint: BC4lean.KKTheory.GroupRestriction.cycleComap (definition body)
+example {E : Type uE} [NormedAddCommGroup E] [NormedSpace ℂ E] [SMul Bᵐᵒᵖ E]
+    [CStarModule Bᵐᵒᵖ E] [CompleteSpace E] (c : KasparovCycle α β E) (g : Γ) :
+    (cycleComap f c).groupAction.action g = c.groupAction.action (f g) ∧
+      (cycleComap f c).grading = c.grading ∧
+      (cycleComap f c).representation = c.representation ∧
+      (cycleComap f c).operator = c.operator := ⟨rfl, rfl, rfl, rfl⟩
+
+-- endpoint: BC4lean.KKTheory.GroupRestriction.evenComap
+example (x : KasparovHomotopyClass.{uG,uA,uB,uE} α β) :
+    KasparovHomotopyClass.{uΓ,uA,uB,uE} (actionComap f α) (actionComap f β) := evenComap f x
+
+-- endpoint: BC4lean.KKTheory.GroupRestriction.evenComap (additive)
+example (x y : KasparovHomotopyClass.{uG,uA,uB,uE} α β) :
+    evenComap f (x + y) = evenComap f x + evenComap f y := evenComap_add f x y
+
+variable [TopologicalSpace.SeparableSpace B]
+
+-- endpoint: BC4lean.KKTheory.GroupRestriction.oddComap
+example (x : OddKK.{uG,uA,uB,uE} α β) :
+    OddKK.{uΓ,uA,uB,uE} (actionComap f α) (actionComap f β) := oddComap f x
+
+-- endpoint: BC4lean.KKTheory.GroupRestriction.oddComap (additive)
+example (x y : OddKK.{uG,uA,uB,uE} α β) :
+    oddComap f (x + y) = oddComap f x + oddComap f y := oddComap_add f x y
+
+-- endpoint: BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv
+example [Subsingleton Γ] (p : Bool) :
+    KKParityGroup.{uΓ,uA,uB,uE} p (CStarAlgebraAction.trivial : CStarAlgebraAction Γ A)
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Γ B) ≃+
+      KKParityGroup.{0,uA,uB,uE} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B) :=
+  subsingletonParityEquiv p
+
+-- endpoint: BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv (even half is restriction)
+example [Subsingleton Γ]
+    (x : KasparovHomotopyClass.{uΓ,uA,uB,uE} (CStarAlgebraAction.trivial : CStarAlgebraAction Γ A)
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Γ B)) :
+    subsingletonParityEquiv false x = evenComap (1 : Unit →* Γ) x := rfl
+
+end GroupRestriction
+
+section SubsingletonScalarDescent
+open BC4lean.KKTheory.GroupRestriction BC4lean.KKTheory.SubsingletonScalarDescent
+open BC4lean.KKTheory.GroupUniverseParityGroup
+variable (Γ : Type uΓ) [Group Γ] [Countable Γ]
+  {B : Type uB} [NonUnitalCStarAlgebra B]
+  [PartialOrder B] [StarOrderedRing B] [TopologicalSpace.SeparableSpace B]
+
+-- endpoint: BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction
+example (x : KasparovHomotopyClass.{uΓ,0,uB,max u uB}
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ)
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Γ B)) :
+    GroupUniverseParityFunctoriality.sourcePullback.{0,0,uΓ,max uΓ uB,u}
+      (Γ := Unit) (A := ℂ)
+      («α» := CStarAlgebraAction.trivial) («β» := CStarAlgebraAction.trivial)
+      (γ := CStarAlgebraAction.trivial) false
+      (coefficientToReducedCrossed (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ))
+      (fun _ _ => rfl)
+      (KasparovDescent.evenClass (CStarAlgebraAction.trivial : CStarAlgebraAction Γ B)
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ) x) =
+    GroupUniverseOrdinaryEven.coefficientPushforward.{uB,max uΓ uB,max u uB}
+      (coefficientToReducedCrossed (CStarAlgebraAction.trivial : CStarAlgebraAction Γ B))
+      (evenComap (1 : Unit →* Γ) x) :=
+  evenClass_coefficientRestriction Γ x
+
+-- endpoint: BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction
+example (x : OddKK.{uΓ,0,uB,max u uB}
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ)
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Γ B)) :
+    GroupUniverseParityFunctoriality.sourcePullback.{0,0,uΓ,max uΓ uB,u}
+      (Γ := Unit) (A := ℂ)
+      («α» := CStarAlgebraAction.trivial) («β» := CStarAlgebraAction.trivial)
+      (γ := CStarAlgebraAction.trivial) true
+      (coefficientToReducedCrossed (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ))
+      (fun _ _ => rfl)
+      (KasparovDescent.oddClass (CStarAlgebraAction.trivial : CStarAlgebraAction Γ B)
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ) x) =
+    GroupUniverseOrdinaryOdd.coefficientPushforward.{uB,max uΓ uB,max u uB}
+      (coefficientToReducedCrossed (CStarAlgebraAction.trivial : CStarAlgebraAction Γ B))
+      (oddComap (1 : Unit →* Γ) x) :=
+  oddClass_coefficientRestriction Γ x
+
+end SubsingletonScalarDescent
+
+section ScalarIdentityUniverse
+open BC4lean.KKTheory.GroupUniverseParityGroup
+
+-- endpoint: BC4lean.KKTheory.ScalarUnitProjection.identity_universe
+example : GroupUniverseParityUnits.identity.{0,0,uV}
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ) =
+    GroupShrinkEvenBridge.addEquivalence.{0,0,0,0,uV}
+      (GroupUniverseParityUnits.identity.{0,0,0}
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)) :=
+  ScalarUnitProjection.identity_universe
+
+-- endpoint: BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe
+example : scalarKKOperatorK0AddEquiv.{0,uV}
+      (GroupUniverseParityUnits.identity.{0,0,uV}
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)) =
+    nonunitalProjectionK0 (1 : ℂ) (by
+      apply isStarProjection_iff'.mpr
+      exact ⟨one_mul 1, star_one _⟩) :=
+  ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe
+
+end ScalarIdentityUniverse
+
+section SubsingletonAssembly
+open BC4lean.Chapter8Examples.SubsingletonAssembly
+variable (Γ : Type u) [Group Γ] [Subsingleton Γ] [TopologicalSpace Γ] [DiscreteTopology Γ]
+
+-- endpoint: BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv
+example (p : Bool) : TopologicalKHomology.topologicalGroup p Γ ≃+
+    Assembly.analyticGroup Γ p := assemblyAddEquiv Γ p
+
+-- endpoint: BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq
+example (p : Bool) (x : TopologicalKHomology.topologicalGroup p Γ) :
+    Assembly.reducedAssemblyHom Γ p x = assemblyAddEquiv Γ p x :=
+  reducedAssemblyHom_eq Γ p x
+
+-- endpoint: BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton
+-- No supplied assembly bijectivity, inverse, or compatibility hypothesis.
+example : ∀ p : Bool, Function.Bijective (Assembly.reducedAssemblyHom Γ p) :=
+  baumConnesProperty_of_subsingleton Γ
+
+-- endpoint: BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton (named property)
+example : Assembly.BaumConnesProperty Γ := baumConnesProperty_of_subsingleton Γ
+
+-- endpoint: BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton (lifted Unit)
+example : Assembly.BaumConnesProperty (ULift.{uV} Unit) :=
+  baumConnesProperty_of_subsingleton (ULift.{uV} Unit)
+
+end SubsingletonAssembly
 end Chapter8ExpectedTypes
