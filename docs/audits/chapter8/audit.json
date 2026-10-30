@@ -1,13 +1,13 @@
 {
-  "run_id": "d6fbc28e94b9427ba3be7e8d9938fed8",
-  "audit_started_utc": "2026-10-30T20:12:27.200448+00:00",
+  "run_id": "a9ccdb8251cf4f6e9938638c7b28c605",
+  "audit_started_utc": "2026-10-30T21:23:24.888886+00:00",
   "schema": "chapter8.actual.native-milestone-audit.v1",
   "schema_version": 1,
   "status": "verified_milestone",
   "milestone_verified": true,
   "chapter_complete": false,
   "general_conjecture_proved": false,
-  "source_revision": "65ea0ab331c324b35a42d932827133592a7d986c",
+  "source_revision": "004c406bebc27f019a53b400387fac90788546b7",
   "source_root_provenance": "/private/tmp/bc4lean-release",
   "audit_output_provenance": "/private/tmp/bc4lean-release/docs/audits/chapter8/audit.json",
   "query_source_location": "/private/tmp/bc4lean-release/docs/audits/chapter8/audit.lean",
@@ -22,10 +22,15 @@
     "BC4lean.FiniteReducedGroupCStar",
     "BC4lean.KKGroupRestriction",
     "BC4lean.ScalarIdentityUniverse",
+    "BC4lean.ScalarOperatorK0",
+    "BC4lean.ScalarOperatorK1",
+    "BC4lean.ScalarOperatorKNonunital",
+    "BC4lean.ScalarProjectionRank",
     "BC4lean.ScalarUnitProjection",
     "BC4lean.SubsingletonAssemblyEquivalence",
     "BC4lean.SubsingletonScalarDescent",
     "BC4lean.TrivialAnalyticCalibration",
+    "BC4lean.TrivialAnalyticScalar",
     "BC4lean.UnitAssemblyEquivalence",
     "BC4lean.UnitPointCutoff",
     "BC4lean.UnitScalarDescent"
@@ -40,10 +45,15 @@
     "BC4lean.FiniteReducedGroupCStar",
     "BC4lean.KKGroupRestriction",
     "BC4lean.ScalarIdentityUniverse",
+    "BC4lean.ScalarOperatorK0",
+    "BC4lean.ScalarOperatorK1",
+    "BC4lean.ScalarOperatorKNonunital",
+    "BC4lean.ScalarProjectionRank",
     "BC4lean.ScalarUnitProjection",
     "BC4lean.SubsingletonAssemblyEquivalence",
     "BC4lean.SubsingletonScalarDescent",
     "BC4lean.TrivialAnalyticCalibration",
+    "BC4lean.TrivialAnalyticScalar",
     "BC4lean.UnitAssemblyEquivalence",
     "BC4lean.UnitPointCutoff",
     "BC4lean.UnitScalarDescent"
@@ -53,7 +63,7 @@
     ".github/workflows/blueprint.yml": "184a8bda2d3b8fdd6aede42e597e0b2d4ff85958920136146516be388c91028a",
     ".github/workflows/chapter7.yml": "852c69b64e80bb848013ae1b93ef2cfe2406087324f090ce6b6cc4dd41a40d12",
     ".github/workflows/chapter8.yml": "96cd3998912bce3bd6f9ec873af60e4af612411dd518e9206417b88dc18e9b66",
-    "BC4lean.lean": "287f8d2433a5d4a612db5c66e1d494d796d59229d8ac4d4f0ea9afbd18ec1309",
+    "BC4lean.lean": "079185c91b2a9250ab0c8e1e45ebdd5cfdb94692cd636640ac562fe3502ab1fc",
     "BC4lean/AdjointableAlgebra.lean": "605c5412abbf8e01eeeb54cf2256f6a8adb65aeeaff03e04bd35be5d8b7770a0",
     "BC4lean/AdjointableComplete.lean": "d7ea3b4428a6baca51c48f8264e590dd2809f8b77833355ee333e41dc4db930c",
     "BC4lean/AdjointableCompletion.lean": "4af00b2952a0fd998816c1fc37bdbd9b4b46a17de7a7a84b46671b037924e098",
@@ -925,6 +935,10 @@
     "BC4lean/ScalarKasparovRectangularFredholm.lean": "6bea0bcf734cd02b5f9d3223163bdfe0c45c0bec62ddb2c8c0871e206ce1e077",
     "BC4lean/ScalarKasparovSupport.lean": "ef0c8d411f190ed5b97f2f31ab6c0626328fe7ce1bf5c11aee52b3e7d33b2303",
     "BC4lean/ScalarKasparovSupportClass.lean": "74c03d7cf8d9f27aa0f2c34d43ae326653df407e4e6234b363be4782d75cc4d6",
+    "BC4lean/ScalarOperatorK0.lean": "0626c391427274d793cf1896608409328cf17c974ad3319533250b8b6c4ed64b",
+    "BC4lean/ScalarOperatorK1.lean": "3469bb9221789d1ae273a5c9d65e01ab121e3d4977c33523b930dae183896f8f",
+    "BC4lean/ScalarOperatorKNonunital.lean": "c2d452e47034bb9cfd05771f89cce1478b76d5a559a9303c8bf8e5e524911987",
+    "BC4lean/ScalarProjectionRank.lean": "9b9565979cbe45f7d4302c47b92cae14442e9a89f15534fb9e80866bd60feb25",
     "BC4lean/ScalarRelativeProjectionCoefficientNaturality.lean": "1094d33dd45daf8911a9cebeaa50672f68be6e0eeb3f94e884542f10d8a3d209",
     "BC4lean/ScalarUnitProjection.lean": "624628efde155861cea8d00711e6e63bf748c5936a9d6b6fb8f98bf5dae04ab2",
     "BC4lean/SignedConnectionMultiplierAlgebra.lean": "838115599e0d7e92333832b1770f7597ca9947e524656f01529335ba7eaa3705",
@@ -981,6 +995,7 @@
     "BC4lean/TopologicalKHomologyMaps.lean": "1a6a65d84e7c89a8b0251e653a693c467df429ffc660e0ae4d2c791a5ba1ac64",
     "BC4lean/TrivialActionUnitary.lean": "864d13f4983173d213946f5db01396ab8e174a8d538b66fec3831b368a8d53b9",
     "BC4lean/TrivialAnalyticCalibration.lean": "cb81402fce6582f75e80f09cb58aa3079db3d33941309dde0a330c0e1bfce8f6",
+    "BC4lean/TrivialAnalyticScalar.lean": "42bf6728278b7708e3c3f4bc16534b3e464a7cb8a5099040d895779907d698c6",
     "BC4lean/UnitAssemblyEquivalence.lean": "89d99bf9afa1ba519c0d7dc1027022d69018ee3cced37036648ae372695f963e",
     "BC4lean/UnitPointCutoff.lean": "4ceacff3e09187a3e5ee3e08094a3ab68880349e73677f67effc5e6a955a2803",
     "BC4lean/UnitScalarDescent.lean": "ced0471f8b76951948742ae479cff099cc48c71dee654b807c506109da80c0f3",
@@ -1003,7 +1018,7 @@
     "blueprint/src/build_web.py": "79ecb090525b27ad4cd28657a0cc92aa63e55b9b2ed4a43e558ecb826dee92ee",
     "blueprint/src/parts/06-topological-k-homology.tex": "958d7e70629bb58af57fdec3c4ea9ef02e44d85b57fc15cc83f4b50b41552075",
     "blueprint/src/parts/07-assembly-map.tex": "2058e2395df58395255d1f2ab987daa6b7c5d4c452ecd1f75c6aeb7d45bfc4f3",
-    "blueprint/src/parts/08-conjecture-and-examples.tex": "66775b9df1617d3fa63dad9c418cec68ebe16095685240442586fe004cf91185",
+    "blueprint/src/parts/08-conjecture-and-examples.tex": "56833a45a84edff6ba0707af8ee29af3365604d854c600dcae1c4d88ed4cec93",
     "docs/CHAPTER7_COMPLETION.md": "25c1174b9fa857eaf55017be8a00c5642e919c9e9b2b36276b7e84944d42eb2a",
     "docs/CHAPTER7_VERIFICATION.md": "1f3c998b32d50d92e56d14108eb604d84e63cb5be450ce8b3f1d3a7b32b0d800",
     "docs/audits/chapter6/Chapter5Imports.lean": "b07ac2241fff3e9590412fa57efe285d207df4179f793d423c9d6c8c374a89c0",
@@ -1031,16 +1046,16 @@
     "docs/audits/chapter7/inventory.json": "95ef97bcb728d761081e608dd5ae4c3625b9aeb29d6c5f59c753b39329d7828f",
     "docs/audits/chapter8/Chapter7Baseline.json": "1518087f749f7a6cf0b61b1cfae442ab34f22e4864371f96a1f8dee0454c3035",
     "docs/audits/chapter8/Chapter7Imports.lean": "309158d81f7d7994edab43ce59a9e7820f1fa5c5f364321cd3bf6f327c7f00bc",
-    "docs/audits/chapter8/ExpectedTypes.lean": "44b70453df6cb3bc0508e046c5195f13cea2cfaf0bfbf871e4220d2b5da2e24e",
+    "docs/audits/chapter8/ExpectedTypes.lean": "26e980d4fb7e31a616d39c107bfef1d09652d20393ed007a5ffe33367fc9df10",
     "docs/audits/chapter8/RendererScaffold.json": "67f8b84e3c413cf7749bdb5d8dfc693dad37a8309b74d4f8f265e937fe2d9377",
-    "docs/audits/chapter8/inventory.json": "3cbf08cfa07464c5378ef6a66314ea9571382d993dfa46ab58e64d38ce8e40d7",
+    "docs/audits/chapter8/inventory.json": "540ab80e8591f0064116a07777abc74f689afccb182acd51537d1b2906c66d18",
     "lake-manifest.json": "d85b2e1116be8fedd0fc8dac4fa8afc28d849f21b2920d2012b553ed886adb3c",
     "lakefile.toml": "dcb517c34c605807aaa1a08c00179eccb219278161b005f364af8faf27509d7e",
     "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
     "scripts/audit_chapter5.py": "56928f03f8461b4d54de218270ca980c1075f3ff8b13e01ed5ef657b5183d734",
     "scripts/audit_chapter6.py": "e3cd890ac54dfe6dbf1e9a3f7370f337f43e89286a0a8d4d0a9e18d075659d5d",
     "scripts/audit_chapter7.py": "0e8d986afa9450315a95f0f88d1db037e5872d159b9dff05150214ec9d672c51",
-    "scripts/audit_chapter8.py": "300736dded4c777a5c7086252eed31d42be1fecab71fb409529145d6fc6157f9",
+    "scripts/audit_chapter8.py": "2c00a329ea441cfd143857a5aa1c3eca66b4f02a23d4d4874651e419eac10fe8",
     "scripts/chapter8_publication_core.py": "31c7a2f9a409c83c85684ab123817cf79c068f951b9ebc377019c3f14fc4c89c",
     "scripts/chapter8_publication_runtime.py": "5642d85d92b23a29573b26ba43862b188c470498ffff2e402021beaca1951516",
     "scripts/check_chapter7_retained.py": "dcc7a783f842e8196b71bd6e1499e00821e98214e8efbc81bc648ca41628d7d8",
@@ -1062,7 +1077,7 @@
     "scripts/update_chapter8_finder.py": "62ace5563c5000459731694310829b8d1c29c8e39ceede38c69fef923a78dea1",
     "scripts/verify_live_chapter8.py": "93f7a814c8f7282c4763f0c639e3a91ace297168a61ba0ba53a092c47892947c"
   },
-  "query_sha256": "0015edc156617603291b9881c43ba8736d53f4dd2d04581cc354c88973ecda32",
+  "query_sha256": "5847c74bd6ae7b206ae9a838d4e977a354db3eee65121fca5b2622aaca37c12d",
   "blueprint_links": [
     "BC4lean.Assembly.BaumConnesConjecture",
     "BC4lean.Assembly.BaumConnesProperty",
@@ -1095,6 +1110,9 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv_projection",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
     "BC4lean.Chapter8Examples.wholeCompactPiece",
     "BC4lean.KKTheory.FinitePointCutoff.averaging",
@@ -1225,6 +1243,23 @@
         "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv_projection",
         "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv",
         "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary"
+      ],
+      "explicit_checked_proof": true
+    },
+    "prop:trivial-group-scalar-k-groups": {
+      "statement_kind": "proposition",
+      "ready": true,
+      "notready": false,
+      "leanok": true,
+      "required_declarations": [
+        "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+        "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+        "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero"
+      ],
+      "linked_declarations": [
+        "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+        "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+        "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero"
       ],
       "explicit_checked_proof": true
     },
@@ -1442,9 +1477,9 @@
   "notready_targets": [
     "conj:baum-connes"
   ],
-  "expected_type_examples": 93,
-  "full_build_sha256": "7228183c78aa56aec7cf841cbd1ebfde038b8ff63687275f2003c90445da8dcf",
-  "full_build_log_sha256": "05a986151598252b760de743a453fd5791c7fe5cb4271646a2eca887a745b02c",
+  "expected_type_examples": 96,
+  "full_build_sha256": "8c8ed5e910e1c7a70f616c50e530c554e2cf109c099ff03f61ef576c4edac6bb",
+  "full_build_log_sha256": "eb64e77da3fa397859ceb6b5826be4fa49fc2002585c06d08fb00833555273bc",
   "current_import_coverage": {
     "status": "validated_current_import_coverage",
     "errors": [],
@@ -1454,8 +1489,8 @@
     "schema": "chapter8.actual.process.v1",
     "status": "completed",
     "stage": "retained-preservation",
-    "run_id": "d6fbc28e94b9427ba3be7e8d9938fed8",
-    "parent_pid": 27885,
+    "run_id": "a9ccdb8251cf4f6e9938638c7b28c605",
+    "parent_pid": 33223,
     "source_root": "/private/tmp/bc4lean-release",
     "command": [
       "/opt/homebrew/opt/python@3.14/bin/python3.14",
@@ -1466,18 +1501,18 @@
       "--new-inventory",
       "docs/audits/chapter8/inventory.json",
       "--output",
-      "/var/folders/f_/8k31l9s5717dlhd0klszmvlh0000gn/T/chapter8-retained-actual-r53wnftx/receipt.json"
+      "/var/folders/f_/8k31l9s5717dlhd0klszmvlh0000gn/T/chapter8-retained-actual-n_g0mm8r/receipt.json"
     ],
-    "started_utc": "2026-10-30T20:12:27.777063+00:00",
-    "pid": 28511,
-    "process_group": 28511,
+    "started_utc": "2026-10-30T21:23:25.393550+00:00",
+    "pid": 33519,
+    "process_group": 33519,
     "exit_code": 0,
-    "finished_utc": "2026-10-30T20:12:29.483846+00:00",
+    "finished_utc": "2026-10-30T21:23:26.183739+00:00",
     "owned_process_group_quiescent": true,
-    "stdout_stderr_sha256": "84b62705ab1dfca15ee2c755f78ece0c5283ac44803d738e9b685c86591d625b",
-    "receipt_sha256": "1e8ff10f74bb9b7a823cc966bc896b30d543b4fe4f9421762e0697cab7b0217b"
+    "stdout_stderr_sha256": "b28be62b55efe61d6dbdd6a39484ed90725c4c4702e50b0416b77874f5c013ea",
+    "receipt_sha256": "7446c4dc75d7f6a00f707b532d8493ca90303b9d7f13685f1bc7e87183449dfa"
   },
-  "retained_preservation_receipt_sha256": "1e8ff10f74bb9b7a823cc966bc896b30d543b4fe4f9421762e0697cab7b0217b",
+  "retained_preservation_receipt_sha256": "7446c4dc75d7f6a00f707b532d8493ca90303b9d7f13685f1bc7e87183449dfa",
   "declarations": [
     {
       "name": "BC4lean.Assembly.BaumConnesConjecture",
@@ -3100,6 +3135,33 @@
     {
       "name": "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
       "module": "BC4lean.TrivialAnalyticCalibration",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+      "module": "BC4lean.TrivialAnalyticScalar",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+      "module": "BC4lean.TrivialAnalyticScalar",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
+      "module": "BC4lean.TrivialAnalyticScalar",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -5962,6 +6024,367 @@
       ]
     },
     {
+      "name": "BC4lean.OperatorKTheory.Matrix.IsHermitian.exists_isometry_of_isIdempotentElem",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Matrix.IsHermitian.exists_isometry_of_isIdempotentElem._simp_1_1",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.matrixUnitary_joined_one",
+      "module": "BC4lean.ScalarOperatorK1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.of_eq_rank_nsmul",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.of_one_eq_card_nsmul",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.projectionRank",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.projectionRank.eq_1",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.projectionRank_blockSum",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.rank_eq_of_rectEquivalent",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.rectEquivalent_blockSum_one",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.rectEquivalent_one_of_equiv",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Scalar.rectEquivalent_one_of_projection",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Unitary.joined_one_of_finite_spectrum",
+      "module": "BC4lean.ScalarOperatorK1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Unitary.joined_one_of_finite_spectrum._simp_1_1",
+      "module": "BC4lean.ScalarOperatorK1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Unitary.joined_one_of_finite_spectrum._simp_1_2",
+      "module": "BC4lean.ScalarOperatorK1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Unitary.joined_one_of_finite_spectrum._simp_1_3",
+      "module": "BC4lean.ScalarOperatorK1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.Unitary.joined_one_of_neg_one_notMem",
+      "module": "BC4lean.ScalarOperatorK1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.complexOrder_eq_spectralOrder",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.instSubsingletonK1Complex",
+      "module": "BC4lean.ScalarOperatorK1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.instSubsingletonOperatorK1Complex",
+      "module": "BC4lean.ScalarOperatorKNonunital",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k0ScalarEquiv",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_1",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_2",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_3",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_4",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_5",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k0ScalarEquiv_one",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k0ScalarEquiv_projection",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k0ScalarOne",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.k1Scalar_eq_zero",
+      "module": "BC4lean.ScalarOperatorK1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.operatorK0ScalarEquiv",
+      "module": "BC4lean.ScalarOperatorKNonunital",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.operatorK0ScalarEquiv._proof_1",
+      "module": "BC4lean.ScalarOperatorKNonunital",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.operatorK1Scalar_eq_zero",
+      "module": "BC4lean.ScalarOperatorKNonunital",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.scalarNonunitalSpectralOrder",
+      "module": "BC4lean.ScalarOperatorKNonunital",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.scalarNonunitalSpectralOrderedRing",
+      "module": "BC4lean.ScalarOperatorKNonunital",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.scalarRankHom",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.scalarRankHom._proof_1",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.scalarRankHom._proof_2",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.scalarRankHom._proof_3",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.scalarRankHom_of",
+      "module": "BC4lean.ScalarProjectionRank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "BC4lean.OperatorKTheory.scalarRankHom_one",
+      "module": "BC4lean.ScalarOperatorK0",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
       "name": "BC4lean.finiteReducedEquiv",
       "module": "BC4lean.FiniteReducedGroupCStar",
       "axioms": [
@@ -6546,7 +6969,7 @@
       ]
     }
   ],
-  "declaration_count": 570,
+  "declaration_count": 614,
   "linked_declarations": {
     "BC4lean.Assembly.BaumConnesConjecture": {
       "name": "BC4lean.Assembly.BaumConnesConjecture",
@@ -6817,6 +7240,33 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary": {
       "name": "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
       "module": "BC4lean.TrivialAnalyticCalibration",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv": {
+      "name": "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+      "module": "BC4lean.TrivialAnalyticScalar",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one": {
+      "name": "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+      "module": "BC4lean.TrivialAnalyticScalar",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero": {
+      "name": "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
+      "module": "BC4lean.TrivialAnalyticScalar",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -7559,6 +8009,33 @@
         "propext"
       ]
     },
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv": {
+      "name": "BC4lean.Chapter8Examples.trivialReducedK0Equiv",
+      "module": "BC4lean.TrivialAnalyticScalar",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one": {
+      "name": "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one",
+      "module": "BC4lean.TrivialAnalyticScalar",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero": {
+      "name": "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero",
+      "module": "BC4lean.TrivialAnalyticScalar",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv": {
       "name": "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
       "module": "BC4lean.UnitAssemblyEquivalence",
@@ -7858,10 +8335,15 @@
     "BC4lean.FiniteReducedGroupCStar": 54,
     "BC4lean.KKGroupRestriction": 92,
     "BC4lean.ScalarIdentityUniverse": 5,
+    "BC4lean.ScalarOperatorK0": 12,
+    "BC4lean.ScalarOperatorK1": 8,
+    "BC4lean.ScalarOperatorKNonunital": 6,
+    "BC4lean.ScalarProjectionRank": 15,
     "BC4lean.ScalarUnitProjection": 49,
     "BC4lean.SubsingletonAssemblyEquivalence": 64,
     "BC4lean.SubsingletonScalarDescent": 29,
     "BC4lean.TrivialAnalyticCalibration": 8,
+    "BC4lean.TrivialAnalyticScalar": 3,
     "BC4lean.UnitAssemblyEquivalence": 47,
     "BC4lean.UnitPointCutoff": 33,
     "BC4lean.UnitScalarDescent": 29
@@ -7887,18 +8369,22 @@
     "BC4lean.KKTheory.ScalarUnitProjection.scalarUnitProjection": "definition",
     "BC4lean.Chapter8Examples.wholeCompactPiece._proof_2": "theorem",
     "BC4lean.Chapter8Examples.wholeCompactPiece_locallyCompact": "theorem",
+    "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_5": "theorem",
     "BC4lean.Assembly.modelAssemblyProperty": "definition",
     "BC4lean.orderTwoCharacters.eq_1": "theorem",
     "BC4lean.Assembly.modelAssemblyProperty_iff_universalModels": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarUnitProjection._proof_1": "theorem",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv": "definition",
+    "BC4lean.OperatorKTheory.Matrix.IsHermitian.exists_isometry_of_isIdempotentElem._simp_1_1": "theorem",
     "BC4lean.Assembly.indexedAssemblyProperty_iff_cofinalIndex": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarUnitProjection._proof_10": "theorem",
+    "BC4lean.OperatorKTheory.k0ScalarOne": "definition",
     "BC4lean.KKTheory.GroupRestriction.oddIsoComap": "definition",
     "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom._proof_3": "theorem",
     "BC4lean.KKTheory.FinitePointCutoff.averagingHom": "definition",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarUnitProjection._proof_9": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.scalarToCZero_apply": "theorem",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv_one": "theorem",
     "BC4lean.Chapter8Examples.finiteTopologicalPointSpaceEquiv._proof_5": "theorem",
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv._proof_3": "theorem",
     "BC4lean.Chapter8Examples.finiteGroupPoint_unique._proof_3": "theorem",
@@ -7911,9 +8397,14 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK0Equiv": "definition",
     "BC4lean.KKTheory.GroupRestriction.toUnitHom": "definition",
     "BC4lean.Chapter8Examples.wholeCompactInclusion_proper": "theorem",
+    "BC4lean.Chapter8Examples.trivialReducedK0Equiv": "definition",
+    "BC4lean.OperatorKTheory.scalarRankHom_one": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv._proof_2": "theorem",
+    "BC4lean.OperatorKTheory.Scalar.matrixUnitary_joined_one": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.scalarToCZero._proof_4": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso._proof_2": "theorem",
+    "BC4lean.OperatorKTheory.scalarRankHom_of": "theorem",
+    "BC4lean.OperatorKTheory.scalarRankHom._proof_2": "theorem",
     "BC4lean.KKTheory.SubsingletonScalarDescent.oddCoefficientRestrictionIso._proof_2": "theorem",
     "BC4lean.KKTheory.GroupRestriction.fibreComapIso._proof_3": "theorem",
     "BC4lean.orderTwoCharacters": "definition",
@@ -7929,6 +8420,7 @@
     "BC4lean.Chapter8Examples.unitPointSourceEquiv": "definition",
     "BC4lean.KKTheory.UnitPointCutoff.cZeroEvaluation": "definition",
     "BC4lean.KKTheory.UnitPointCutoff.pointCZeroEquiv._proof_1": "theorem",
+    "BC4lean.OperatorKTheory.scalarNonunitalSpectralOrder": "definition",
     "BC4lean.Chapter8Examples.reducedSpectralOrder": "definition",
     "BC4lean.Assembly.BaumConnesProperty._proof_1": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.scalarToCZero._proof_7": "theorem",
@@ -7940,6 +8432,7 @@
     "BC4lean.Chapter8Examples.reducedSpectralOrderedRing": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.cZeroEvaluation._proof_1": "theorem",
     "BC4lean.KKTheory.OddKasparovCycle.coefficientTensor.congr_simp": "theorem",
+    "BC4lean.OperatorKTheory.Scalar.of_eq_rank_nsmul": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarUnitProjection._proof_5": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.algebraicProjection_eq_single": "theorem",
     "BC4lean.orderTwoSign_of_ne_one": "theorem",
@@ -7974,6 +8467,7 @@
     "BC4lean.Chapter8Examples.SubsingletonAssembly.analyticEquiv.congr_simp": "theorem",
     "BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv": "definition",
     "BC4lean.Chapter8Examples.unitPointSourceEquiv._proof_3": "theorem",
+    "BC4lean.OperatorKTheory.scalarRankHom": "definition",
     "BC4lean.Assembly.modelAssemblyProperty._proof_1": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.cutoff_square_one": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity": "theorem",
@@ -7991,11 +8485,13 @@
     "BC4lean.Chapter8Examples.SubsingletonAssembly.pointSourceEquiv._proof_2": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.spaceAssemblyHom_eq_pointEquiv": "theorem",
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_apply": "theorem",
+    "BC4lean.OperatorKTheory.Scalar.rectEquivalent_one_of_equiv": "theorem",
     "BC4lean.orderTwoReducedEquiv._proof_1": "theorem",
     "BC4lean.Chapter8Examples.wholeCompactHomeomorph._proof_2": "theorem",
     "BC4lean.Assembly.BaumConnesProperty._proof_2": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.scalarToCZero._proof_6": "theorem",
     "BC4lean.Chapter8Examples.compactSpaceGroupEquiv._proof_1": "theorem",
+    "BC4lean.OperatorKTheory.scalarRankHom._proof_1": "theorem",
     "BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso._proof_6": "theorem",
     "BC4lean.orderTwoCharacters_injective": "theorem",
     "BC4lean.Chapter8Examples.terminalColimitEquiv": "definition",
@@ -8053,11 +8549,14 @@
     "BC4lean.Chapter8Examples.finiteCanonicalPointHomotopyEquiv": "definition",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.scalarToCZero._proof_7": "theorem",
     "BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction": "theorem",
+    "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_1": "theorem",
     "BC4lean.orderTwoSign_inv": "theorem",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv._proof_15": "theorem",
+    "BC4lean.OperatorKTheory.Scalar.projectionRank_blockSum": "theorem",
     "BC4lean.Chapter8Examples.finitePointToCanonical._proof_2": "theorem",
     "BC4lean.Chapter8Examples.finiteTopologicalPointSpaceEquiv._proof_7": "theorem",
     "BC4lean.Chapter8Examples.scalarCrossedCoefficient_comp_eq": "theorem",
+    "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_2": "theorem",
     "BC4lean.Chapter8Examples.finiteGroupPoint_mulAction._proof_1": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.pointCrossedMap": "definition",
     "BC4lean.finiteReducedEquiv._proof_5": "theorem",
@@ -8066,6 +8565,7 @@
     "BC4lean.KKTheory.SubsingletonScalarDescent.evenCoefficientRestrictionIso._proof_7": "theorem",
     "BC4lean.finiteReducedEquiv_apply": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq": "theorem",
+    "BC4lean.OperatorKTheory.instSubsingletonOperatorK1Complex": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.scalarToCZero": "definition",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv": "definition",
     "BC4lean.Chapter8Examples.reducedAssemblyHom_finitePointColimit": "theorem",
@@ -8096,6 +8596,7 @@
     "BC4lean.KKTheory.GroupRestriction.fibreComapIso._proof_8": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.cZeroEvaluation._proof_4": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarIdentityCycle": "definition",
+    "BC4lean.OperatorKTheory.operatorK0ScalarEquiv._proof_1": "theorem",
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv._proof_2": "theorem",
     "BC4lean.KKTheory.GroupRestriction.fibreComapIso._proof_10": "theorem",
     "BC4lean.finiteReducedEquiv._proof_7": "theorem",
@@ -8142,10 +8643,12 @@
     "BC4lean.KKTheory.GroupRestriction.fibreComapIso._proof_5": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.algebraicProjection_eq_single": "theorem",
     "BC4lean.Chapter8Examples.finitePointCutoff": "definition",
+    "BC4lean.OperatorKTheory.Unitary.joined_one_of_finite_spectrum._simp_1_2": "theorem",
     "BC4lean.Assembly.assemblyHom_injective_iff_commonTransition": "theorem",
     "BC4lean.KKTheory.GroupRestriction.fullComap._proof_3": "theorem",
     "BC4lean.KKTheory.GroupRestriction.oddFibreComapIso": "definition",
     "BC4lean.Chapter8Examples.finiteGroupPoint_fixedPointCriterion": "theorem",
+    "BC4lean.OperatorKTheory.complexOrder_eq_spectralOrder": "theorem",
     "BC4lean.Chapter8Examples.wholeCompactLift._proof_2": "theorem",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv._proof_6": "theorem",
     "BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso": "definition",
@@ -8166,6 +8669,7 @@
     "BC4lean.KKTheory.UnitScalarDescent.descendedScalarAction": "definition",
     "BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso._proof_11": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.relativeMap_nonunitalUnitProjection": "theorem",
+    "BC4lean.OperatorKTheory.scalarRankHom._proof_3": "theorem",
     "BC4lean.KKTheory.GroupRestriction.oddComapComapIso._proof_1": "theorem",
     "BC4lean.KKTheory.GroupRestriction.oddComapComapIso._proof_2": "theorem",
     "BC4lean.Chapter8Examples.finiteGroupPoint_topologicalSpace": "definition",
@@ -8178,6 +8682,8 @@
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv": "definition",
     "BC4lean.KKTheory.SubsingletonScalarDescent.evenCoefficientRestrictionIso._proof_10": "theorem",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv._proof_5": "theorem",
+    "BC4lean.OperatorKTheory.k0ScalarEquiv_one": "theorem",
+    "BC4lean.Chapter8Examples.trivialReducedK1_eq_zero": "theorem",
     "BC4lean.Assembly.indexedAssemblyHom_bijective_iff_cofinalIndex": "theorem",
     "_private.BC4lean.BaumConnesInvariance.0.BC4lean.Assembly.surjective_iff_of_equiv": "theorem",
     "BC4lean.Chapter8Examples.finiteGroupPoint_continuousConstSMul": "theorem",
@@ -8186,6 +8692,7 @@
     "BC4lean.KKTheory.GroupRestriction.comapComapIso._proof_2": "theorem",
     "BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso._proof_1": "theorem",
     "BC4lean.Chapter8Examples.wholeCompactSpaceGroupEquiv": "definition",
+    "BC4lean.OperatorKTheory.k0ScalarEquiv_projection": "theorem",
     "BC4lean.Chapter8Examples.finiteTopologicalPointSpaceEquiv._proof_1": "theorem",
     "BC4lean.Chapter8Examples.finiteCanonicalPointKHomologyEquiv._proof_5": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarShadowOperator_eq_zero": "theorem",
@@ -8206,6 +8713,7 @@
     "BC4lean.KKTheory.UnitPointCutoff.pointCZeroEquiv._proof_7": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso": "definition",
     "BC4lean.Chapter8Examples.finiteCanonicalPointKHomologyEquiv._proof_6": "theorem",
+    "BC4lean.OperatorKTheory.k1Scalar_eq_zero": "theorem",
     "BC4lean.KKTheory.GroupRestriction.oddComapComapIso": "definition",
     "BC4lean.KKTheory.GroupRestriction.oddIsoComap._proof_1": "theorem",
     "BC4lean.KKTheory.GroupRestriction.oddCycleComap._proof_2": "theorem",
@@ -8221,12 +8729,14 @@
     "BC4lean.Chapter8Examples.finiteGroupPoint_unique._aux_1": "definition",
     "BC4lean.KKTheory.ScalarUnitProjection.unitProjectionOperator_eq_one": "theorem",
     "BC4lean.KKTheory.GroupRestriction.evenComap": "definition",
+    "BC4lean.OperatorKTheory.Scalar.rectEquivalent_blockSum_one": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarUnitProjection._proof_7": "theorem",
     "BC4lean.Chapter8Examples.reducedAssemblyHom_finitePoint_formula": "theorem",
     "BC4lean.Assembly.modelAssemblyProperty_iff_baumConnesProperty": "theorem",
     "BC4lean.KKTheory.GroupRestriction.actionComap_continuousSections": "theorem",
     "BC4lean.Assembly.assemblyHom_bijective_iff_homotopyEquiv": "theorem",
     "BC4lean.KKTheory.GroupRestriction.fullComap._proof_4": "theorem",
+    "BC4lean.OperatorKTheory.Scalar.rank_eq_of_rectEquivalent": "theorem",
     "BC4lean.Assembly.indexedAssemblyHom_injective_iff_cofinalIndex": "theorem",
     "BC4lean.KKTheory.SubsingletonScalarDescent.scalarCoefficient_equivariant": "theorem",
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv._proof_1": "theorem",
@@ -8238,12 +8748,14 @@
     "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv._proof_5": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.scalarToCZero._proof_3": "theorem",
     "BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso._proof_2": "theorem",
+    "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_4": "theorem",
     "BC4lean.KKTheory.GroupRestriction.actionComap": "definition",
     "BC4lean.Assembly.assemblyHom_surjective_iff_canonical": "theorem",
     "BC4lean.Chapter8Examples.finiteCanonicalPointKHomologyEquiv._proof_3": "theorem",
     "BC4lean.Chapter8Examples.compactSpaceGroupEquiv._proof_2": "theorem",
     "BC4lean.finiteReducedEquiv._proof_10": "theorem",
     "BC4lean.Assembly.BaumConnesProperty._proof_4": "theorem",
+    "BC4lean.OperatorKTheory.Scalar.projectionRank": "definition",
     "BC4lean.Chapter8Examples.finiteTopologicalPointSpaceEquiv._proof_3": "theorem",
     "BC4lean.KKTheory.GroupRestriction.oddComapComapIso'._proof_3": "theorem",
     "BC4lean.finiteReducedEquiv._proof_13": "theorem",
@@ -8263,7 +8775,9 @@
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv._proof_3": "theorem",
     "BC4lean.Chapter8Examples.finiteCanonicalPointKHomologyEquiv._proof_1": "theorem",
     "BC4lean.orderTwoReducedEquiv.eq_1": "theorem",
+    "BC4lean.OperatorKTheory.k0ScalarEquiv": "definition",
     "BC4lean.KKTheory.FinitePointCutoff.algebraicAveraging._proof_4": "theorem",
+    "BC4lean.OperatorKTheory.operatorK0ScalarEquiv": "definition",
     "BC4lean.orderTwoSign_one": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.pointCZeroEquiv._proof_2": "theorem",
     "BC4lean.Chapter8Examples.compactWholePieceEquiv_ofPiece": "theorem",
@@ -8280,9 +8794,11 @@
     "BC4lean.Chapter8Examples.SubsingletonAssembly.scalarToCZero._proof_6": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv._proof_6": "theorem",
     "BC4lean.KKTheory.GroupRestriction.oddFibreComapIso._proof_2": "theorem",
+    "BC4lean.OperatorKTheory.operatorK1Scalar_eq_zero": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.scalarToCZero_equivariant": "theorem",
     "BC4lean.finiteReducedEquiv": "definition",
     "BC4lean.Chapter8Examples.unitReducedAlgebra": "definition",
+    "BC4lean.OperatorKTheory.Scalar.projectionRank.eq_1": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.cZeroEvaluation._proof_4": "theorem",
     "BC4lean.KKTheory.GroupRestriction.comapComapIso._proof_5": "theorem",
     "BC4lean.orderTwoCharacters_surjective": "theorem",
@@ -8300,6 +8816,7 @@
     "BC4lean.KKTheory.ScalarUnitProjection.unitProjectionOperator": "definition",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarIdentityAction": "definition",
     "_private.BC4lean.ScalarUnitProjection.0.BC4lean.KKTheory.ScalarUnitProjection.unitRangeVector._proof_1": "theorem",
+    "BC4lean.OperatorKTheory.Unitary.joined_one_of_neg_one_notMem": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.cutoffKKClass_eq_homClass": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso._proof_6": "theorem",
     "BC4lean.KKTheory.GroupRestriction.actionComap_trivial": "theorem",
@@ -8316,6 +8833,7 @@
     "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom._proof_2": "theorem",
     "BC4lean.KKTheory.UnitScalarDescent.coefficientInclusion": "definition",
     "BC4lean.KKTheory.GroupRestriction.subsingletonEvenEquiv._proof_2": "theorem",
+    "BC4lean.OperatorKTheory.Matrix.IsHermitian.exists_isometry_of_isIdempotentElem": "theorem",
     "_private.BC4lean.ScalarUnitProjection.0.BC4lean.KKTheory.ScalarUnitProjection.oddComponent_eq_zero": "theorem",
     "BC4lean.KKTheory.SubsingletonScalarDescent.evenCoefficientRestrictionIso._proof_5": "theorem",
     "BC4lean.KKTheory.GroupRestriction.oddComap_add": "theorem",
@@ -8326,6 +8844,7 @@
     "BC4lean.KKTheory.SubsingletonScalarDescent.oddCoefficientRestrictionIso._proof_3": "theorem",
     "BC4lean.KKTheory.GroupRestriction.subsingletonOddEquiv._proof_2": "theorem",
     "BC4lean.orderTwoReducedEquiv_apply": "theorem",
+    "BC4lean.OperatorKTheory.instSubsingletonK1Complex": "theorem",
     "BC4lean.KKTheory.GroupRestriction.fibreComapIso._proof_4": "theorem",
     "_private.BC4lean.BaumConnesInvariance.0.BC4lean.Assembly.bijective_iff_of_equiv": "theorem",
     "BC4lean.Chapter8Examples.terminalColimitEquiv._proof_5": "theorem",
@@ -8342,6 +8861,7 @@
     "BC4lean.KKTheory.SubsingletonScalarDescent.scalarAction": "definition",
     "BC4lean.KKTheory.SubsingletonScalarDescent.oddCoefficientRestrictionIso": "definition",
     "BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction": "theorem",
+    "BC4lean.OperatorKTheory.k0ScalarEquiv._proof_3": "theorem",
     "BC4lean.KKTheory.FinitePointCutoff.algebraicAveraging._proof_1": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.pointCZeroEquiv": "definition",
     "_private.BC4lean.UnitAssemblyEquivalence.0.BC4lean.Chapter8Examples.unitCutoffSource_descent": "theorem",
@@ -8384,9 +8904,11 @@
     "BC4lean.KKTheory.FinitePointCutoff.algebraicAveraging._proof_5": "theorem",
     "BC4lean.finiteReducedEquiv._proof_12": "theorem",
     "BC4lean.Chapter8Examples.finiteCanonicalPointHomotopyEquiv._proof_2": "theorem",
+    "BC4lean.OperatorKTheory.Unitary.joined_one_of_finite_spectrum._simp_1_1": "theorem",
     "BC4lean.Assembly.indexedAssemblyProperty._proof_2": "theorem",
     "BC4lean.orderTwoCharacters_single": "theorem",
     "BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso": "definition",
+    "BC4lean.OperatorKTheory.Unitary.joined_one_of_finite_spectrum._simp_1_3": "theorem",
     "BC4lean.KKTheory.GroupRestriction.fullComap._proof_1": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.pointSourceEquiv._proof_1": "theorem",
     "BC4lean.KKTheory.GroupRestriction.oddFullComap._proof_4": "theorem",
@@ -8397,8 +8919,10 @@
     "BC4lean.KKTheory.GroupRestriction.moduleComap._proof_1": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso._proof_3": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.cutoffKKClass_eq_homClass": "theorem",
+    "BC4lean.OperatorKTheory.Unitary.joined_one_of_finite_spectrum": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe": "theorem",
     "BC4lean.Assembly.indexedAssemblyProperty_iff_cofinalComparison": "theorem",
+    "BC4lean.OperatorKTheory.scalarNonunitalSpectralOrderedRing": "theorem",
     "BC4lean.Chapter8Examples.le_wholeCompactPiece": "theorem",
     "_private.BC4lean.FiniteReducedGroupCStar.0.BC4lean.eq_of_ne_one_of_card_eq_two": "theorem",
     "BC4lean.Chapter8Examples.finiteCanonicalPointKHomologyEquiv._proof_2": "theorem",
@@ -8428,10 +8952,12 @@
     "BC4lean.KKTheory.GroupRestriction.fibreComapIso._proof_1": "theorem",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv._proof_7": "theorem",
     "BC4lean.KKTheory.UnitPointCutoff.scalarToCZero._proof_2": "theorem",
+    "BC4lean.OperatorKTheory.Scalar.of_one_eq_card_nsmul": "theorem",
     "BC4lean.KKTheory.GroupRestriction.fullComap._proof_2": "theorem",
     "BC4lean.Chapter8Examples.SubsingletonAssembly.cutoff_square_one": "theorem",
     "BC4lean.Chapter8Examples.wholeCompactHomeomorph._proof_5": "theorem",
     "BC4lean.orderTwoSign.congr_simp": "theorem",
+    "BC4lean.OperatorKTheory.Scalar.rectEquivalent_one_of_projection": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarUnitProjection._proof_8": "theorem",
     "BC4lean.Chapter8Examples.finitePointCutoff._proof_1": "theorem",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarUnitProjection._proof_4": "theorem",
@@ -8453,16 +8979,21 @@
     "BC4lean.FiniteReducedGroupCStar": 4,
     "BC4lean.KKGroupRestriction": 0,
     "BC4lean.ScalarIdentityUniverse": 0,
+    "BC4lean.ScalarOperatorK0": 0,
+    "BC4lean.ScalarOperatorK1": 0,
+    "BC4lean.ScalarOperatorKNonunital": 0,
+    "BC4lean.ScalarProjectionRank": 0,
     "BC4lean.ScalarUnitProjection": 5,
     "BC4lean.SubsingletonAssemblyEquivalence": 0,
     "BC4lean.SubsingletonScalarDescent": 0,
     "BC4lean.TrivialAnalyticCalibration": 0,
+    "BC4lean.TrivialAnalyticScalar": 0,
     "BC4lean.UnitAssemblyEquivalence": 4,
     "BC4lean.UnitPointCutoff": 0,
     "BC4lean.UnitScalarDescent": 0
   },
   "inputs_unchanged_during_audit": true,
-  "audit_finished_utc": "2026-10-30T20:16:53.192598+00:00",
+  "audit_finished_utc": "2026-10-30T21:24:52.175344+00:00",
   "module_olean_sha256": {
     ".lake/build/lib/lean/BC4lean/AssemblyBijectivityCriteria.olean": "7a90568db6e07d840e8167425a3d625b1114ea681b33311dc7b5a08421864dfb",
     ".lake/build/lib/lean/BC4lean/BaumConnesInvariance.olean": "d7f1ce802d0103550a2f5e58b78330ef6b93862e05fff285176d8c7c35521d2e",
@@ -8473,10 +9004,15 @@
     ".lake/build/lib/lean/BC4lean/FiniteReducedGroupCStar.olean": "82bcc2570b49a3759ba20ef643c2dd09b0dc41999ca4554adc38e0b64f153f67",
     ".lake/build/lib/lean/BC4lean/KKGroupRestriction.olean": "4e1373ee559ac3b7155ae0dcdea7c404a95362d2f8f3fc675b08cbd892b165e1",
     ".lake/build/lib/lean/BC4lean/ScalarIdentityUniverse.olean": "4634f9cdcadd1d8e59e6e66add36e0121e0d1a0b8902f1bb943c5aecd7e31ae0",
+    ".lake/build/lib/lean/BC4lean/ScalarOperatorK0.olean": "f99f068a4abb5c309187aaf7f78213655bfb4d5a0dc6ab5cbcfb42e59589d238",
+    ".lake/build/lib/lean/BC4lean/ScalarOperatorK1.olean": "73d7b624e60886e247ad20f70f342adc9c4750fb0c2a10dc1c3acc3a71a0af80",
+    ".lake/build/lib/lean/BC4lean/ScalarOperatorKNonunital.olean": "1cc8508bd355d893f5d8261b0ae2e1e9b4e262297ca3fcae79fbe00d8b064c35",
+    ".lake/build/lib/lean/BC4lean/ScalarProjectionRank.olean": "c3db0cf2603453f63c0fef25eb5cdce9a219bdcaa9f9c044e2093c9dd3712e81",
     ".lake/build/lib/lean/BC4lean/ScalarUnitProjection.olean": "e3e907a70e1cd4cb2a5703a18995012290e16986250ca9b5ac3af4a2df69b2df",
     ".lake/build/lib/lean/BC4lean/SubsingletonAssemblyEquivalence.olean": "097b857c8b736327fe3e6c08e5b123eff6fbc2f5e60585d225736ec7d1a12666",
     ".lake/build/lib/lean/BC4lean/SubsingletonScalarDescent.olean": "815bc0c5c14bd921551460768d9a39f1abd78c5cc8ea35acf5d1ee97cf77fcea",
     ".lake/build/lib/lean/BC4lean/TrivialAnalyticCalibration.olean": "5ad67e5f1f1ff6d504b235caf8fa5b413b5323df916327fa5b658034453e8d66",
+    ".lake/build/lib/lean/BC4lean/TrivialAnalyticScalar.olean": "42509ef48498538cc317f751df8f60f612b915ef6c614271a6128a8ac5e12de1",
     ".lake/build/lib/lean/BC4lean/UnitAssemblyEquivalence.olean": "3243b4bca532a10bc73c3b008b6df970f24ee6e52b47a525b1dcffac3da9b4ad",
     ".lake/build/lib/lean/BC4lean/UnitPointCutoff.olean": "24f16c162378a3a892f55c577728c0e7d82e36022179a8d0de389d7b898d9147",
     ".lake/build/lib/lean/BC4lean/UnitScalarDescent.olean": "df040dee18256380b0db6e443d9c81ceb0becbccdd51d6579d94aa7690849320"
@@ -8485,8 +9021,8 @@
     "schema": "chapter8.actual.process.v1",
     "status": "completed",
     "stage": "build-gate",
-    "run_id": "d6fbc28e94b9427ba3be7e8d9938fed8",
-    "parent_pid": 27885,
+    "run_id": "a9ccdb8251cf4f6e9938638c7b28c605",
+    "parent_pid": 33223,
     "source_root": "/private/tmp/bc4lean-release",
     "command": [
       "lake",
@@ -8496,20 +9032,20 @@
       "build",
       "BC4lean"
     ],
-    "started_utc": "2026-10-30T20:12:29.488122+00:00",
-    "pid": 28974,
-    "process_group": 28974,
+    "started_utc": "2026-10-30T21:23:26.185433+00:00",
+    "pid": 33597,
+    "process_group": 33597,
     "exit_code": 0,
-    "finished_utc": "2026-10-30T20:12:44.073934+00:00",
+    "finished_utc": "2026-10-30T21:23:38.211279+00:00",
     "owned_process_group_quiescent": true,
-    "stdout_stderr_sha256": "d426d790fc55e56ed333903bb6303d4be39901356316fe7abf2d008771a43cac"
+    "stdout_stderr_sha256": "0f9b29374a983e9dc5134c24de5e7aac036b77d554c368d2f2ba571c9027d2d8"
   },
   "expected_types_run": {
     "schema": "chapter8.actual.process.v1",
     "status": "completed",
     "stage": "expected-types",
-    "run_id": "d6fbc28e94b9427ba3be7e8d9938fed8",
-    "parent_pid": 27885,
+    "run_id": "a9ccdb8251cf4f6e9938638c7b28c605",
+    "parent_pid": 33223,
     "source_root": "/private/tmp/bc4lean-release",
     "command": [
       "lake",
@@ -8521,13 +9057,13 @@
       "-DrelaxedAutoImplicit=false",
       "/private/tmp/bc4lean-release/docs/audits/chapter8/ExpectedTypes.lean"
     ],
-    "started_utc": "2026-10-30T20:12:44.076366+00:00",
+    "started_utc": "2026-10-30T21:23:38.212774+00:00",
     "fixture": "docs/audits/chapter8/ExpectedTypes.lean",
-    "source_sha256": "44b70453df6cb3bc0508e046c5195f13cea2cfaf0bfbf871e4220d2b5da2e24e",
-    "pid": 33293,
-    "process_group": 33293,
+    "source_sha256": "26e980d4fb7e31a616d39c107bfef1d09652d20393ed007a5ffe33367fc9df10",
+    "pid": 36802,
+    "process_group": 36802,
     "exit_code": 0,
-    "finished_utc": "2026-10-30T20:14:17.848323+00:00",
+    "finished_utc": "2026-10-30T21:24:03.261544+00:00",
     "owned_process_group_quiescent": true,
     "stdout_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
@@ -8535,8 +9071,8 @@
     "schema": "chapter8.actual.process.v1",
     "status": "completed",
     "stage": "kernel",
-    "run_id": "d6fbc28e94b9427ba3be7e8d9938fed8",
-    "parent_pid": 27885,
+    "run_id": "a9ccdb8251cf4f6e9938638c7b28c605",
+    "parent_pid": 33223,
     "source_root": "/private/tmp/bc4lean-release",
     "command": [
       "lake",
@@ -8548,14 +9084,14 @@
       "-DrelaxedAutoImplicit=false",
       "/private/tmp/bc4lean-release/docs/audits/chapter8/audit.lean"
     ],
-    "started_utc": "2026-10-30T20:14:17.854883+00:00",
-    "query_sha256": "0015edc156617603291b9881c43ba8736d53f4dd2d04581cc354c88973ecda32",
+    "started_utc": "2026-10-30T21:24:03.263834+00:00",
+    "query_sha256": "5847c74bd6ae7b206ae9a838d4e977a354db3eee65121fca5b2622aaca37c12d",
     "query_source_location": "/private/tmp/bc4lean-release/docs/audits/chapter8/audit.lean",
-    "pid": 69841,
-    "process_group": 69841,
+    "pid": 42997,
+    "process_group": 42997,
     "exit_code": 0,
-    "finished_utc": "2026-10-30T20:16:52.694585+00:00",
+    "finished_utc": "2026-10-30T21:24:51.944066+00:00",
     "owned_process_group_quiescent": true,
-    "stdout_stderr_sha256": "ebc596816fd3d4b42e099fe970bffc39a91fbe322a96c4905486dcc0fd02e86d"
+    "stdout_stderr_sha256": "5e4264875dd558e4a4771ea74a689899888e7df88ad34e57f4eee72881b3525a"
   }
 }
