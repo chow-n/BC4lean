@@ -1,8 +1,8 @@
 {
   "status": "passed",
-  "started_utc": "2026-10-30T20:09:07.120539+00:00",
-  "finished_utc": "2026-10-30T20:12:20.763075+00:00",
-  "source_revision": "dd05279c7a86ae7768b4919d2e6763df27076dd7",
+  "started_utc": "2026-10-30T21:19:35.026532+00:00",
+  "finished_utc": "2026-10-30T21:21:18.778726+00:00",
+  "source_revision": "31cbe525a4d5408d125a0973337504b4551d264b",
   "source_sha256": {
     "BC4lean.AssemblyBijectivityCriteria": "7ce3611875bfea47a64bb9293c893dd514e9af02bb372874c2c5684609596e19",
     "BC4lean.BaumConnesInvariance": "c66d282c2077fc82b8a2b2d1b36a39f92a623a7c92062d3251439916996cff14",
@@ -13,16 +13,21 @@
     "BC4lean.FiniteReducedGroupCStar": "41b0238ce08405611850f3d3bfe00dc8be18f1749bd0fabab2011211029a70c2",
     "BC4lean.KKGroupRestriction": "7d99ca8eb91464581a37d00de3b60ab7f30d5356238e897193ddfcd847f4f098",
     "BC4lean.ScalarIdentityUniverse": "511e31f830ca50ab021d0888dd53b4e1f0b3776ca1fa7620f543449eaeddae2d",
+    "BC4lean.ScalarOperatorK0": "0626c391427274d793cf1896608409328cf17c974ad3319533250b8b6c4ed64b",
+    "BC4lean.ScalarOperatorK1": "3469bb9221789d1ae273a5c9d65e01ab121e3d4977c33523b930dae183896f8f",
+    "BC4lean.ScalarOperatorKNonunital": "c2d452e47034bb9cfd05771f89cce1478b76d5a559a9303c8bf8e5e524911987",
+    "BC4lean.ScalarProjectionRank": "9b9565979cbe45f7d4302c47b92cae14442e9a89f15534fb9e80866bd60feb25",
     "BC4lean.ScalarUnitProjection": "624628efde155861cea8d00711e6e63bf748c5936a9d6b6fb8f98bf5dae04ab2",
     "BC4lean.SubsingletonAssemblyEquivalence": "ce035d22c37da7976113dde66315bf581fcb50b130691eb4b1544e17c88f7fb2",
     "BC4lean.SubsingletonScalarDescent": "0c9122b1f631968ea0965044a4b74556e5aecfa62fb86f0196d7b0f28e675edd",
     "BC4lean.TrivialAnalyticCalibration": "cb81402fce6582f75e80f09cb58aa3079db3d33941309dde0a330c0e1bfce8f6",
+    "BC4lean.TrivialAnalyticScalar": "42bf6728278b7708e3c3f4bc16534b3e464a7cb8a5099040d895779907d698c6",
     "BC4lean.UnitAssemblyEquivalence": "89d99bf9afa1ba519c0d7dc1027022d69018ee3cced37036648ae372695f963e",
     "BC4lean.UnitPointCutoff": "4ceacff3e09187a3e5ee3e08094a3ab68880349e73677f67effc5e6a955a2803",
     "BC4lean.UnitScalarDescent": "ced0471f8b76951948742ae479cff099cc48c71dee654b807c506109da80c0f3"
   },
   "all_input_sha256": {
-    "BC4lean.lean": "287f8d2433a5d4a612db5c66e1d494d796d59229d8ac4d4f0ea9afbd18ec1309",
+    "BC4lean.lean": "079185c91b2a9250ab0c8e1e45ebdd5cfdb94692cd636640ac562fe3502ab1fc",
     "BC4lean/AdjointableAlgebra.lean": "605c5412abbf8e01eeeb54cf2256f6a8adb65aeeaff03e04bd35be5d8b7770a0",
     "BC4lean/AdjointableComplete.lean": "d7ea3b4428a6baca51c48f8264e590dd2809f8b77833355ee333e41dc4db930c",
     "BC4lean/AdjointableCompletion.lean": "4af00b2952a0fd998816c1fc37bdbd9b4b46a17de7a7a84b46671b037924e098",
@@ -894,6 +899,10 @@
     "BC4lean/ScalarKasparovRectangularFredholm.lean": "6bea0bcf734cd02b5f9d3223163bdfe0c45c0bec62ddb2c8c0871e206ce1e077",
     "BC4lean/ScalarKasparovSupport.lean": "ef0c8d411f190ed5b97f2f31ab6c0626328fe7ce1bf5c11aee52b3e7d33b2303",
     "BC4lean/ScalarKasparovSupportClass.lean": "74c03d7cf8d9f27aa0f2c34d43ae326653df407e4e6234b363be4782d75cc4d6",
+    "BC4lean/ScalarOperatorK0.lean": "0626c391427274d793cf1896608409328cf17c974ad3319533250b8b6c4ed64b",
+    "BC4lean/ScalarOperatorK1.lean": "3469bb9221789d1ae273a5c9d65e01ab121e3d4977c33523b930dae183896f8f",
+    "BC4lean/ScalarOperatorKNonunital.lean": "c2d452e47034bb9cfd05771f89cce1478b76d5a559a9303c8bf8e5e524911987",
+    "BC4lean/ScalarProjectionRank.lean": "9b9565979cbe45f7d4302c47b92cae14442e9a89f15534fb9e80866bd60feb25",
     "BC4lean/ScalarRelativeProjectionCoefficientNaturality.lean": "1094d33dd45daf8911a9cebeaa50672f68be6e0eeb3f94e884542f10d8a3d209",
     "BC4lean/ScalarUnitProjection.lean": "624628efde155861cea8d00711e6e63bf748c5936a9d6b6fb8f98bf5dae04ab2",
     "BC4lean/SignedConnectionMultiplierAlgebra.lean": "838115599e0d7e92333832b1770f7597ca9947e524656f01529335ba7eaa3705",
@@ -950,6 +959,7 @@
     "BC4lean/TopologicalKHomologyMaps.lean": "1a6a65d84e7c89a8b0251e653a693c467df429ffc660e0ae4d2c791a5ba1ac64",
     "BC4lean/TrivialActionUnitary.lean": "864d13f4983173d213946f5db01396ab8e174a8d538b66fec3831b368a8d53b9",
     "BC4lean/TrivialAnalyticCalibration.lean": "cb81402fce6582f75e80f09cb58aa3079db3d33941309dde0a330c0e1bfce8f6",
+    "BC4lean/TrivialAnalyticScalar.lean": "42bf6728278b7708e3c3f4bc16534b3e464a7cb8a5099040d895779907d698c6",
     "BC4lean/UnitAssemblyEquivalence.lean": "89d99bf9afa1ba519c0d7dc1027022d69018ee3cced37036648ae372695f963e",
     "BC4lean/UnitPointCutoff.lean": "4ceacff3e09187a3e5ee3e08094a3ab68880349e73677f67effc5e6a955a2803",
     "BC4lean/UnitScalarDescent.lean": "ced0471f8b76951948742ae479cff099cc48c71dee654b807c506109da80c0f3",
@@ -970,7 +980,7 @@
     "BC4lean/UnitizedFiniteModuleOperator.lean": "689c8f485961ce16eb15d4b2bb217e983a9140f617ae056ca3a2bcbf1ec3f2db",
     "BC4lean/UnitizedRelativeProjectionCoefficientTensor.lean": "2556605d7067d460b47259baac0956fb2b87408fe00d343119d5f1ef4d5fe7f3",
     "docs/audits/chapter8/Chapter7Imports.lean": "309158d81f7d7994edab43ce59a9e7820f1fa5c5f364321cd3bf6f327c7f00bc",
-    "docs/audits/chapter8/inventory.json": "3cbf08cfa07464c5378ef6a66314ea9571382d993dfa46ab58e64d38ce8e40d7",
+    "docs/audits/chapter8/inventory.json": "540ab80e8591f0064116a07777abc74f689afccb182acd51537d1b2906c66d18",
     "lake-manifest.json": "d85b2e1116be8fedd0fc8dac4fa8afc28d849f21b2920d2012b553ed886adb3c",
     "lakefile.toml": "dcb517c34c605807aaa1a08c00179eccb219278161b005f364af8faf27509d7e",
     "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
@@ -991,12 +1001,12 @@
         "BC4lean.AssemblyBijectivityCriteria"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:09:07.120652+00:00",
-      "finished_utc": "2026-10-30T20:09:21.024230+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/000-BC4lean-AssemblyBijectivityCriteria.log",
+      "started_utc": "2026-10-30T21:19:35.026643+00:00",
+      "finished_utc": "2026-10-30T21:19:44.788148+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/000-BC4lean-AssemblyBijectivityCriteria.log",
       "stdout_stderr_sha256": "8704404fecb8c45a8eb8aa31ba08cef747c13d1eb25207f08b015f72a91f0bab",
-      "pid": 41356,
-      "process_group": 41356,
+      "pid": 72956,
+      "process_group": 72956,
       "owned_process_group_quiescent": true
     },
     {
@@ -1008,12 +1018,12 @@
         "BC4lean.BaumConnesProperty"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:09:21.024490+00:00",
-      "finished_utc": "2026-10-30T20:09:32.480277+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/001-BC4lean-BaumConnesProperty.log",
+      "started_utc": "2026-10-30T21:19:44.788302+00:00",
+      "finished_utc": "2026-10-30T21:19:52.313880+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/001-BC4lean-BaumConnesProperty.log",
       "stdout_stderr_sha256": "04049b78bbd189cea14c5405e2ddffe1c61829b09e46c48a3769fb513492ebcc",
-      "pid": 48956,
-      "process_group": 48956,
+      "pid": 76323,
+      "process_group": 76323,
       "owned_process_group_quiescent": true
     },
     {
@@ -1025,12 +1035,12 @@
         "BC4lean.BaumConnesInvariance"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:09:32.480571+00:00",
-      "finished_utc": "2026-10-30T20:09:42.372059+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/002-BC4lean-BaumConnesInvariance.log",
+      "started_utc": "2026-10-30T21:19:52.313961+00:00",
+      "finished_utc": "2026-10-30T21:19:59.785268+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/002-BC4lean-BaumConnesInvariance.log",
       "stdout_stderr_sha256": "f9e406ec1eeda9642fa07d8a8ced1d9b73579793ce5caab54208be2c6bda113f",
-      "pid": 54708,
-      "process_group": 54708,
+      "pid": 78753,
+      "process_group": 78753,
       "owned_process_group_quiescent": true
     },
     {
@@ -1042,12 +1052,12 @@
         "BC4lean.CompactModelColimitCalibration"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:09:42.372386+00:00",
-      "finished_utc": "2026-10-30T20:09:53.551419+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/003-BC4lean-CompactModelColimitCalibration.log",
+      "started_utc": "2026-10-30T21:19:59.785347+00:00",
+      "finished_utc": "2026-10-30T21:20:07.112500+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/003-BC4lean-CompactModelColimitCalibration.log",
       "stdout_stderr_sha256": "04049b78bbd189cea14c5405e2ddffe1c61829b09e46c48a3769fb513492ebcc",
-      "pid": 60175,
-      "process_group": 60175,
+      "pid": 81165,
+      "process_group": 81165,
       "owned_process_group_quiescent": true
     },
     {
@@ -1059,12 +1069,12 @@
         "BC4lean.FiniteGroupPointCalibration"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:09:53.551748+00:00",
-      "finished_utc": "2026-10-30T20:10:06.072116+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/004-BC4lean-FiniteGroupPointCalibration.log",
+      "started_utc": "2026-10-30T21:20:07.112589+00:00",
+      "finished_utc": "2026-10-30T21:20:15.293554+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/004-BC4lean-FiniteGroupPointCalibration.log",
       "stdout_stderr_sha256": "5844f0c6c337b1c3d732020bb9b8f552d4c896bb49ea5060d40dcea7f6fc50f6",
-      "pid": 65882,
-      "process_group": 65882,
+      "pid": 83300,
+      "process_group": 83300,
       "owned_process_group_quiescent": true
     },
     {
@@ -1076,12 +1086,12 @@
         "BC4lean.FiniteReducedGroupCStar"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:10:06.075787+00:00",
-      "finished_utc": "2026-10-30T20:10:15.281696+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/005-BC4lean-FiniteReducedGroupCStar.log",
+      "started_utc": "2026-10-30T21:20:15.293630+00:00",
+      "finished_utc": "2026-10-30T21:20:19.916050+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/005-BC4lean-FiniteReducedGroupCStar.log",
       "stdout_stderr_sha256": "bed9e2fb359794147aab8c06c8d187ade9be5b466c2b41beb0590cfcea317d1c",
-      "pid": 73266,
-      "process_group": 73266,
+      "pid": 86979,
+      "process_group": 86979,
       "owned_process_group_quiescent": true
     },
     {
@@ -1093,12 +1103,80 @@
         "BC4lean.KKGroupRestriction"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:10:15.282267+00:00",
-      "finished_utc": "2026-10-30T20:10:21.376745+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/006-BC4lean-KKGroupRestriction.log",
+      "started_utc": "2026-10-30T21:20:19.916193+00:00",
+      "finished_utc": "2026-10-30T21:20:24.427458+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/006-BC4lean-KKGroupRestriction.log",
       "stdout_stderr_sha256": "d16c80f9d62454f2edb0568ee57ee2274d824d526430b8a38298739b11f03a9b",
-      "pid": 78250,
-      "process_group": 78250,
+      "pid": 88297,
+      "process_group": 88297,
+      "owned_process_group_quiescent": true
+    },
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "--no-cache",
+        "build",
+        "BC4lean.ScalarOperatorK1"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-30T21:20:24.427584+00:00",
+      "finished_utc": "2026-10-30T21:20:27.352923+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/007-BC4lean-ScalarOperatorK1.log",
+      "stdout_stderr_sha256": "d05f6fc41832c05c530b52f699a31a25ef17730e46246ba8a4d8d51cc2d81f11",
+      "pid": 89320,
+      "process_group": 89320,
+      "owned_process_group_quiescent": true
+    },
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "--no-cache",
+        "build",
+        "BC4lean.ScalarProjectionRank"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-30T21:20:27.353030+00:00",
+      "finished_utc": "2026-10-30T21:20:29.792460+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/008-BC4lean-ScalarProjectionRank.log",
+      "stdout_stderr_sha256": "e90bb0dc8601b80db06b5009d7e6fe9ca350f519a84427d5fabb910680841be0",
+      "pid": 90704,
+      "process_group": 90704,
+      "owned_process_group_quiescent": true
+    },
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "--no-cache",
+        "build",
+        "BC4lean.ScalarOperatorK0"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-30T21:20:29.792537+00:00",
+      "finished_utc": "2026-10-30T21:20:32.056705+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/009-BC4lean-ScalarOperatorK0.log",
+      "stdout_stderr_sha256": "f0035b3952220fee1c52130fe5527a07b1659fc4795cfaad1e0e46bca7b3e3e9",
+      "pid": 91922,
+      "process_group": 91922,
+      "owned_process_group_quiescent": true
+    },
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "--no-cache",
+        "build",
+        "BC4lean.ScalarOperatorKNonunital"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-30T21:20:32.056782+00:00",
+      "finished_utc": "2026-10-30T21:20:34.558534+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/010-BC4lean-ScalarOperatorKNonunital.log",
+      "stdout_stderr_sha256": "4c4b49e9966323403936ccd88fdeb79f5c1a99dd724bb5d264f31748ab1a9ba6",
+      "pid": 92307,
+      "process_group": 92307,
       "owned_process_group_quiescent": true
     },
     {
@@ -1110,12 +1188,12 @@
         "BC4lean.ScalarUnitProjection"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:10:21.377060+00:00",
-      "finished_utc": "2026-10-30T20:10:31.855237+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/007-BC4lean-ScalarUnitProjection.log",
+      "started_utc": "2026-10-30T21:20:34.558620+00:00",
+      "finished_utc": "2026-10-30T21:20:37.379308+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/011-BC4lean-ScalarUnitProjection.log",
       "stdout_stderr_sha256": "578c8d4dbba590f92a2df7170365853f01f49e4397d5bc6ee1a4ec9c81314e2b",
-      "pid": 81214,
-      "process_group": 81214,
+      "pid": 92945,
+      "process_group": 92945,
       "owned_process_group_quiescent": true
     },
     {
@@ -1127,12 +1205,12 @@
         "BC4lean.ScalarIdentityUniverse"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:10:31.856271+00:00",
-      "finished_utc": "2026-10-30T20:10:43.151989+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/008-BC4lean-ScalarIdentityUniverse.log",
+      "started_utc": "2026-10-30T21:20:37.379391+00:00",
+      "finished_utc": "2026-10-30T21:20:39.689621+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/012-BC4lean-ScalarIdentityUniverse.log",
       "stdout_stderr_sha256": "8731e758bf1c61fac7987b19da21dd1033efa1f6956f09f00e1db08ffdc452d0",
-      "pid": 86099,
-      "process_group": 86099,
+      "pid": 93479,
+      "process_group": 93479,
       "owned_process_group_quiescent": true
     },
     {
@@ -1144,12 +1222,29 @@
         "BC4lean.TrivialAnalyticCalibration"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:10:43.153312+00:00",
-      "finished_utc": "2026-10-30T20:10:54.357748+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/009-BC4lean-TrivialAnalyticCalibration.log",
+      "started_utc": "2026-10-30T21:20:39.689691+00:00",
+      "finished_utc": "2026-10-30T21:20:42.012716+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/013-BC4lean-TrivialAnalyticCalibration.log",
       "stdout_stderr_sha256": "3c4183e7e3cfec087ceabc3250228fb6adbb2eafceb1efb54d5317b34c3b1a47",
-      "pid": 90010,
-      "process_group": 90010,
+      "pid": 93921,
+      "process_group": 93921,
+      "owned_process_group_quiescent": true
+    },
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "--no-cache",
+        "build",
+        "BC4lean.TrivialAnalyticScalar"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-30T21:20:42.012793+00:00",
+      "finished_utc": "2026-10-30T21:20:44.137523+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/014-BC4lean-TrivialAnalyticScalar.log",
+      "stdout_stderr_sha256": "a61dd46feba34cb27512878c22c6eb83eb986137dabf7f32acdd93afec246c43",
+      "pid": 94820,
+      "process_group": 94820,
       "owned_process_group_quiescent": true
     },
     {
@@ -1161,12 +1256,12 @@
         "BC4lean.UnitPointCutoff"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:10:54.358618+00:00",
-      "finished_utc": "2026-10-30T20:11:05.434473+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/010-BC4lean-UnitPointCutoff.log",
+      "started_utc": "2026-10-30T21:20:44.137592+00:00",
+      "finished_utc": "2026-10-30T21:20:46.834679+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/015-BC4lean-UnitPointCutoff.log",
       "stdout_stderr_sha256": "a921538af969d6d8ca8c349e8496f42ca03467d65d937eaec30ce4c27f16addf",
-      "pid": 94967,
-      "process_group": 94967,
+      "pid": 95329,
+      "process_group": 95329,
       "owned_process_group_quiescent": true
     },
     {
@@ -1178,12 +1273,12 @@
         "BC4lean.FinitePointCutoff"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:11:05.435804+00:00",
-      "finished_utc": "2026-10-30T20:11:19.290907+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/011-BC4lean-FinitePointCutoff.log",
+      "started_utc": "2026-10-30T21:20:46.834755+00:00",
+      "finished_utc": "2026-10-30T21:20:49.659505+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/016-BC4lean-FinitePointCutoff.log",
       "stdout_stderr_sha256": "2d0ec0c3209e319724cd5759cf3335c94e23886fdee88e4eae2be4d0108d4474",
-      "pid": 98625,
-      "process_group": 98625,
+      "pid": 95938,
+      "process_group": 95938,
       "owned_process_group_quiescent": true
     },
     {
@@ -1195,12 +1290,12 @@
         "BC4lean.UnitScalarDescent"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:11:19.293408+00:00",
-      "finished_utc": "2026-10-30T20:11:29.873158+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/012-BC4lean-UnitScalarDescent.log",
+      "started_utc": "2026-10-30T21:20:49.659578+00:00",
+      "finished_utc": "2026-10-30T21:20:51.655208+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/017-BC4lean-UnitScalarDescent.log",
       "stdout_stderr_sha256": "43514c89def7623076e8bebc4aff93f50623e451bbc9ab444571bff587711d07",
-      "pid": 4113,
-      "process_group": 4113,
+      "pid": 97020,
+      "process_group": 97020,
       "owned_process_group_quiescent": true
     },
     {
@@ -1212,12 +1307,12 @@
         "BC4lean.SubsingletonScalarDescent"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:11:29.873624+00:00",
-      "finished_utc": "2026-10-30T20:11:41.978810+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/013-BC4lean-SubsingletonScalarDescent.log",
+      "started_utc": "2026-10-30T21:20:51.655276+00:00",
+      "finished_utc": "2026-10-30T21:20:53.582363+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/018-BC4lean-SubsingletonScalarDescent.log",
       "stdout_stderr_sha256": "713cfc0464d740b91c9d8681fd451a0567a55da5b2f5c34f3cc5bbb42c6a9538",
-      "pid": 7880,
-      "process_group": 7880,
+      "pid": 97724,
+      "process_group": 97724,
       "owned_process_group_quiescent": true
     },
     {
@@ -1229,12 +1324,12 @@
         "BC4lean.UnitAssemblyEquivalence"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:11:41.979260+00:00",
-      "finished_utc": "2026-10-30T20:11:57.477279+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/014-BC4lean-UnitAssemblyEquivalence.log",
+      "started_utc": "2026-10-30T21:20:53.582446+00:00",
+      "finished_utc": "2026-10-30T21:20:55.846303+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/019-BC4lean-UnitAssemblyEquivalence.log",
       "stdout_stderr_sha256": "1230ffdeb1f058935ec63a4a24c4f06677e77ea411c56b55790ca76f6b8d0b75",
-      "pid": 13353,
-      "process_group": 13353,
+      "pid": 97856,
+      "process_group": 97856,
       "owned_process_group_quiescent": true
     },
     {
@@ -1246,12 +1341,12 @@
         "BC4lean.SubsingletonAssemblyEquivalence"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:11:57.478066+00:00",
-      "finished_utc": "2026-10-30T20:12:09.203666+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/015-BC4lean-SubsingletonAssemblyEquivalence.log",
+      "started_utc": "2026-10-30T21:20:55.846375+00:00",
+      "finished_utc": "2026-10-30T21:20:58.092619+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/020-BC4lean-SubsingletonAssemblyEquivalence.log",
       "stdout_stderr_sha256": "e506b0f6e92d986b440d57faebe56a7aacd94d51b3c9d5d939332999ee522704",
-      "pid": 19324,
-      "process_group": 19324,
+      "pid": 98222,
+      "process_group": 98222,
       "owned_process_group_quiescent": true
     },
     {
@@ -1263,29 +1358,29 @@
         "BC4lean"
       ],
       "exit_code": 0,
-      "started_utc": "2026-10-30T20:12:09.204530+00:00",
-      "finished_utc": "2026-10-30T20:12:20.576448+00:00",
-      "log": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z/016-BC4lean.log",
-      "stdout_stderr_sha256": "7a8c4a8746a534332c918106e3fbb8c3f277f15b7178f6bf0692d8b1994fc258",
-      "pid": 23372,
-      "process_group": 23372,
+      "started_utc": "2026-10-30T21:20:58.092686+00:00",
+      "finished_utc": "2026-10-30T21:21:18.640497+00:00",
+      "log": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z/021-BC4lean.log",
+      "stdout_stderr_sha256": "c9bb1aa890ac162095f7531c4ff9e12aa502288bcc24d60d9379fab3501b16f1",
+      "pid": 98854,
+      "process_group": 98854,
       "owned_process_group_quiescent": true
     }
   ],
-  "combined_log_sha256": "05a986151598252b760de743a453fd5791c7fe5cb4271646a2eca887a745b02c",
-  "attempt_directory": "/private/tmp/bc4lean-chapter8-build/20261030T200906.961945Z",
+  "combined_log_sha256": "eb64e77da3fa397859ceb6b5826be4fa49fc2002585c06d08fb00833555273bc",
+  "attempt_directory": "/private/tmp/bc4lean-chapter8-build/20261030T211934.999212Z",
   "order_validation": {
     "status": "verified_actual_source_order_only",
-    "checked_utc": "2026-10-30T20:09:07.120539+00:00",
-    "module_count": 16,
-    "library_module_count": 946,
-    "internal_dependency_edges": 15,
-    "inventory_sha256": "3cbf08cfa07464c5378ef6a66314ea9571382d993dfa46ab58e64d38ce8e40d7",
-    "aggregate_sha256": "287f8d2433a5d4a612db5c66e1d494d796d59229d8ac4d4f0ea9afbd18ec1309",
+    "checked_utc": "2026-10-30T21:19:35.026532+00:00",
+    "module_count": 21,
+    "library_module_count": 951,
+    "internal_dependency_edges": 21,
+    "inventory_sha256": "540ab80e8591f0064116a07777abc74f689afccb182acd51537d1b2906c66d18",
+    "aggregate_sha256": "079185c91b2a9250ab0c8e1e45ebdd5cfdb94692cd636640ac562fe3502ab1fc",
     "frozen_prefix_sha256": "309158d81f7d7994edab43ce59a9e7820f1fa5c5f364321cd3bf6f327c7f00bc",
     "parser_sha256": "e3cd890ac54dfe6dbf1e9a3f7370f337f43e89286a0a8d4d0a9e18d075659d5d",
-    "order_sha256": "4d1250d73358194aa1a1972ff7cfaa8dbcd02bfbdc3ed65235e612bfdf4cf67d",
-    "generated_order_sha256": "4d1250d73358194aa1a1972ff7cfaa8dbcd02bfbdc3ed65235e612bfdf4cf67d",
+    "order_sha256": "c64862804c76d961391117fbcfc4f939496d520b940f7be32a6bc88610b0d176",
+    "generated_order_sha256": "c64862804c76d961391117fbcfc4f939496d520b940f7be32a6bc88610b0d176",
     "provided_order_path": null
   },
   "driver_sha256": "b0c622674156bb87090c8473c1a3f253accd682a83e2b9d19266ebb3cd3414f1"
