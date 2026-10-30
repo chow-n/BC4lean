@@ -195,6 +195,36 @@ uses the literal Unit group and does not identify nontrivial finite-group
 averaging with the unit.
 \end{proof}
 
+\begin{proposition}\label{prop:finite-point-cutoff-averaging}
+\uses{prop:scalar-unit-projection-identity,def:cutoff-projection,prop:finite-group-point-reduction}
+\lean{BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom,BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass,BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback,BC4lean.KKTheory.FinitePointCutoff.cutoff_apply,BC4lean.KKTheory.FinitePointCutoff.averaging,BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging,BC4lean.KKTheory.FinitePointCutoff.averaging_coe,BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass,BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback}
+\leanok
+Let a countable discrete group $\Gamma$ act properly on a second countable
+locally compact Hausdorff space $X$, and let $c$ be a normalized cutoff (one
+exists exactly when the action is cocompact), with projection
+$p_c$ in the reduced crossed product. Let $f\colon\mathbb C\to
+C_0(X)\rtimes_r\Gamma$ be a $*$-homomorphism with $f(1)=p_c$. Then the scalar
+KK lift of $[p_c]$ is the homomorphism class $[f]$, and the cutoff product
+$[p_c]\otimes(-)$ is the source pullback $f^*$ in both degrees.
+If $\Gamma$ is finite and $X$ is the point, every normalized cutoff is the
+constant $|\Gamma|^{-1/2}$, and $p_c$ is the averaging projection
+$e=\sum_{g\in\Gamma}|\Gamma|^{-1}\delta_g$. Hence the cutoff class is the
+class of $z\mapsto ze$, and the cutoff product is pullback along it.
+\end{proposition}
+\begin{proof}
+\leanok
+The first part is the argument of
+Proposition~\ref{prop:unit-point-cutoff-hom-class}, which does not use the
+group: scalar index naturality for the native coefficient pushforward of the
+scalar identity, the scalar unit-projection identity and functoriality of the
+singleton projection class give $[f]\mapsto[f(1)]=[p_c]$. The cutoff product
+is the left even product with $[f]$, which is the source pullback by
+definition. On the point the action is trivial, so normalization reads
+$|\Gamma|\,c(x)^2=1$; with $c\ge0$ this gives $c(x)=|\Gamma|^{-1/2}$, and
+every coefficient $c(x)c(g^{-1}x)$ of the algebraic projection equals
+$|\Gamma|^{-1}$.
+\end{proof}
+
 \begin{proposition}\label{prop:unit-scalar-descent-calibration}
 \uses{def:reduced-descent,prop:descent-source-naturality}
 \lean{BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.evenClass_coefficientRestriction,BC4lean.KKTheory.UnitScalarDescent.oddClass_coefficientRestriction}

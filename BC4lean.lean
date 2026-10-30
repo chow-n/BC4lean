@@ -939,6 +939,7 @@ import BC4lean.FiniteGroupPointCalibration
 import BC4lean.ScalarUnitProjection
 import BC4lean.TrivialAnalyticCalibration
 import BC4lean.UnitPointCutoff
+import BC4lean.FinitePointCutoff
 import BC4lean.UnitScalarDescent
 import BC4lean.UnitAssemblyEquivalence
 
