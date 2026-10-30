@@ -953,3 +953,14 @@ import BC4lean.ScalarOperatorK0
 import BC4lean.ScalarOperatorK1
 import BC4lean.ScalarOperatorKNonunital
 import BC4lean.TrivialAnalyticScalar
+import BC4lean.FinitePointCharacterTensor
+import BC4lean.FinitePointCompressedDescent
+import BC4lean.KasparovReducingCompression
+import BC4lean.KasparovReducingCompressionFibre
+import BC4lean.OrderTwoPointKK
+import BC4lean.OrderTwoEigenSplitInvariance
+import BC4lean.KasparovGroupChange
+import BC4lean.OrderTwoEigenSplitAdditive
+import BC4lean.OrderTwoPointKKSplit
+import BC4lean.OrderTwoPointKKScalar
+import BC4lean.OrderTwoAssemblyEquivalence

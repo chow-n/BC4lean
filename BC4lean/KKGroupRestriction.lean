@@ -16,6 +16,10 @@ parity quotients and additive.
 For a one-element group `Γ` with trivial coefficient actions, restriction
 along `Unit →* Γ` and `Γ →* Unit` are inverse additive equivalences between
 `KK^Γ` and ordinary (`Unit`-group) KK, in both parities.
+
+`KasparovGroupChange` does the same restriction with the compatibility of the
+coefficient actions as a hypothesis instead of a definition, and adds twisting
+by a unitary character; the order-two examples use that version.
 -/
 
 noncomputable section

@@ -592,6 +592,29 @@ composition laws descend from the unital functors. Naturality of evaluation
 proves compatibility with the unital comparison isomorphisms.
 \end{proof}
 
+\begin{corollary}\label{cor:operator-k-zero-iso-product}
+\uses{prop:operator-k-functoriality,prop:k-product-decomposition,prop:operator-k-unital-agreement}
+\lean{BC4lean.OperatorKTheory.unitization_starMap_zero,BC4lean.OperatorKTheory.operatorK0Map_zero,BC4lean.OperatorKTheory.operatorK1Map_zero,BC4lean.OperatorKTheory.operatorK0MapEquiv,BC4lean.OperatorKTheory.operatorK1MapEquiv,BC4lean.OperatorKTheory.operatorK0ProductEquiv,BC4lean.OperatorKTheory.operatorK0ProductEquiv_apply,BC4lean.OperatorKTheory.operatorK0ProductEquiv_symm_apply,BC4lean.OperatorKTheory.operatorK1ProductEquiv,BC4lean.OperatorKTheory.operatorK1ProductEquiv_apply,BC4lean.OperatorKTheory.operatorK1ProductEquiv_symm_apply}
+\leanok
+The zero homomorphism induces the zero map on $K_i^{\mathrm{op}}$, and a
+$*$-isomorphism $A\cong B$ induces additive isomorphisms
+$K_i^{\mathrm{op}}(A)\cong K_i^{\mathrm{op}}(B)$. For unital $A$ and $B$ the
+coordinate projections induce
+$K_i^{\mathrm{op}}(A\times B)\cong K_i^{\mathrm{op}}(A)\times K_i^{\mathrm{op}}(B)$,
+$i=0,1$, with inverse $(u,v)\mapsto(\iota_A)_*u+(\iota_B)_*v$ for the coordinate
+inclusions $\iota_A,\iota_B$.
+\end{corollary}
+\begin{proof}
+\leanok
+The unitization of the zero homomorphism is the scalar quotient followed by the
+scalar section, and the scalar quotient kills every kernel class. The isomorphism
+statement follows from the identity and composition laws. For the product, compose
+the unital agreement isomorphisms with Proposition~\ref{prop:k-product-decomposition};
+naturality of the agreement identifies the forward map with the coordinate
+projections, and the composites of projections with inclusions are the identity or
+zero.
+\end{proof}
+
 \begin{definition}\label{def:star-homotopy}
 \lean{BC4lean.OperatorKTheory.UnitalStarHomotopy,BC4lean.OperatorKTheory.StarHomotopy,BC4lean.OperatorKTheory.UnitalStarHomotopy.toStarHomotopy,BC4lean.OperatorKTheory.StarHomotopy.unitization}
 \leanok

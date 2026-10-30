@@ -54,15 +54,40 @@ section OrderTwo
 
 variable {Γ : Type*} [Group Γ]
 
-private theorem finite_of_card_eq_two {α : Type*} (h2 : Nat.card α = 2) : Finite α :=
+/-! Elementary facts about a group with exactly two elements, kept in their own namespace since
+they are not specific to C⋆-algebras. -/
+
+namespace OrderTwo
+
+theorem finite_of_card_eq_two {α : Type*} (h2 : Nat.card α = 2) : Finite α :=
   Nat.finite_of_card_ne_zero (by simp [h2])
 
-private theorem eq_of_ne_one_of_card_eq_two (h2 : Nat.card Γ = 2) {g h : Γ} (hg : g ≠ 1)
+theorem eq_of_ne_one_of_card_eq_two (h2 : Nat.card Γ = 2) {g h : Γ} (hg : g ≠ 1)
     (hh : h ≠ 1) : g = h :=
   ((Nat.card_eq_two_iff' (1 : Γ)).1 h2).unique hg hh
 
-private theorem mul_self_eq_one_of_card_eq_two (h2 : Nat.card Γ = 2) (g : Γ) : g * g = 1 := by
+theorem mul_self_eq_one_of_card_eq_two (h2 : Nat.card Γ = 2) (g : Γ) : g * g = 1 := by
   simpa [← pow_two, h2] using pow_card_eq_one' (x := g)
+
+theorem exists_ne_one_of_card_eq_two (h2 : Nat.card Γ = 2) : ∃ g : Γ, g ≠ 1 :=
+  ((Nat.card_eq_two_iff' (1 : Γ)).1 h2).exists
+
+/-- The element different from `1` of a group of order two. -/
+def orderTwoGenerator (h2 : Nat.card Γ = 2) : Γ :=
+  Classical.choose (exists_ne_one_of_card_eq_two h2)
+
+theorem orderTwoGenerator_ne_one (h2 : Nat.card Γ = 2) : orderTwoGenerator h2 ≠ 1 :=
+  Classical.choose_spec (exists_ne_one_of_card_eq_two h2)
+
+theorem eq_one_or_eq_orderTwoGenerator (h2 : Nat.card Γ = 2) (h : Γ) :
+    h = 1 ∨ h = orderTwoGenerator h2 := by
+  by_cases hh : h = 1
+  · exact Or.inl hh
+  · exact Or.inr (eq_of_ne_one_of_card_eq_two h2 hh (orderTwoGenerator_ne_one h2))
+
+end OrderTwo
+
+open OrderTwo
 
 open scoped Classical in
 /-- The sign character of a group of order two: `1` at the identity and `-1` elsewhere.

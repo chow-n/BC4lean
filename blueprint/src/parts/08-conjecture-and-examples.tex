@@ -241,6 +241,34 @@ every coefficient $c(x)c(g^{-1}x)$ of the algebraic projection equals
 $|\Gamma|^{-1}$.
 \end{proof}
 
+\begin{proposition}\label{prop:finite-point-compressed-descent}
+\uses{prop:finite-point-cutoff-averaging,def:reduced-descent}
+\lean{BC4lean.KKTheory.FinitePointCharacterTensor.characterProjection_isStarProjection,BC4lean.KKTheory.FinitePointCharacterTensor.characterIsometry,BC4lean.KKTheory.FinitePointCharacterTensor.reducedSourceRepresentation_averaging_mk,BC4lean.KKTheory.FinitePointCharacterTensor.characterRangeEquiv,BC4lean.KKTheory.FinitePointCompressedDescent.characterCycleIso,BC4lean.KKTheory.FinitePointCompressedDescent.oddCharacterCycleIso,BC4lean.KKTheory.FinitePointCompressedDescent.even_compressedDescent,BC4lean.KKTheory.FinitePointCompressedDescent.odd_compressedDescent}
+\leanok
+Let $\Gamma$ be finite, $\chi\colon\Gamma\to U(1)$ a character and
+$P_\chi=|\Gamma|^{-1}\sum_{g}\chi(g)\lambda_g\in C^*_r(\Gamma)$. Let $(E,U,\varphi,F)$
+be a $\Gamma$-equivariant cycle (even or odd) from $C_0(\mathrm{pt})$ to $\mathbb C$
+with $U_g=\chi(g)$ and $\varphi(1)=1$, and let $(E,\varphi,F)$ be the same data
+read as an ordinary scalar cycle ($\Gamma$ and $E$ in the lowest universe, as in
+the unit case). Then the descent of its class, pulled back along
+$z\mapsto ze$ with $e$ the averaging projection, is the coefficient extension of
+$[(E,\varphi,F)]$ along $z\mapsto zP_\chi$.
+\end{proposition}
+\begin{proof}
+\leanok
+On the descended module $E\otimes C^*_r(\Gamma)$ the averaging element acts as
+$x\otimes d\mapsto|\Gamma|^{-1}\sum_g\chi(g)x\otimes\lambda_gd=x\otimes P_\chi d$, so
+the pulled-back representation is $z\mapsto z(1\otimes P_\chi)$. Remove the
+off-support blocks and the degenerate complement by the scalar support reduction.
+The map $x\otimes d\mapsto x\otimes P_\chi d$ preserves the $C^*_r(\Gamma)$-valued
+inner product on elementary tensors, so it extends to an isometry from
+$E\otimes_{P_\chi}C^*_r(\Gamma)$; its range is closed, lies in the range of
+$1\otimes P_\chi$, and contains $(1\otimes P_\chi)(x\otimes d)$ for all elementary
+tensors, hence equals that range. Grading, operator and representation are
+intertwined on elementary tensors and therefore everywhere. This is a whole-cycle
+isomorphism with the coefficient-extension cycle.
+\end{proof}
+
 \begin{proposition}\label{prop:unit-scalar-descent-calibration}
 \uses{def:reduced-descent,prop:descent-source-naturality}
 \lean{BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.evenClass_coefficientRestriction,BC4lean.KKTheory.UnitScalarDescent.oddClass_coefficientRestriction}
@@ -364,6 +392,52 @@ equivalences equals the canonical assembly map, so it is bijective. No
 isomorphism invariance of the Baum--Connes property is used.
 \end{proof}
 
+\begin{proposition}\label{prop:order-two-point-kk-split}
+\uses{prop:finite-group-point-model}
+\lean{BC4lean.KKTheory.KasparovHomotopyClass.orderTwoSplit,BC4lean.KKTheory.OddKK.orderTwoSplit,BC4lean.KKTheory.orderTwoKKParitySplit,BC4lean.KKTheory.sourcePullbackEquiv,BC4lean.KKTheory.orderTwoPointKKSplit}
+\leanok
+Let $\Gamma=\{1,g\}$ have order two and let $\chi$ be its sign character. Then
+$KK^\Gamma_p(C_0(\mathrm{pt}),\mathbb C)\cong KK_p(\mathbb C,\mathbb C)^2$, in both
+parities, by $x\mapsto(\mathrm{res}\,x_+,\mathrm{res}\,x_-)$, where $x_\pm$ are the
+$\pm1$ eigen parts of $U_g$; the inverse is
+$(a,b)\mapsto\mathrm{infl}\,a+\chi\otimes\mathrm{infl}\,b$.
+\end{proposition}
+\begin{proof}
+\leanok
+The actions on $C_0(\mathrm{pt})$ and $\mathbb C$ are trivial. Replace the operator
+$F$ by its average $|\Gamma|^{-1}\sum_h U_hFU_h^*$, an operator homotopy; then $U_g$
+is an equivariant involution commuting with the cycle exactly, and its eigen parts
+split every cycle and every homotopy. On an eigen part $U$ is $1$ or $\chi$, so restriction followed
+by inflation (and twisting by $\chi$) is the identity up to a cycle isomorphism.
+Finally pull back along $\mathbb C\cong C_0(\mathrm{pt})$.
+\end{proof}
+
+\begin{theorem}\label{thm:baum-connes-order-two}
+\uses{def:baum-connes-property,prop:finite-group-point-reduction,prop:finite-point-cutoff-averaging,prop:finite-point-compressed-descent,prop:order-two-point-kk-split,prop:reduced-group-cstar-order-two,prop:k-product-decomposition,cor:operator-k-zero-iso-product}
+\lean{BC4lean.Chapter8Examples.OrderTwoAssembly.spaceAssemblyHom_orderTwo,BC4lean.Chapter8Examples.OrderTwoAssembly.orderTwoAnalyticEquiv,BC4lean.Chapter8Examples.orderTwoAssemblyAddEquiv,BC4lean.Chapter8Examples.reducedAssemblyHom_orderTwo_eq,BC4lean.Chapter8Examples.baumConnesProperty_of_card_two,BC4lean.Chapter8Examples.baumConnesProperty_zmod_two}
+\leanok
+Every countable discrete group $\Gamma$ with $|\Gamma|=2$ in the lowest universe
+has the
+coefficient-free reduced Baum--Connes property: the actual assembly map is an
+isomorphism in both degrees. In particular this holds for $\mathbb Z/2$.
+\end{theorem}
+\begin{proof}
+\leanok
+Reduce to the point model. For a class
+$\chi'\otimes\mathrm{infl}\,a$ with $\chi'\in\{1,\chi\}$ and $a$ represented by a
+cycle with unital scalar representation (scalar support reduction), the cutoff
+product is pullback along $z\mapsto ze$, and compressed descent with the scalar
+index theorem gives $(P_{\chi'})_*[a]\in K_p(C^*_r\Gamma)$. Under
+$\mathbb C\times\mathbb C\cong C^*_r\Gamma$, $(z,w)\mapsto zP_1+wP_\chi$, the maps
+$z\mapsto zP_1$ and $z\mapsto zP_\chi$ are the two coordinate inclusions. By the
+eigen split and additivity, the assembly map is the composite
+$KK_p(\mathbb C,\mathbb C)^2\cong K_p(\mathbb C)^2\cong K_p(\mathbb C\times\mathbb C)
+\cong K_p(C^*_r\Gamma)$ of additive equivalences. Groups of order two in higher
+universes would need either the universe generalisation of the point argument, as
+for one-element groups (Theorem~\ref{thm:baum-connes-subsingleton}), or invariance
+of the property under group isomorphism; neither is used here.
+\end{proof}
+
 \section{Research and formalization status}
 Keep established mathematics, completed Lean work, and open mathematical
 questions separate. Completed Lean work includes the universal proper-space
@@ -378,11 +452,13 @@ a proof of the general conjecture remains a later milestone.
 The verified Chapter~8 milestone consists of the exact property and conjecture
 definitions, the proved model and cofinal-index comparison theorems, exact
 piecewise bijectivity criteria, the geometric and analytic calibrations,
-and the genuine assembly isomorphism for the literal Unit group and for
-every group with exactly one element. The general
+and the genuine assembly isomorphism for the literal Unit group, for
+every group with exactly one element, and for every group of order two in
+the lowest universe. The general
 conjecture remains unproved, so the chapter is a verified milestone rather
 than a completed proof of all its targets. The scalar $K$-groups
 $K_0(\mathbb C)\cong\mathbb Z$ and $K_1(\mathbb C)=0$ are computed, and with
 them the reduced $K$-groups of every group with exactly one element. No
-nontrivial finite-group assembly isomorphism, $\mathbb Z$ case, or
-$\mathrm{SL}(3,\mathbb Z)$ result is asserted by this milestone.
+assembly isomorphism for a finite group of order greater than two, no
+$\mathbb Z$ case, and no $\mathrm{SL}(3,\mathbb Z)$ result is asserted by
+this milestone.
