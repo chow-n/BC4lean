@@ -14,6 +14,8 @@ import BC4lean.SubsingletonScalarDescent
 import BC4lean.ScalarIdentityUniverse
 import BC4lean.SubsingletonAssemblyEquivalence
 import BC4lean.TrivialAnalyticScalar
+import BC4lean.FinitePointCompressedDescent
+import BC4lean.OrderTwoAssemblyEquivalence
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -23,8 +25,8 @@ set_option warningAsError true
 Independent source-only expected mathematical signatures, prepared without a
 Lean invocation. The first ten imports denote the ten proposed final module
 locations; the eleventh supplies the finite-point cutoff endpoints, the next
-four the endpoints for groups with one element, and the last their scalar
-K-group endpoints.
+four the endpoints for groups with one element, the next their scalar
+K-group endpoints, and the last two the endpoints for groups of order two.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -810,4 +812,204 @@ example : Assembly.BaumConnesProperty (ULift.{uV} Unit) :=
   baumConnesProperty_of_subsingleton (ULift.{uV} Unit)
 
 end SubsingletonAssembly
+
+section CompressedDescent
+open BC4lean.KKTheory.FinitePointCharacterTensor BC4lean.KKTheory.FinitePointCompressedDescent
+open BC4lean.KKTheory.GroupUniverseParityGroup BC4lean.KKTheory.GroupUniverseParityFunctoriality
+variable {Γ : Type} [Group Γ] [Fintype Γ] [TopologicalSpace Γ] [DiscreteTopology Γ]
+  {E : Type} [NormedAddCommGroup E] [NormedSpace ℂ E] [SMul ℂᵐᵒᵖ E]
+  [CStarModule ℂᵐᵒᵖ E] [CompleteSpace E] (χ : Γ →* unitary ℂ)
+
+local instance pointCZeroSeparableForDescent :
+    TopologicalSpace.SeparableSpace C₀(FiniteGroupPoint.{0}, ℂ) :=
+  TopologicalKHomology.cZero_separableSpace
+
+-- endpoint: BC4lean.KKTheory.FinitePointCharacterTensor.characterProjection_isStarProjection
+example : IsStarProjection (characterProjection Γ χ) := characterProjection_isStarProjection Γ χ
+
+-- endpoint: BC4lean.KKTheory.FinitePointCharacterTensor.characterIsometry
+example : CharacterTensor E χ →ₗᵢ[ℂ] DescendedModule (Γ := Γ) E := characterIsometry χ
+
+-- endpoint: BC4lean.KKTheory.FinitePointCharacterTensor.reducedSourceRepresentation_averaging_mk
+example (U : EquivariantHilbertModule (scalarAction Γ) E)
+    (π : C₀(FiniteGroupPoint.{0}, ℂ) →⋆ₙₐ[ℂ] AdjointableMap ℂ E E)
+    (hπ : ∀ g a, U.conjugateOperator g (π a) = π ((pointAction Γ).automorphism g a))
+    (hU : ∀ g x, U.action g x = (χ g : ℂ) • x) (h1 : π (pointScalar 1) = 1)
+    (x : E) (d : (GroupCrossed Γ)ᵐᵒᵖ) :
+    KasparovDescent.reducedSourceRepresentation (scalarAction Γ) E (pointAction Γ) U π hπ
+        (FinitePointCutoff.averaging Γ) (KasparovDescent.mk (scalarAction Γ) E x d) =
+      KasparovDescent.mk (scalarAction Γ) E x (characterLeftMul χ d) :=
+  reducedSourceRepresentation_averaging_mk χ U π hπ hU h1 x d
+
+-- endpoint: BC4lean.KKTheory.FinitePointCharacterTensor.characterRangeEquiv
+example (p : AdjointableMap (GroupCrossed Γ) (DescendedModule (Γ := Γ) E)
+      (DescendedModule (Γ := Γ) E))
+    (hp : ∀ x d, p (KasparovDescent.mk (scalarAction Γ) E x d) =
+      KasparovDescent.mk (scalarAction Γ) E x (characterLeftMul χ d)) :
+    HilbertModuleEquiv (GroupCrossed Γ) (CharacterTensor E χ) (ProjectionModule p) :=
+  characterRangeEquiv χ p hp
+
+-- endpoint: BC4lean.KKTheory.FinitePointCompressedDescent.characterCycleIso
+example (c : KasparovCycle (pointAction Γ) (scalarAction Γ) E)
+    (hU : ∀ g x, c.groupAction.action g x = (χ g : ℂ) • x)
+    (h1 : c.representation (pointScalar 1) = 1) :
+    KasparovCycleIso (characterCycle χ c) (pulledDescent c).scalarSupportCycle :=
+  characterCycleIso χ c hU h1
+
+-- endpoint: BC4lean.KKTheory.FinitePointCompressedDescent.even_compressedDescent
+example (c : KasparovCycle (pointAction Γ) (scalarAction Γ) E)
+    (hU : ∀ g x, c.groupAction.action g x = (χ g : ℂ) • x)
+    (h1 : c.representation (pointScalar 1) = 1) :
+    sourcePullback.{0,0,0,0,0} (Γ := Unit) (A := ℂ)
+        (B := ReducedCrossedProduct (pointAction Γ)) (C := GroupCrossed Γ)
+        («α» := CStarAlgebraAction.trivial) («β» := CStarAlgebraAction.trivial)
+        («γ» := CStarAlgebraAction.trivial)
+        false (FinitePointCutoff.averagingHom Γ) averagingHom_equivariant
+        (KasparovDescent.evenClass (scalarAction Γ) (pointAction Γ)
+          (KasparovHomotopyClass.mk (BundledKasparovCycle.of c))) =
+      GroupUniverseOrdinaryEven.coefficientPushforward.{0,0,0} (characterHom Γ χ)
+        (KasparovHomotopyClass.mk (BundledKasparovCycle.of (pointScalarCycle c))) :=
+  even_compressedDescent χ c hU h1
+
+-- endpoint: BC4lean.KKTheory.FinitePointCompressedDescent.oddCharacterCycleIso
+example (c : OddKasparovCycle (pointAction Γ) (scalarAction Γ) E)
+    (hU : ∀ g x, c.groupAction.action g x = (χ g : ℂ) • x)
+    (h1 : c.representation (pointScalar 1) = 1) :
+    OddKasparovCycleIso (oddCharacterCycle χ c) (oddPulledDescent c).scalarSupportCycle :=
+  oddCharacterCycleIso χ c hU h1
+
+-- endpoint: BC4lean.KKTheory.FinitePointCompressedDescent.odd_compressedDescent
+example (c : OddKasparovCycle (pointAction Γ) (scalarAction Γ) E)
+    (hU : ∀ g x, c.groupAction.action g x = (χ g : ℂ) • x)
+    (h1 : c.representation (pointScalar 1) = 1) :
+    sourcePullback.{0,0,0,0,0} (Γ := Unit) (A := ℂ)
+        (B := ReducedCrossedProduct (pointAction Γ)) (C := GroupCrossed Γ)
+        («α» := CStarAlgebraAction.trivial) («β» := CStarAlgebraAction.trivial)
+        («γ» := CStarAlgebraAction.trivial)
+        true (FinitePointCutoff.averagingHom Γ) averagingHom_equivariant
+        (KasparovDescent.oddClass (scalarAction Γ) (pointAction Γ)
+          (OddKK.mk (BundledOddKasparovCycle.of c))) =
+      GroupUniverseOrdinaryOdd.coefficientPushforward.{0,0,0} (characterHom Γ χ)
+        (OddKK.mk (BundledOddKasparovCycle.of (oddPointScalarCycle c))) :=
+  odd_compressedDescent χ c hU h1
+
+end CompressedDescent
+
+section OrderTwoSplit
+open BC4lean.KKTheory.GroupUniverseParityGroup
+universe uA uC
+variable {Γ : Type uΓ} {A : Type uA} {B : Type uB} {E : Type uE} [Group Γ]
+  [NonUnitalCStarAlgebra A] [NonUnitalCStarAlgebra B] [PartialOrder B] [StarOrderedRing B]
+  {α : CStarAlgebraAction Γ A} {β : CStarAlgebraAction Γ B} [α.IsTrivial] [β.IsTrivial]
+
+-- endpoint: BC4lean.KKTheory.KasparovHomotopyClass.orderTwoSplit
+example [NormedAddCommGroup E] [NormedSpace ℂ E] [SMul Bᵐᵒᵖ E] [CStarModule Bᵐᵒᵖ E]
+    [CompleteSpace E] [Fintype Γ] {g : Γ} (hg : CentralInvolution α g)
+    (hΓ : ∀ h : Γ, h = 1 ∨ h = g) (χ : Γ →* unitary ℂ) (hχ : ((χ g : unitary ℂ) : ℂ) = -1) :
+    KasparovHomotopyClass.{uΓ, uA, uB, uE} α β ≃+
+      KasparovHomotopyClass.{0, uA, uB, uE} (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B) ×
+        KasparovHomotopyClass.{0, uA, uB, uE}
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B) :=
+  KasparovHomotopyClass.orderTwoSplit hg hΓ χ hχ
+
+-- endpoint: BC4lean.KKTheory.OddKK.orderTwoSplit
+example [NormedAddCommGroup E] [NormedSpace ℂ E] [SMul Bᵐᵒᵖ E] [CStarModule Bᵐᵒᵖ E]
+    [CompleteSpace E] [Fintype Γ] [TopologicalSpace.SeparableSpace B] {g : Γ}
+    (hg : CentralInvolution α g) (hΓ : ∀ h : Γ, h = 1 ∨ h = g) (χ : Γ →* unitary ℂ)
+    (hχ : ((χ g : unitary ℂ) : ℂ) = -1) :
+    OddKK.{uΓ, uA, uB, uE} α β ≃+
+      OddKK.{0, uA, uB, uE} (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B) ×
+        OddKK.{0, uA, uB, uE} (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B) :=
+  OddKK.orderTwoSplit hg hΓ χ hχ
+
+-- endpoint: BC4lean.KKTheory.orderTwoKKParitySplit
+example [TopologicalSpace.SeparableSpace B] (h2 : Nat.card Γ = 2) (p : Bool) :
+    KKParityGroup.{uΓ, uA, uB, uE} p α β ≃+
+      KKParityGroup.{0, uA, uB, uE} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B) ×
+        KKParityGroup.{0, uA, uB, uE} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B) :=
+  orderTwoKKParitySplit h2 p
+
+-- endpoint: BC4lean.KKTheory.sourcePullbackEquiv
+example {C : Type uC} [Countable Γ] [PartialOrder A] [StarOrderedRing A]
+    [NonUnitalCStarAlgebra C] [PartialOrder C] [StarOrderedRing C]
+    [TopologicalSpace.SeparableSpace A] [TopologicalSpace.SeparableSpace B]
+    [TopologicalSpace.SeparableSpace C] {γ : CStarAlgebraAction Γ C} (p : Bool)
+    (e : A ≃⋆ₐ[ℂ] B) (hact : ∀ k a, e (α.automorphism k a) = β.automorphism k (e a)) :
+    KKParityGroup.{uΓ, uB, uC, max u (max uA (max uB uC))} p β γ ≃+
+      KKParityGroup.{uΓ, uA, uC, max u (max uA (max uB uC))} p α γ :=
+  sourcePullbackEquiv.{uΓ, uA, uB, uC, u} p e hact
+
+-- endpoint: BC4lean.KKTheory.orderTwoPointKKSplit
+example (X : Type) [TopologicalSpace X] [Subsingleton X] [MulAction Γ X]
+    [ContinuousConstSMul Γ X] (h2 : Nat.card Γ = 2) (x : X) (p : Bool) :
+    letI := cZero_separableSpace_of_subsingleton X x
+    KKParityGroup.{uΓ, 0, 0, u} p (CZero.action Γ (X := X))
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ) ≃+
+      KKParityGroup.{0, 0, 0, u} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ) ×
+        KKParityGroup.{0, 0, 0, u} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ) :=
+  orderTwoPointKKSplit X h2 x p
+
+end OrderTwoSplit
+
+section OrderTwoAssembly
+open BC4lean.Chapter8Examples.OrderTwoAssembly
+open BC4lean.KKTheory.GroupUniverseParityGroup
+variable (Γ : Type) [Group Γ] [Countable Γ] [TopologicalSpace Γ] [DiscreteTopology Γ]
+  (h2 : Nat.card Γ = 2)
+
+local instance pointCZeroSeparableForOrderTwo :
+    TopologicalSpace.SeparableSpace C₀(FiniteGroupPoint.{0}, ℂ) :=
+  TopologicalKHomology.cZero_separableSpace
+
+-- endpoint: BC4lean.Chapter8Examples.OrderTwoAssembly.orderTwoAnalyticEquiv
+example (p : Bool) :
+    KKParityGroup.{0,0,0,0} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ) ×
+      KKParityGroup.{0,0,0,0} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ) ≃+
+      Assembly.analyticGroup Γ p :=
+  orderTwoAnalyticEquiv Γ h2 p
+
+-- endpoint: BC4lean.Chapter8Examples.OrderTwoAssembly.spaceAssemblyHom_orderTwo
+example [Fintype Γ] (c0 : Cutoff.CutoffFunction Γ FiniteGroupPoint.{0}) (p : Bool)
+    (x : TopologicalKHomology.spaceGroup p Γ FiniteGroupPoint.{0}) :
+    Assembly.spaceAssemblyHom Γ FiniteGroupPoint.{0} p c0 x =
+      orderTwoAnalyticEquiv Γ h2 p
+        (orderTwoPointKKSplit.{0,0} FiniteGroupPoint.{0} h2 default p x) :=
+  spaceAssemblyHom_orderTwo h2 c0 p x
+
+-- endpoint: BC4lean.Chapter8Examples.orderTwoAssemblyAddEquiv
+example (p : Bool) :
+    TopologicalKHomology.topologicalGroup p Γ ≃+ Assembly.analyticGroup Γ p :=
+  orderTwoAssemblyAddEquiv Γ h2 p
+
+-- endpoint: BC4lean.Chapter8Examples.reducedAssemblyHom_orderTwo_eq
+example (p : Bool) (x : TopologicalKHomology.topologicalGroup p Γ) :
+    Assembly.reducedAssemblyHom Γ p x = orderTwoAssemblyAddEquiv Γ h2 p x :=
+  reducedAssemblyHom_orderTwo_eq Γ h2 p x
+
+-- endpoint: BC4lean.Chapter8Examples.baumConnesProperty_of_card_two
+-- No supplied assembly bijectivity, inverse, or compatibility hypothesis.
+example : ∀ p : Bool, Function.Bijective (Assembly.reducedAssemblyHom Γ p) :=
+  baumConnesProperty_of_card_two Γ h2
+
+-- endpoint: BC4lean.Chapter8Examples.baumConnesProperty_of_card_two (named property)
+example : Assembly.BaumConnesProperty Γ := baumConnesProperty_of_card_two Γ h2
+
+-- endpoint: BC4lean.Chapter8Examples.baumConnesProperty_zmod_two
+example :
+    letI : TopologicalSpace (Multiplicative (ZMod 2)) := ⊥
+    haveI : DiscreteTopology (Multiplicative (ZMod 2)) := ⟨rfl⟩
+    Assembly.BaumConnesProperty (Multiplicative (ZMod 2)) :=
+  baumConnesProperty_zmod_two
+
+end OrderTwoAssembly
 end Chapter8ExpectedTypes
