@@ -944,5 +944,6 @@ import BC4lean.UnitScalarDescent
 import BC4lean.UnitAssemblyEquivalence
 import BC4lean.KKGroupRestriction
 import BC4lean.SubsingletonScalarDescent
+import BC4lean.ScalarIdentityUniverse
 
 import BC4lean.FiniteReducedGroupCStar

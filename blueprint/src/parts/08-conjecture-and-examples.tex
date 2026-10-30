@@ -301,6 +301,22 @@ the identity map intertwines every datum. Restriction changes only the group
 action, which neither side uses. No hypothesis on the size of $\Gamma$ enters.
 \end{proof}
 
+\begin{proposition}\label{prop:scalar-unit-projection-identity-universe}
+\uses{prop:scalar-unit-projection-identity}
+\lean{BC4lean.KKTheory.ScalarUnitProjection.identity_universe,BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe}
+\leanok
+In every module universe, the scalar index of the identity class of
+$\mathbb C$ is the class of the projection $1$.
+\end{proposition}
+\begin{proof}
+\leanok
+The identity class in a given module universe is the module-universe change of
+the identity class in the smallest one, because on graded classes the two
+universe changes (by shrinking and by lifting) agree. The scalar index is
+invariant under module-universe change, so
+Proposition~\ref{prop:scalar-unit-projection-identity} applies.
+\end{proof}
+
 \section{Research and formalization status}
 Keep established mathematics, completed Lean work, and open mathematical
 questions separate. Completed Lean work includes the universal proper-space
