@@ -1,13 +1,13 @@
 {
-  "run_id": "2c8a2ba813744beb94af3fb5e50b3688",
-  "audit_started_utc": "2026-10-30T19:02:55.733124+00:00",
+  "run_id": "d6fbc28e94b9427ba3be7e8d9938fed8",
+  "audit_started_utc": "2026-10-30T20:12:27.200448+00:00",
   "schema": "chapter8.actual.native-milestone-audit.v1",
   "schema_version": 1,
   "status": "generated_only",
   "milestone_verified": false,
   "chapter_complete": false,
   "general_conjecture_proved": false,
-  "source_revision": "f0ae56551aa07f20eb0cf12cb1c680c5440a94c3",
+  "source_revision": "65ea0ab331c324b35a42d932827133592a7d986c",
   "source_root_provenance": "/private/tmp/bc4lean-release",
   "audit_output_provenance": "/private/tmp/bc4lean-release/docs/audits/chapter8/audit.json",
   "query_source_location": "/private/tmp/bc4lean-release/docs/audits/chapter8/audit.lean",
@@ -20,7 +20,11 @@
     "BC4lean.FiniteGroupPointCalibration",
     "BC4lean.FinitePointCutoff",
     "BC4lean.FiniteReducedGroupCStar",
+    "BC4lean.KKGroupRestriction",
+    "BC4lean.ScalarIdentityUniverse",
     "BC4lean.ScalarUnitProjection",
+    "BC4lean.SubsingletonAssemblyEquivalence",
+    "BC4lean.SubsingletonScalarDescent",
     "BC4lean.TrivialAnalyticCalibration",
     "BC4lean.UnitAssemblyEquivalence",
     "BC4lean.UnitPointCutoff",
@@ -34,7 +38,11 @@
     "BC4lean.FiniteGroupPointCalibration",
     "BC4lean.FinitePointCutoff",
     "BC4lean.FiniteReducedGroupCStar",
+    "BC4lean.KKGroupRestriction",
+    "BC4lean.ScalarIdentityUniverse",
     "BC4lean.ScalarUnitProjection",
+    "BC4lean.SubsingletonAssemblyEquivalence",
+    "BC4lean.SubsingletonScalarDescent",
     "BC4lean.TrivialAnalyticCalibration",
     "BC4lean.UnitAssemblyEquivalence",
     "BC4lean.UnitPointCutoff",
@@ -45,7 +53,7 @@
     ".github/workflows/blueprint.yml": "184a8bda2d3b8fdd6aede42e597e0b2d4ff85958920136146516be388c91028a",
     ".github/workflows/chapter7.yml": "852c69b64e80bb848013ae1b93ef2cfe2406087324f090ce6b6cc4dd41a40d12",
     ".github/workflows/chapter8.yml": "96cd3998912bce3bd6f9ec873af60e4af612411dd518e9206417b88dc18e9b66",
-    "BC4lean.lean": "7785f8c212daed77a4ac084f12d1da818987b5d025454adbc4a883beba5b8c9b",
+    "BC4lean.lean": "287f8d2433a5d4a612db5c66e1d494d796d59229d8ac4d4f0ea9afbd18ec1309",
     "BC4lean/AdjointableAlgebra.lean": "605c5412abbf8e01eeeb54cf2256f6a8adb65aeeaff03e04bd35be5d8b7770a0",
     "BC4lean/AdjointableComplete.lean": "d7ea3b4428a6baca51c48f8264e590dd2809f8b77833355ee333e41dc4db930c",
     "BC4lean/AdjointableCompletion.lean": "4af00b2952a0fd998816c1fc37bdbd9b4b46a17de7a7a84b46671b037924e098",
@@ -479,6 +487,7 @@
     "BC4lean/JoinFixedContraction.lean": "29c39d8dec00d43ca60e8336d632ef68ac638badfb391dbb14053fba9abae98e",
     "BC4lean/JoinShiftInvariance.lean": "d0ce6bd21cc17e287a35daf61c74f74e92c5b2872a3cc630d9cf9b7a35e1350c",
     "BC4lean/JoinShiftTime.lean": "d7d84b6dc4a3ae6947f99f4abd080b3a4075a8b2ee9b18cdbf4d4e9bb6689abb",
+    "BC4lean/KKGroupRestriction.lean": "7d99ca8eb91464581a37d00de3b60ab7f30d5356238e897193ddfcd847f4f098",
     "BC4lean/KasparovAugmentedAlgebra.lean": "f6f82a24646312d2058ba21f1c754938f6a25a89b2f10ff0a26afccda2436c2b",
     "BC4lean/KasparovBandCompactLimits.lean": "54848bb6e6e658903c88654ea53346e2ad2b97fee1acf661bacca22e3cff700d",
     "BC4lean/KasparovBandControl.lean": "766a7799e67e5e84ff8918893b781b9338877a5736b2d35ef2a82d1d0af9aafe",
@@ -904,6 +913,7 @@
     "BC4lean/ScalarCreationCycleCounterexample.lean": "61028666a65e3fd20b5bdd4819f9c74b717b62129a70821887437c4deb190c40",
     "BC4lean/ScalarCreationModule.lean": "f605e1cd0336144ebd159525376f3c5b78c523dd8d6169573fe8c25800ba08fe",
     "BC4lean/ScalarHilbertModule.lean": "883fdc360f3cca34d01b0932a4d25031560702b95390cf3a70a091d74994723d",
+    "BC4lean/ScalarIdentityUniverse.lean": "511e31f830ca50ab021d0888dd53b4e1f0b3776ca1fa7620f543449eaeddae2d",
     "BC4lean/ScalarKKNativeNaturality.lean": "67c8ef70dd61fd846d5c1ccc0654164881c0984050945ad5ae85e98c9a234580",
     "BC4lean/ScalarKasparovK0ComparisonAddEquiv.lean": "d0077ecfea001dec4db953285f025b8c594ab0175c18463d75e19bc500df2ea2",
     "BC4lean/ScalarKasparovK0ComparisonNaturality.lean": "1b993673ee7144ed50f7513c3f3bf570a21db78a61cafdc80580031f5bb58d0b",
@@ -961,6 +971,8 @@
     "BC4lean/StandardModuleTensor.lean": "12d61060cbbbe52438739e4b9f32e2076c20eba367a16ba382d048b390667aec",
     "BC4lean/StandardModuleTensorEmbedding.lean": "83cbb84d2138dce06491ce81a86e541c982f6685c97442bcf5da22a97b9e9978",
     "BC4lean/StarHomotopy.lean": "5de668399d50bc41ef29e3ad531f47e942c089f519e267cf5e731b8969fb820f",
+    "BC4lean/SubsingletonAssemblyEquivalence.lean": "ce035d22c37da7976113dde66315bf581fcb50b130691eb4b1544e17c88f7fb2",
+    "BC4lean/SubsingletonScalarDescent.lean": "0c9122b1f631968ea0965044a4b74556e5aecfa62fb86f0196d7b0f28e675edd",
     "BC4lean/TelescopeFixedContraction.lean": "7aa2647f800a7e3a58bd4c13bf8b876c246af4005f7681e2f51ce7449ff10cec",
     "BC4lean/TelescopeHeightBound.lean": "0d135083e68b952eaff00f6c76a241bfda19e5a79d8f8a123dd991cd438823ff",
     "BC4lean/TopologicalKHomologyColimit.lean": "5a7e00bc56f493086adf6a5ff85376c8b0e4562fb207b824a8c49fe73d7cd4a7",
@@ -991,7 +1003,7 @@
     "blueprint/src/build_web.py": "79ecb090525b27ad4cd28657a0cc92aa63e55b9b2ed4a43e558ecb826dee92ee",
     "blueprint/src/parts/06-topological-k-homology.tex": "958d7e70629bb58af57fdec3c4ea9ef02e44d85b57fc15cc83f4b50b41552075",
     "blueprint/src/parts/07-assembly-map.tex": "2058e2395df58395255d1f2ab987daa6b7c5d4c452ecd1f75c6aeb7d45bfc4f3",
-    "blueprint/src/parts/08-conjecture-and-examples.tex": "6f7e619f19035a5000fea95b70537f9b5404dc4f65305fd2d4d992daf3f863f0",
+    "blueprint/src/parts/08-conjecture-and-examples.tex": "66775b9df1617d3fa63dad9c418cec68ebe16095685240442586fe004cf91185",
     "docs/CHAPTER7_COMPLETION.md": "25c1174b9fa857eaf55017be8a00c5642e919c9e9b2b36276b7e84944d42eb2a",
     "docs/CHAPTER7_VERIFICATION.md": "1f3c998b32d50d92e56d14108eb604d84e63cb5be450ce8b3f1d3a7b32b0d800",
     "docs/audits/chapter6/Chapter5Imports.lean": "b07ac2241fff3e9590412fa57efe285d207df4179f793d423c9d6c8c374a89c0",
@@ -1019,16 +1031,16 @@
     "docs/audits/chapter7/inventory.json": "95ef97bcb728d761081e608dd5ae4c3625b9aeb29d6c5f59c753b39329d7828f",
     "docs/audits/chapter8/Chapter7Baseline.json": "1518087f749f7a6cf0b61b1cfae442ab34f22e4864371f96a1f8dee0454c3035",
     "docs/audits/chapter8/Chapter7Imports.lean": "309158d81f7d7994edab43ce59a9e7820f1fa5c5f364321cd3bf6f327c7f00bc",
-    "docs/audits/chapter8/ExpectedTypes.lean": "d09d377ec9e3c87530b33909191f19569d5de8ededfb8b7ee6e6342f9b0bfa9c",
+    "docs/audits/chapter8/ExpectedTypes.lean": "44b70453df6cb3bc0508e046c5195f13cea2cfaf0bfbf871e4220d2b5da2e24e",
     "docs/audits/chapter8/RendererScaffold.json": "67f8b84e3c413cf7749bdb5d8dfc693dad37a8309b74d4f8f265e937fe2d9377",
-    "docs/audits/chapter8/inventory.json": "24d3344f865af0c0db6268d9fb6b3a763d8dba0896b2ba3e96db0103e6efa8c6",
+    "docs/audits/chapter8/inventory.json": "3cbf08cfa07464c5378ef6a66314ea9571382d993dfa46ab58e64d38ce8e40d7",
     "lake-manifest.json": "d85b2e1116be8fedd0fc8dac4fa8afc28d849f21b2920d2012b553ed886adb3c",
     "lakefile.toml": "dcb517c34c605807aaa1a08c00179eccb219278161b005f364af8faf27509d7e",
     "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
     "scripts/audit_chapter5.py": "56928f03f8461b4d54de218270ca980c1075f3ff8b13e01ed5ef657b5183d734",
     "scripts/audit_chapter6.py": "e3cd890ac54dfe6dbf1e9a3f7370f337f43e89286a0a8d4d0a9e18d075659d5d",
     "scripts/audit_chapter7.py": "0e8d986afa9450315a95f0f88d1db037e5872d159b9dff05150214ec9d672c51",
-    "scripts/audit_chapter8.py": "3f04af4a44c2a3c0ff8229c4472b5fdde45e856f98f0654a6c2887f575bd2425",
+    "scripts/audit_chapter8.py": "300736dded4c777a5c7086252eed31d42be1fecab71fb409529145d6fc6157f9",
     "scripts/chapter8_publication_core.py": "31c7a2f9a409c83c85684ab123817cf79c068f951b9ebc377019c3f14fc4c89c",
     "scripts/chapter8_publication_runtime.py": "5642d85d92b23a29573b26ba43862b188c470498ffff2e402021beaca1951516",
     "scripts/check_chapter7_retained.py": "dcc7a783f842e8196b71bd6e1499e00821e98214e8efbc81bc648ca41628d7d8",
@@ -1050,7 +1062,7 @@
     "scripts/update_chapter8_finder.py": "62ace5563c5000459731694310829b8d1c29c8e39ceede38c69fef923a78dea1",
     "scripts/verify_live_chapter8.py": "93f7a814c8f7282c4763f0c639e3a91ace297168a61ba0ba53a092c47892947c"
   },
-  "query_sha256": "73d5a18f4fc85e54ec2315fbf2ebb3c9ea15e3542c7ddd156f890a96ed9adeaf",
+  "query_sha256": "0015edc156617603291b9881c43ba8736d53f4dd2d04581cc354c88973ecda32",
   "blueprint_links": [
     "BC4lean.Assembly.BaumConnesConjecture",
     "BC4lean.Assembly.BaumConnesProperty",
@@ -1067,6 +1079,9 @@
     "BC4lean.Assembly.indexedAssemblyProperty_iff_cofinalComparison",
     "BC4lean.Assembly.modelAssemblyProperty_iff_baumConnesProperty",
     "BC4lean.Chapter8Examples.FiniteGroupPoint",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton",
+    "BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq",
     "BC4lean.Chapter8Examples.assemblyHom_eq_compactSpaceAssembly",
     "BC4lean.Chapter8Examples.baumConnesProperty_unit",
     "BC4lean.Chapter8Examples.compactSpaceGroupEquiv",
@@ -1091,9 +1106,17 @@
     "BC4lean.KKTheory.FinitePointCutoff.cutoff_apply",
     "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom",
     "BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging",
+    "BC4lean.KKTheory.GroupRestriction.cycleComap",
+    "BC4lean.KKTheory.GroupRestriction.evenComap",
+    "BC4lean.KKTheory.GroupRestriction.oddComap",
+    "BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv",
+    "BC4lean.KKTheory.ScalarUnitProjection.identity_universe",
     "BC4lean.KKTheory.ScalarUnitProjection.relativeMap_nonunitalUnitProjection",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity",
+    "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso",
+    "BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction",
+    "BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction",
     "BC4lean.KKTheory.UnitPointCutoff.cutoffKKClass_eq_homClass",
     "BC4lean.KKTheory.UnitPointCutoff.pointCZeroEquiv",
     "BC4lean.KKTheory.UnitPointCutoff.reducedCutoffProjection_eq_scalarCoefficient",
@@ -1343,6 +1366,72 @@
         "BC4lean.Chapter8Examples.unitAssemblyAddEquiv"
       ],
       "explicit_checked_proof": true
+    },
+    "prop:kk-group-restriction": {
+      "statement_kind": "proposition",
+      "ready": true,
+      "notready": false,
+      "leanok": true,
+      "required_declarations": [
+        "BC4lean.KKTheory.GroupRestriction.cycleComap",
+        "BC4lean.KKTheory.GroupRestriction.evenComap",
+        "BC4lean.KKTheory.GroupRestriction.oddComap",
+        "BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv"
+      ],
+      "linked_declarations": [
+        "BC4lean.KKTheory.GroupRestriction.cycleComap",
+        "BC4lean.KKTheory.GroupRestriction.evenComap",
+        "BC4lean.KKTheory.GroupRestriction.oddComap",
+        "BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv"
+      ],
+      "explicit_checked_proof": true
+    },
+    "prop:subsingleton-scalar-descent-calibration": {
+      "statement_kind": "proposition",
+      "ready": true,
+      "notready": false,
+      "leanok": true,
+      "required_declarations": [
+        "BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction",
+        "BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction"
+      ],
+      "linked_declarations": [
+        "BC4lean.KKTheory.SubsingletonScalarDescent.evenClass_coefficientRestriction",
+        "BC4lean.KKTheory.SubsingletonScalarDescent.oddClass_coefficientRestriction"
+      ],
+      "explicit_checked_proof": true
+    },
+    "prop:scalar-unit-projection-identity-universe": {
+      "statement_kind": "proposition",
+      "ready": true,
+      "notready": false,
+      "leanok": true,
+      "required_declarations": [
+        "BC4lean.KKTheory.ScalarUnitProjection.identity_universe",
+        "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe"
+      ],
+      "linked_declarations": [
+        "BC4lean.KKTheory.ScalarUnitProjection.identity_universe",
+        "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity_universe"
+      ],
+      "explicit_checked_proof": true
+    },
+    "thm:baum-connes-subsingleton": {
+      "statement_kind": "theorem",
+      "ready": true,
+      "notready": false,
+      "leanok": true,
+      "required_declarations": [
+        "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv",
+        "BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton",
+        "BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq"
+      ],
+      "linked_declarations": [
+        "BC4lean.Chapter8Examples.SubsingletonAssembly.assemblyAddEquiv",
+        "BC4lean.Chapter8Examples.SubsingletonAssembly.baumConnesProperty_of_subsingleton",
+        "BC4lean.Chapter8Examples.SubsingletonAssembly.reducedAssemblyHom_eq"
+      ],
+      "explicit_checked_proof": true
     }
   },
   "statement_definition_declarations": {
@@ -1353,5 +1442,5 @@
   "notready_targets": [
     "conj:baum-connes"
   ],
-  "expected_type_examples": 76
+  "expected_type_examples": 93
 }

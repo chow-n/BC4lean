@@ -2,8 +2,8 @@
   "schema": "chapter8.actual.process.v1",
   "status": "completed",
   "stage": "retained-preservation",
-  "run_id": "2c8a2ba813744beb94af3fb5e50b3688",
-  "parent_pid": 47217,
+  "run_id": "d6fbc28e94b9427ba3be7e8d9938fed8",
+  "parent_pid": 27885,
   "source_root": "/private/tmp/bc4lean-release",
   "command": [
     "/opt/homebrew/opt/python@3.14/bin/python3.14",
@@ -14,14 +14,14 @@
     "--new-inventory",
     "docs/audits/chapter8/inventory.json",
     "--output",
-    "/var/folders/f_/8k31l9s5717dlhd0klszmvlh0000gn/T/chapter8-retained-actual-gejqflrz/receipt.json"
+    "/var/folders/f_/8k31l9s5717dlhd0klszmvlh0000gn/T/chapter8-retained-actual-r53wnftx/receipt.json"
   ],
-  "started_utc": "2026-10-30T19:02:56.807365+00:00",
-  "pid": 48148,
-  "process_group": 48148,
+  "started_utc": "2026-10-30T20:12:27.777063+00:00",
+  "pid": 28511,
+  "process_group": 28511,
   "exit_code": 0,
-  "finished_utc": "2026-10-30T19:02:58.017387+00:00",
+  "finished_utc": "2026-10-30T20:12:29.483846+00:00",
   "owned_process_group_quiescent": true,
-  "stdout_stderr_sha256": "3fc940809a4742d61f2610dab8c2117ae9a72c45f7c6d909228c8083102acc10",
-  "receipt_sha256": "50ff4cf0ece30ddb7340b6012951f9daf658aeec93ce3b8a6ba083ad2a7c1e93"
+  "stdout_stderr_sha256": "84b62705ab1dfca15ee2c755f78ece0c5283ac44803d738e9b685c86591d625b",
+  "receipt_sha256": "1e8ff10f74bb9b7a823cc966bc896b30d543b4fe4f9421762e0697cab7b0217b"
 }
