@@ -8,6 +8,7 @@ import BC4lean.UnitScalarDescent
 import BC4lean.ScalarUnitProjection
 import BC4lean.UnitPointCutoff
 import BC4lean.UnitAssemblyEquivalence
+import BC4lean.FinitePointCutoff
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -15,7 +16,8 @@ set_option warningAsError true
 
 /-!
 Independent source-only expected mathematical signatures, prepared without a
-Lean invocation. The imports denote the ten proposed final module locations.
+Lean invocation. The first ten imports denote the ten proposed final module
+locations; the last one supplies the finite-point cutoff endpoints.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -455,6 +457,106 @@ example (c : Cutoff.CutoffFunction Unit X) : Assembly.cutoffKKClass Unit X c =
       (scalarCrossedCoefficient X) (fun _ _ => rfl) := cutoffKKClass_eq_homClass X c
 
 end UnitPointCutoff
+
+section FinitePointCutoff
+open BC4lean.KKTheory.FinitePointCutoff
+open BC4lean.KKTheory.GroupUniverseParityGroup
+open BC4lean.KKTheory.GroupUniverseParityFunctoriality
+
+-- endpoint: BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom (definition body)
+example {B : Type uB} [NonUnitalCStarAlgebra B] (p : B) (hp : IsStarProjection p) (z : ℂ) :
+    projectionScalarHom p hp z = z • p := rfl
+
+variable (Γ : Type) [Group Γ] [Countable Γ] [TopologicalSpace Γ] [DiscreteTopology Γ]
+  (X : Type) [TopologicalSpace X] [MulAction Γ X]
+  [ContinuousConstSMul Γ X] [LocallyCompactSpace X] [T2Space X]
+  [SecondCountableTopology X] [ProperSMul Γ X]
+
+local instance cZeroSeparableForFiniteCutoff : TopologicalSpace.SeparableSpace C₀(X, ℂ) :=
+  TopologicalKHomology.cZero_separableSpace
+
+-- endpoint: BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass
+example (c : Cutoff.CutoffFunction Γ X)
+    (f : ℂ →⋆ₙₐ[ℂ] ReducedCrossedProduct (CZero.action Γ (X := X)))
+    (hf : f 1 = Cutoff.reducedCutoffProjection c) :
+    Assembly.cutoffKKClass Γ X c =
+      GroupUniverseParityHomCycle.homClass.{0,0,0,0}
+        («α» := (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ))
+        («β» := CStarAlgebraAction.trivial) f (fun _ _ => rfl) :=
+  cutoffKKClass_eq_homClass Γ X c f hf
+
+-- endpoint: BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback
+example (p : Bool) (c : Cutoff.CutoffFunction Γ X)
+    (f : ℂ →⋆ₙₐ[ℂ] ReducedCrossedProduct (CZero.action Γ (X := X)))
+    (hf : f 1 = Cutoff.reducedCutoffProjection c)
+    (y : KKParityGroup.{0,0,0,0} p
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Unit
+        (ReducedCrossedProduct (CZero.action Γ (X := X))))
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Unit
+        (ReducedCrossedProduct (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ)))) :
+    Assembly.cutoffProductHom Γ X p c y =
+      sourcePullback.{0,0,0,0,0} (Γ := Unit) (A := ℂ)
+        («α» := CStarAlgebraAction.trivial) («β» := CStarAlgebraAction.trivial)
+        («γ» := CStarAlgebraAction.trivial) p f (fun _ _ => rfl) y :=
+  cutoffProductHom_eq_sourcePullback Γ X p c f hf y
+
+end FinitePointCutoff
+
+section FinitePointAveraging
+open BC4lean.KKTheory.FinitePointCutoff
+open BC4lean.KKTheory.GroupUniverseParityGroup
+open BC4lean.KKTheory.GroupUniverseParityFunctoriality
+variable (Γ : Type) [Group Γ] [Finite Γ] [TopologicalSpace Γ] [DiscreteTopology Γ]
+
+local instance pointCZeroSeparableForAveraging :
+    TopologicalSpace.SeparableSpace C₀(FiniteGroupPoint.{0}, ℂ) :=
+  TopologicalKHomology.cZero_separableSpace
+
+-- endpoint: BC4lean.KKTheory.FinitePointCutoff.cutoff_apply
+example (c : Cutoff.CutoffFunction Γ FiniteGroupPoint.{0}) (x : FiniteGroupPoint.{0}) :
+    c x = (Real.sqrt (Nat.card Γ))⁻¹ := cutoff_apply Γ c x
+
+-- endpoint: BC4lean.KKTheory.FinitePointCutoff.averaging
+example : ReducedCrossedProduct (CZero.action Γ (X := FiniteGroupPoint.{0})) := averaging Γ
+
+-- endpoint: BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging
+example (c : Cutoff.CutoffFunction Γ FiniteGroupPoint.{0}) :
+    Cutoff.reducedCutoffProjection c = averaging Γ :=
+  reducedCutoffProjection_eq_averaging Γ c
+
+-- endpoint: BC4lean.KKTheory.FinitePointCutoff.averaging_coe
+example [Fintype Γ] :
+    (averaging Γ : AdjointableMap C₀(FiniteGroupPoint.{0}, ℂ)
+        (ReducedCrossedHilbertModule C₀(FiniteGroupPoint.{0}, ℂ) Γ)
+        (ReducedCrossedHilbertModule C₀(FiniteGroupPoint.{0}, ℂ) Γ)) =
+      ∑ g : Γ, reducedCrossedGenerator (CZero.action Γ)
+        (UnitPointCutoff.scalarToCZero FiniteGroupPoint.{0} ((Nat.card Γ : ℂ)⁻¹)) g :=
+  averaging_coe Γ
+
+-- endpoint: BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass
+example (c : Cutoff.CutoffFunction Γ FiniteGroupPoint.{0}) :
+    Assembly.cutoffKKClass Γ FiniteGroupPoint.{0} c =
+      GroupUniverseParityHomCycle.homClass.{0,0,0,0}
+        («α» := (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ))
+        («β» := CStarAlgebraAction.trivial)
+        (projectionScalarHom (averaging Γ) (averaging_isStarProjection Γ)) (fun _ _ => rfl) :=
+  cutoffKKClass_eq_averagingHomClass Γ c
+
+-- endpoint: BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback
+example (p : Bool) (c : Cutoff.CutoffFunction Γ FiniteGroupPoint.{0})
+    (y : KKParityGroup.{0,0,0,0} p
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Unit
+        (ReducedCrossedProduct (CZero.action Γ (X := FiniteGroupPoint.{0}))))
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Unit
+        (ReducedCrossedProduct (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ)))) :
+    Assembly.cutoffProductHom Γ FiniteGroupPoint.{0} p c y =
+      sourcePullback.{0,0,0,0,0} (Γ := Unit) (A := ℂ)
+        («α» := CStarAlgebraAction.trivial) («β» := CStarAlgebraAction.trivial)
+        («γ» := CStarAlgebraAction.trivial) p
+        (projectionScalarHom (averaging Γ) (averaging_isStarProjection Γ)) (fun _ _ => rfl) y :=
+  cutoffProductHom_eq_averagingPullback Γ p c y
+
+end FinitePointAveraging
 
 section UnitAssembly
 open BC4lean.KKTheory.UnitPointCutoff

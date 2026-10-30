@@ -7,6 +7,8 @@
     "BC4lean.BaumConnesProperty",
     "BC4lean.CompactModelColimitCalibration",
     "BC4lean.FiniteGroupPointCalibration",
+    "BC4lean.FinitePointCutoff",
+    "BC4lean.FiniteReducedGroupCStar",
     "BC4lean.ScalarUnitProjection",
     "BC4lean.TrivialAnalyticCalibration",
     "BC4lean.UnitAssemblyEquivalence",
@@ -24,7 +26,7 @@
     "BC4lean.Assembly.BaumConnesConjecture": "definition",
     "BC4lean.Chapter8Examples.baumConnesProperty_unit": "theorem"
   },
-  "expected_type_examples": 67,
+  "expected_type_examples": 76,
   "targets": {
     "def:baum-connes-property": {
       "status": "implemented",
@@ -130,6 +132,22 @@
         "BC4lean.KKTheory.UnitPointCutoff.reducedCutoffProjection_eq_scalarCoefficient"
       ]
     },
+    "prop:finite-point-cutoff-averaging": {
+      "status": "implemented",
+      "statement_kind": "proposition",
+      "description": "Constructed mathematical endpoints; native verification is recorded separately by the strict audit.",
+      "required_declarations": [
+        "BC4lean.KKTheory.FinitePointCutoff.averaging",
+        "BC4lean.KKTheory.FinitePointCutoff.averaging_coe",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback",
+        "BC4lean.KKTheory.FinitePointCutoff.cutoff_apply",
+        "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom",
+        "BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging"
+      ]
+    },
     "prop:unit-scalar-descent-calibration": {
       "status": "implemented",
       "statement_kind": "proposition",
@@ -207,6 +225,15 @@
     "BC4lean.Chapter8Examples.unitPointSourceEquiv",
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv",
     "BC4lean.Chapter8Examples.wholeCompactPiece",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging_coe",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoff_apply",
+    "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom",
+    "BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging",
     "BC4lean.KKTheory.ScalarUnitProjection.relativeMap_nonunitalUnitProjection",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso",
@@ -274,6 +301,15 @@
     "BC4lean.Chapter8Examples.unitPointSourceEquiv",
     "BC4lean.Chapter8Examples.unitScalarAnalyticEquiv",
     "BC4lean.Chapter8Examples.wholeCompactPiece",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging_coe",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoff_apply",
+    "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom",
+    "BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging",
     "BC4lean.KKTheory.ScalarUnitProjection.relativeMap_nonunitalUnitProjection",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso",
@@ -317,6 +353,15 @@
     "BC4lean.Chapter8Examples.trivialAnalyticK1Equiv_unitary",
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
     "BC4lean.Chapter8Examples.wholeCompactPiece",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging",
+    "BC4lean.KKTheory.FinitePointCutoff.averaging_coe",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_averagingHomClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffKKClass_eq_homClass",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_averagingPullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoffProductHom_eq_sourcePullback",
+    "BC4lean.KKTheory.FinitePointCutoff.cutoff_apply",
+    "BC4lean.KKTheory.FinitePointCutoff.projectionScalarHom",
+    "BC4lean.KKTheory.FinitePointCutoff.reducedCutoffProjection_eq_averaging",
     "BC4lean.KKTheory.ScalarUnitProjection.relativeMap_nonunitalUnitProjection",
     "BC4lean.KKTheory.ScalarUnitProjection.scalarKKOperatorK0AddEquiv_identity",
     "BC4lean.KKTheory.ScalarUnitProjection.unitRelativeCycleIso",
@@ -332,5 +377,5 @@
     "BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso": "definition",
     "BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso": "definition"
   },
-  "coverage_note": "The 67 independent typed examples cover 65 endpoints; 40 blueprint links contain 38 of those plus two explicit coefficient-restriction cycle-isomorphism data definitions. These two definitions receive exact native kind/origin/axiom checks and semantic source review, without a separate expected-type example."
+  "coverage_note": "The 76 independent typed examples cover 74 endpoints; 49 blueprint links contain 47 of those plus two explicit coefficient-restriction cycle-isomorphism data definitions. These two definitions receive exact native kind/origin/axiom checks and semantic source review, without a separate expected-type example."
 }
