@@ -4,8 +4,16 @@ COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.BaumConnesProperty"]
 Build completed successfully (4186 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.BaumConnesInvariance"]
 Build completed successfully (4188 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.CircleProjection"]
+Build completed successfully (2993 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.CompactModelColimitCalibration"]
 Build completed successfully (4186 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.EuclideanLocalization"]
+Build completed successfully (2883 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.EuclideanSL"]
+Build completed successfully (1558 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.CircleWinding"]
+Build completed successfully (3259 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteGroupPointCalibration"]
 Build completed successfully (4187 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteReducedGroupCStar"]
@@ -16,6 +24,16 @@ COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteScalarCrossed"
 Build completed successfully (3012 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.GroupIsoReducedCStar"]
 Build completed successfully (3717 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.IntFourier"]
+Build completed successfully (3072 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.IntWinding"]
+Build completed successfully (3263 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.IntK1"]
+Build completed successfully (3264 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.IntegerGroup"]
+Build completed successfully (1261 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.IntegerLineModel"]
+Build completed successfully (4188 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.KKGroupRestriction"]
 Build completed successfully (3106 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.GroupIsoCrossedProduct"]
@@ -66,6 +84,8 @@ COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.ScalarOperatorK0"]
 Build completed successfully (3022 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteGroupOperatorK"]
 Build completed successfully (3099 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.IntK0"]
+Build completed successfully (3094 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.ScalarOperatorKNonunital"]
 Build completed successfully (3066 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.ScalarUnitProjection"]
@@ -124,10 +144,11 @@ COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteAssemblyUnit"]
 Build completed successfully (4218 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.CosetAssemblyUnit"]
 Build completed successfully (4276 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.IntPointClass"]
+Build completed successfully (4305 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.OrderTwoAssemblyEquivalence"]
 Build completed successfully (4226 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.SubsingletonAssemblyEquivalence"]
 Build completed successfully (4211 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean"]
-✔ [4534/4535] Built BC4lean (216s)
-Build completed successfully (4535 jobs).
+Build completed successfully (4582 jobs).
