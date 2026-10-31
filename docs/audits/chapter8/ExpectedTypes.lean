@@ -22,6 +22,9 @@ import BC4lean.FiniteAbelianAssemblyEquivalence
 import BC4lean.CosetAssemblyUnit
 import BC4lean.FiniteAssemblyEquivalence
 import BC4lean.GroupIsoBaumConnes
+import BC4lean.IntK1
+import BC4lean.IntPointClass
+import BC4lean.IntegerLineModel
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -36,8 +39,10 @@ K-group endpoints, the next two the endpoints for groups of order two, the
 next one the K-groups of finite groups, and the last two the assembly of
 character classes of finite groups and the endpoints for finite abelian
 groups; the next one the assembly of the coset space of a finite subgroup,
-the next one the endpoints for every finite group, and the very last one
-invariance under group isomorphism.
+the next one the endpoints for every finite group, the next one
+invariance under group isomorphism, and the last three the K-theory of the
+group of integers, the real line as its universal proper model, and the even
+assembly generator for the integers.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -1422,5 +1427,179 @@ example :
   Assembly.baumConnesProperty_congr e
 
 end GroupIsomorphismInvariance
+
+section CocompactCalibration
+open BC4lean.Chapter8Examples
+variable (Γ : Type uΓ) [Group Γ] [Countable Γ]
+  [TopologicalSpace Γ] [DiscreteTopology Γ]
+  (X : Type uX) [TopologicalSpace X] [MulAction Γ X]
+  [CompactSpace (Quotient (MulAction.orbitRel Γ X))]
+  [ContinuousConstSMul Γ X] [LocallyCompactSpace X] [T2Space X]
+  [SecondCountableTopology X] [ProperSMul Γ X]
+
+-- endpoint: BC4lean.Chapter8Examples.wholeCocompactPiece
+example : CocompactPiece Γ X := wholeCocompactPiece Γ X
+
+-- endpoint: BC4lean.Chapter8Examples.cocompactSpaceGroupEquiv
+example (p : Bool) : TopologicalKHomology.group (Γ := Γ) (X := X) p ≃+
+    TopologicalKHomology.spaceGroup p Γ X := cocompactSpaceGroupEquiv Γ X p
+
+-- endpoint: BC4lean.Chapter8Examples.assemblyHom_eq_cocompactSpaceAssembly
+example (p : Bool) (c : Cutoff.CutoffFunction Γ X)
+    (x : TopologicalKHomology.group (Γ := Γ) (X := X) p) :
+    Assembly.assemblyHom Γ X p x =
+      Assembly.spaceAssemblyHom Γ X p c (cocompactSpaceGroupEquiv Γ X p x) :=
+  assemblyHom_eq_cocompactSpaceAssembly Γ X p c x
+
+end CocompactCalibration
+
+section IntegersKTheory
+
+-- endpoint: BC4lean.fourierUnitary
+example : L2Group (Multiplicative ℤ) ≃ₗᵢ[ℂ] L2Circle := fourierUnitary
+
+-- endpoint: BC4lean.fourierStarEquiv
+example : ReducedGroupCStar (Multiplicative ℤ) ≃⋆ₐ[ℂ] C(AddCircle (1 : ℝ), ℂ) := fourierStarEquiv
+
+-- endpoint: BC4lean.fourierStarEquiv_lambda
+-- The regular operator `λ(n)` goes to the character `fourier n`.
+example (n : ℤ) :
+    fourierStarEquiv ⟨regularOperator (Multiplicative.ofAdd n), regularOperator_mem_reducedAlgebra _⟩ =
+      fourier n :=
+  fourierStarEquiv_lambda n
+
+-- endpoint: BC4lean.norm_fourierStarEquiv
+example (a : ReducedGroupCStar (Multiplicative ℤ)) : ‖fourierStarEquiv a‖ = ‖a‖ :=
+  norm_fourierStarEquiv a
+
+-- endpoint: BC4lean.reducedK0IntEquiv
+example : ReducedK0 (Multiplicative ℤ) ≃+ ℤ := reducedK0IntEquiv
+
+-- endpoint: BC4lean.reducedK0IntEquiv_one
+example : reducedK0IntEquiv reducedK0One = 1 := reducedK0IntEquiv_one
+
+-- endpoint: BC4lean.windingK1
+example : ReducedK1 (Multiplicative ℤ) →+ ℤ := windingK1
+
+-- endpoint: BC4lean.windingK1_lambdaOne
+example : windingK1 lambdaOneK1 = 1 := windingK1_lambdaOne
+
+-- endpoint: BC4lean.windingK1_surjective
+example : Function.Surjective windingK1 := windingK1_surjective
+
+-- endpoint: BC4lean.windingK1_injective
+example : Function.Injective windingK1 := windingK1_injective
+
+-- endpoint: BC4lean.reducedK1IntEquiv
+example : ReducedK1 (Multiplicative ℤ) ≃+ ℤ := reducedK1IntEquiv
+
+-- endpoint: BC4lean.reducedK1IntEquiv_lambdaOne
+example : reducedK1IntEquiv lambdaOneK1 = 1 := reducedK1IntEquiv_lambdaOne
+
+-- Every class is a multiple of `[λ(1)]`.
+example (x : ReducedK1 (Multiplicative ℤ)) : x = windingK1 x • lambdaOneK1 :=
+  reducedK1IntEquiv.injective (by
+    rw [map_zsmul, reducedK1IntEquiv_lambdaOne, smul_eq_mul, mul_one]
+    rfl)
+
+end IntegersKTheory
+
+section IntegersK0Projection
+
+local instance (priority := high) intCircleOrder : PartialOrder C(AddCircle (1 : ℝ), ℂ) :=
+  CStarAlgebra.spectralOrder _
+local instance (priority := high) intCircleStarOrder : StarOrderedRing C(AddCircle (1 : ℝ), ℂ) :=
+  CStarAlgebra.spectralOrderedRing _
+local instance (priority := high) intScalarOrder : PartialOrder ℂ := CStarAlgebra.spectralOrder _
+local instance (priority := high) intScalarStarOrder : StarOrderedRing ℂ :=
+  CStarAlgebra.spectralOrderedRing _
+local instance (priority := high) intReducedOrder : PartialOrder (ReducedGroupCStar (Multiplicative ℤ)) :=
+  CStarAlgebra.spectralOrder _
+local instance (priority := high) intReducedStarOrder :
+    StarOrderedRing (ReducedGroupCStar (Multiplicative ℤ)) :=
+  CStarAlgebra.spectralOrderedRing _
+
+-- endpoint: BC4lean.reducedK0IntEquiv_apply_projection
+-- The class of a projection goes to the rank of its value at `0` on the circle.
+example (p : FiniteProjection (ReducedGroupCStar (Multiplicative ℤ))) :
+    reducedK0IntEquiv (k0Projection p) =
+      k0ScalarEquiv (k0Projection (FiniteProjection.map
+        (circleEv0.comp fourierStarEquiv.toStarAlgHom) p)) :=
+  reducedK0IntEquiv_apply_projection p
+
+end IntegersK0Projection
+
+section IntegerLine
+open BC4lean.Chapter8Examples.IntegerLine
+
+-- endpoint: BC4lean.Chapter8Examples.IntegerLine.IntLine
+example : IntLine = ℝ := rfl
+
+-- endpoint: BC4lean.Chapter8Examples.IntegerLine.intLine_fixedPointCriterion
+example : FixedPointCriterion (Multiplicative ℤ) IntLine := intLine_fixedPointCriterion
+
+-- endpoint: BC4lean.Chapter8Examples.IntegerLine.intLine_proper
+example : ProperSMul (Multiplicative ℤ) IntLine := intLine_proper
+
+-- endpoint: BC4lean.Chapter8Examples.IntegerLine.intLine_cocompact
+example : CompactSpace (Quotient (MulAction.orbitRel (Multiplicative ℤ) IntLine)) := intLine_cocompact
+
+-- endpoint: BC4lean.Chapter8Examples.IntegerLine.intLineHomotopyEquiv
+example : EquivariantHomotopyEquiv (Multiplicative ℤ)
+    (LabeledOrbitTelescope.Model (Multiplicative ℤ)) IntLine := intLineHomotopyEquiv
+
+-- endpoint: BC4lean.Chapter8Examples.IntegerLine.intLineSpaceGroupEquiv
+example (p : Bool) : TopologicalKHomology.group (Γ := Multiplicative ℤ) (X := IntLine) p ≃+
+    TopologicalKHomology.spaceGroup p (Multiplicative ℤ) IntLine := intLineSpaceGroupEquiv p
+
+-- endpoint: BC4lean.Chapter8Examples.IntegerLine.topologicalLineEquiv
+example (p : Bool) : TopologicalKHomology.topologicalGroup p (Multiplicative ℤ) ≃+
+    TopologicalKHomology.spaceGroup p (Multiplicative ℤ) IntLine := topologicalLineEquiv p
+
+-- endpoint: BC4lean.Chapter8Examples.IntegerLine.reducedAssemblyHom_line_formula
+example (p : Bool) (x : TopologicalKHomology.topologicalGroup p (Multiplicative ℤ)) :
+    Assembly.reducedAssemblyHom (Multiplicative ℤ) p x =
+      Assembly.spaceAssemblyHom (Multiplicative ℤ) IntLine p intLineCutoff (topologicalLineEquiv p x) :=
+  reducedAssemblyHom_line_formula p x
+
+-- endpoint: BC4lean.Chapter8Examples.IntegerLine.reducedAssemblyHom_line_formula_anyCutoff
+example (p : Bool) (c : Cutoff.CutoffFunction (Multiplicative ℤ) IntLine)
+    (x : TopologicalKHomology.topologicalGroup p (Multiplicative ℤ)) :
+    Assembly.reducedAssemblyHom (Multiplicative ℤ) p x =
+      Assembly.spaceAssemblyHom (Multiplicative ℤ) IntLine p c (topologicalLineEquiv p x) :=
+  reducedAssemblyHom_line_formula_anyCutoff p c x
+
+end IntegerLine
+
+section IntegerEvenAssembly
+open BC4lean.Chapter8Examples.CosetAssemblyUnit BC4lean.Chapter8Examples.IntPointClass
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_cosetUnitClass_bot
+example (Γ : Type) [Group Γ] [Countable Γ] [TopologicalSpace Γ] [DiscreteTopology Γ]
+    [Fintype (⊥ : Subgroup Γ)] :
+    Assembly.reducedAssemblyHom Γ false (cosetUnitClass Γ (⊥ : Subgroup Γ)) =
+      letI := CStarAlgebra.spectralOrder (ReducedGroupCStar Γ)
+      letI := CStarAlgebra.spectralOrderedRing (ReducedGroupCStar Γ)
+      k0Projection (FiniteProjection.ofProjection
+        (Projection.one : MatrixProjection (ReducedGroupCStar Γ) Unit)) :=
+  reducedAssemblyHom_cosetUnitClass_bot Γ
+
+-- endpoint: BC4lean.Chapter8Examples.IntPointClass.pointClass
+example : TopologicalKHomology.topologicalGroup false (Multiplicative ℤ) := pointClass
+
+-- endpoint: BC4lean.Chapter8Examples.IntPointClass.reducedK0IntEquiv_assembly_pointClass
+example : reducedK0IntEquiv (Assembly.reducedAssemblyHom (Multiplicative ℤ) false pointClass) = 1 :=
+  reducedK0IntEquiv_assembly_pointClass
+
+-- endpoint: BC4lean.Chapter8Examples.IntPointClass.reducedAssemblyHom_even_surjective
+example : Function.Surjective (Assembly.reducedAssemblyHom (Multiplicative ℤ) false) :=
+  reducedAssemblyHom_even_surjective
+
+-- endpoint: BC4lean.Chapter8Examples.IntPointClass.pointClass_primitive
+example (n : ℤ) (x : TopologicalKHomology.topologicalGroup false (Multiplicative ℤ))
+    (h : pointClass = n • x) : IsUnit n :=
+  pointClass_primitive n x h
+
+end IntegerEvenAssembly
 
 end Chapter8ExpectedTypes

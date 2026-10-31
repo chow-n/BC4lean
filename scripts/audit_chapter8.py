@@ -32,7 +32,7 @@ RETAINED = "scripts/check_chapter7_retained.py"
 RETAINED_PROVIDER_SHA = "dcc7a783f842e8196b71bd6e1499e00821e98214e8efbc81bc648ca41628d7d8"
 # Candidate independently reviewed formulas. A native syntax repair must retain
 # the actual assembly signatures and receive a new explicit reviewed binding.
-EXPECTED_TYPES_SHA = "c52ca9a2e738e6d02b21a24b1eaca1fa9eeae152163647c7d1057af5a00fc86d"
+EXPECTED_TYPES_SHA = "4caeff14c8eab4589265e3d2bee0bc8366d114648463da43fa128127ef446750"
 SOURCE7 = "4daf13f6be649ef3e7f9fe90122bcbee4707b1b2"
 PUBLICATION7 = "e1afa3d693e0a95cd568f517578d109995d80442"
 PREFIX7_SHA = "309158d81f7d7994edab43ce59a9e7820f1fa5c5f364321cd3bf6f327c7f00bc"
@@ -65,7 +65,9 @@ MODULES = sorted("BC4lean." + name for name in (
     "GreenJulgRepresentative", "FinitePointDescentRange", "FiniteScalarCrossed", "GreenJulgPoint",
     "GreenJulgPointLeft", "FiniteAssemblyEquivalence", "GroupIsoReducedCStar",
     "GroupIsoCrossedProduct", "GroupIsoDescent", "GroupIsoModel", "GroupIsoKHomology",
-    "GroupIsoBaumConnes"))
+    "GroupIsoBaumConnes", "IntegerGroup", "IntegerLineModel", "IntFourier", "CircleProjection",
+    "IntK0", "EuclideanSL", "EuclideanLocalization", "CircleWinding", "IntWinding", "IntK1",
+    "IntPointClass"))
 NAME = re.compile(r"BC4lean(?:\.[A-Za-z_][A-Za-z0-9_']*)+\Z")
 HASH = re.compile(r"[0-9a-f]{64}\Z")
 REV = re.compile(r"[0-9a-f]{40}\Z")
