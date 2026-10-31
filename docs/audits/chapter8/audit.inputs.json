@@ -1,13 +1,13 @@
 {
-  "run_id": "86c9da26abfe403cbe57ae56e4be53d9",
-  "audit_started_utc": "2026-10-31T05:23:18.668469+00:00",
+  "run_id": "b55cb4419d974df38f2bdc6a1c74ef90",
+  "audit_started_utc": "2026-10-31T07:41:57.902403+00:00",
   "schema": "chapter8.actual.native-milestone-audit.v1",
   "schema_version": 1,
   "status": "generated_only",
   "milestone_verified": false,
   "chapter_complete": false,
   "general_conjecture_proved": false,
-  "source_revision": "8c22a0a7c72bf29fe9f784190f545acfff43b767",
+  "source_revision": "1a3214902390cd1da3b13d034fa32cea4d83c2cd",
   "source_root_provenance": "/private/tmp/bc4lean-release",
   "audit_output_provenance": "/private/tmp/bc4lean-release/docs/audits/chapter8/audit.json",
   "query_source_location": "/private/tmp/bc4lean-release/docs/audits/chapter8/audit.lean",
@@ -17,6 +17,10 @@
     "BC4lean.BaumConnesInvariance",
     "BC4lean.BaumConnesProperty",
     "BC4lean.CompactModelColimitCalibration",
+    "BC4lean.CosetAssembly",
+    "BC4lean.CosetAssemblyUnit",
+    "BC4lean.CosetCompressedDescent",
+    "BC4lean.CosetUnitCycle",
     "BC4lean.FiniteAbelianAssemblyEquivalence",
     "BC4lean.FiniteAbelianCharacterProjection",
     "BC4lean.FiniteAbelianCharacterSplit",
@@ -67,6 +71,10 @@
     "BC4lean.BaumConnesInvariance",
     "BC4lean.BaumConnesProperty",
     "BC4lean.CompactModelColimitCalibration",
+    "BC4lean.CosetAssembly",
+    "BC4lean.CosetAssemblyUnit",
+    "BC4lean.CosetCompressedDescent",
+    "BC4lean.CosetUnitCycle",
     "BC4lean.FiniteAbelianAssemblyEquivalence",
     "BC4lean.FiniteAbelianCharacterProjection",
     "BC4lean.FiniteAbelianCharacterSplit",
@@ -117,7 +125,7 @@
     ".github/workflows/blueprint.yml": "184a8bda2d3b8fdd6aede42e597e0b2d4ff85958920136146516be388c91028a",
     ".github/workflows/chapter7.yml": "852c69b64e80bb848013ae1b93ef2cfe2406087324f090ce6b6cc4dd41a40d12",
     ".github/workflows/chapter8.yml": "96cd3998912bce3bd6f9ec873af60e4af612411dd518e9206417b88dc18e9b66",
-    "BC4lean.lean": "62907bcf4d84ab70659f6ba8f0790859e2e33582294f10044e2e759f4a804e14",
+    "BC4lean.lean": "8204121a4358cbfa7743100240e193021cb01d32027467053aa493dcf79bb4ea",
     "BC4lean/AdjointableAlgebra.lean": "605c5412abbf8e01eeeb54cf2256f6a8adb65aeeaff03e04bd35be5d8b7770a0",
     "BC4lean/AdjointableComplete.lean": "d7ea3b4428a6baca51c48f8264e590dd2809f8b77833355ee333e41dc4db930c",
     "BC4lean/AdjointableCompletion.lean": "4af00b2952a0fd998816c1fc37bdbd9b4b46a17de7a7a84b46671b037924e098",
@@ -274,6 +282,10 @@
     "BC4lean/ContinuousMapFiniteApproximation.lean": "96dcb77f668bd26fd96ac09e18a8b00e86b72093a3ccc25ee6677c3f712a2173",
     "BC4lean/ContractiveModuleCoordinateAnalysis.lean": "2e8a3393085bd4cf524954f733dca66af6cf082d5f69de96028a4a9328a1aa74",
     "BC4lean/ControlledTelescopeHomotopy.lean": "6ab8bc5ea5e09b22ac6f7ee332e926df1e16ed84b356a5e6106ef5e18804a21b",
+    "BC4lean/CosetAssembly.lean": "1ad39af6c115b0ec5a2119b73467bb6e7f7cd8bc389db5fd069b30a23ad10332",
+    "BC4lean/CosetAssemblyUnit.lean": "c1e309a354e097b6398046189fd34424aa6ba2ca1842e2c9728602fdad80e419",
+    "BC4lean/CosetCompressedDescent.lean": "30b500c83403f5ad46884f60c0c0718fd8f10d2c58414888c65ddd14d6ec5870",
+    "BC4lean/CosetUnitCycle.lean": "52d30672a5b16f6daedc8f55fc257a993f084100dcaa1f9a8c69aa4e0f22906d",
     "BC4lean/CountableHilbertModuleFibre.lean": "484193a8d3163eb7cc186ce0804483b0de6f9e2e50e417cbf4d4369d2d70f3a3",
     "BC4lean/CountableHilbertModuleSum.lean": "f67ad03e68c3ae24fef4013be8c1ca4bc1e6f0e07f7ecafe96681b979525100a",
     "BC4lean/CountableHilbertModuleTensor.lean": "3a4643ac96dfa78e8f9a86076acd911dc254c8c8be6cc378634c2239f50b5ebf",
@@ -1099,7 +1111,7 @@
     "blueprint/src/build_web.py": "79ecb090525b27ad4cd28657a0cc92aa63e55b9b2ed4a43e558ecb826dee92ee",
     "blueprint/src/parts/06-topological-k-homology.tex": "958d7e70629bb58af57fdec3c4ea9ef02e44d85b57fc15cc83f4b50b41552075",
     "blueprint/src/parts/07-assembly-map.tex": "2058e2395df58395255d1f2ab987daa6b7c5d4c452ecd1f75c6aeb7d45bfc4f3",
-    "blueprint/src/parts/08-conjecture-and-examples.tex": "c46ab73cdbdc40a463f15e4e7db0cca19047d4897649bcafc73ab5a5b3a57d10",
+    "blueprint/src/parts/08-conjecture-and-examples.tex": "b0140102c19e31eb4c0ffd4c959003b1a4caddb9a6e6186de3e63c5192668223",
     "docs/CHAPTER7_COMPLETION.md": "25c1174b9fa857eaf55017be8a00c5642e919c9e9b2b36276b7e84944d42eb2a",
     "docs/CHAPTER7_VERIFICATION.md": "1f3c998b32d50d92e56d14108eb604d84e63cb5be450ce8b3f1d3a7b32b0d800",
     "docs/audits/chapter6/Chapter5Imports.lean": "b07ac2241fff3e9590412fa57efe285d207df4179f793d423c9d6c8c374a89c0",
@@ -1127,16 +1139,16 @@
     "docs/audits/chapter7/inventory.json": "95ef97bcb728d761081e608dd5ae4c3625b9aeb29d6c5f59c753b39329d7828f",
     "docs/audits/chapter8/Chapter7Baseline.json": "1518087f749f7a6cf0b61b1cfae442ab34f22e4864371f96a1f8dee0454c3035",
     "docs/audits/chapter8/Chapter7Imports.lean": "309158d81f7d7994edab43ce59a9e7820f1fa5c5f364321cd3bf6f327c7f00bc",
-    "docs/audits/chapter8/ExpectedTypes.lean": "e108b95351c0aa376f7480e5005dfa779de53338795e11d8eeb6985bd2e089d3",
+    "docs/audits/chapter8/ExpectedTypes.lean": "b69c31fe556ce811b448c1ff9cf94fa6d2661db419b8545e2c4e21a57945a149",
     "docs/audits/chapter8/RendererScaffold.json": "67f8b84e3c413cf7749bdb5d8dfc693dad37a8309b74d4f8f265e937fe2d9377",
-    "docs/audits/chapter8/inventory.json": "a77cac7cd91abf7fa3fc8cbdeaada9cd6e16ce9e2f85a34d2efb5021f55c5641",
+    "docs/audits/chapter8/inventory.json": "c015b7285a197f6e5178d76633be008236cb31065a1952ac4426884986acdc91",
     "lake-manifest.json": "d85b2e1116be8fedd0fc8dac4fa8afc28d849f21b2920d2012b553ed886adb3c",
     "lakefile.toml": "dcb517c34c605807aaa1a08c00179eccb219278161b005f364af8faf27509d7e",
     "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
     "scripts/audit_chapter5.py": "56928f03f8461b4d54de218270ca980c1075f3ff8b13e01ed5ef657b5183d734",
     "scripts/audit_chapter6.py": "e3cd890ac54dfe6dbf1e9a3f7370f337f43e89286a0a8d4d0a9e18d075659d5d",
     "scripts/audit_chapter7.py": "0e8d986afa9450315a95f0f88d1db037e5872d159b9dff05150214ec9d672c51",
-    "scripts/audit_chapter8.py": "ef58b08e566c2a82eace2e262ad90d43745cbf2eb6ecb130b7c2bcd5f2a15b46",
+    "scripts/audit_chapter8.py": "6911afd8aa2bf004764ead1a7f2e2aede0115cb5d300cca5eb20d916991ffe13",
     "scripts/chapter8_publication_core.py": "31c7a2f9a409c83c85684ab123817cf79c068f951b9ebc377019c3f14fc4c89c",
     "scripts/chapter8_publication_runtime.py": "5642d85d92b23a29573b26ba43862b188c470498ffff2e402021beaca1951516",
     "scripts/check_chapter7_retained.py": "dcc7a783f842e8196b71bd6e1499e00821e98214e8efbc81bc648ca41628d7d8",
@@ -1158,7 +1170,7 @@
     "scripts/update_chapter8_finder.py": "62ace5563c5000459731694310829b8d1c29c8e39ceede38c69fef923a78dea1",
     "scripts/verify_live_chapter8.py": "93f7a814c8f7282c4763f0c639e3a91ace297168a61ba0ba53a092c47892947c"
   },
-  "query_sha256": "1ea20f777f5e5f4d5b8431c40673e3f40988a3e7cd7939891f07c2fe8f583388",
+  "query_sha256": "9e00b5024f1820a2bc647a650c35d6f8b98c82923c2049126514ab0045d3a395",
   "blueprint_links": [
     "BC4lean.Assembly.BaumConnesConjecture",
     "BC4lean.Assembly.BaumConnesProperty",
@@ -1174,6 +1186,17 @@
     "BC4lean.Assembly.indexedAssemblyHom_surjective_iff_cofinalIndex",
     "BC4lean.Assembly.indexedAssemblyProperty_iff_cofinalComparison",
     "BC4lean.Assembly.modelAssemblyProperty_iff_baumConnesProperty",
+    "BC4lean.Chapter8Examples.CosetAssembly.coset_proper",
+    "BC4lean.Chapter8Examples.CosetAssembly.reducedAssemblyHom_toModel",
+    "BC4lean.Chapter8Examples.CosetAssembly.toModel",
+    "BC4lean.Chapter8Examples.CosetAssemblyUnit.cosetUnitClass",
+    "BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup",
+    "BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup_le",
+    "BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_cosetUnitClass",
+    "BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_ne_zero",
+    "BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedTraceK0_assembly_cosetUnitClass",
+    "BC4lean.Chapter8Examples.CosetAssemblyUnit.subgroupElement_eq",
+    "BC4lean.Chapter8Examples.CosetUnitCycle.multiplication_isModuleCompact",
     "BC4lean.Chapter8Examples.FiniteAbelianAssembly.finiteAbelianAnalyticEquiv",
     "BC4lean.Chapter8Examples.FiniteAbelianAssembly.spaceAssemblyHom_finiteAbelian",
     "BC4lean.Chapter8Examples.FiniteAssemblyUnit.assembly_unitClass_not_mem_zmultiples",
@@ -1215,6 +1238,8 @@
     "BC4lean.Chapter8Examples.unitAssemblyAddEquiv",
     "BC4lean.Chapter8Examples.wholeCompactPiece",
     "BC4lean.CharacterDual.card_eq",
+    "BC4lean.KKTheory.CosetCompressedDescent.even_compressedDescent",
+    "BC4lean.KKTheory.CosetCompressedDescent.subgroupProjection_isStarProjection",
     "BC4lean.KKTheory.FinitePointCharacterTensor.characterIsometry",
     "BC4lean.KKTheory.FinitePointCharacterTensor.characterProjection_isStarProjection",
     "BC4lean.KKTheory.FinitePointCharacterTensor.characterRangeEquiv",
@@ -1706,6 +1731,76 @@
       ],
       "explicit_checked_proof": true
     },
+    "prop:coset-space-assembly": {
+      "statement_kind": "proposition",
+      "ready": true,
+      "notready": false,
+      "leanok": true,
+      "required_declarations": [
+        "BC4lean.Chapter8Examples.CosetAssembly.coset_proper",
+        "BC4lean.Chapter8Examples.CosetAssembly.reducedAssemblyHom_toModel",
+        "BC4lean.Chapter8Examples.CosetAssembly.toModel",
+        "BC4lean.Chapter8Examples.CosetUnitCycle.multiplication_isModuleCompact"
+      ],
+      "linked_declarations": [
+        "BC4lean.Chapter8Examples.CosetAssembly.coset_proper",
+        "BC4lean.Chapter8Examples.CosetAssembly.reducedAssemblyHom_toModel",
+        "BC4lean.Chapter8Examples.CosetAssembly.toModel",
+        "BC4lean.Chapter8Examples.CosetUnitCycle.multiplication_isModuleCompact"
+      ],
+      "explicit_checked_proof": true
+    },
+    "prop:coset-compressed-descent": {
+      "statement_kind": "proposition",
+      "ready": true,
+      "notready": false,
+      "leanok": true,
+      "required_declarations": [
+        "BC4lean.KKTheory.CosetCompressedDescent.even_compressedDescent",
+        "BC4lean.KKTheory.CosetCompressedDescent.subgroupProjection_isStarProjection"
+      ],
+      "linked_declarations": [
+        "BC4lean.KKTheory.CosetCompressedDescent.even_compressedDescent",
+        "BC4lean.KKTheory.CosetCompressedDescent.subgroupProjection_isStarProjection"
+      ],
+      "explicit_checked_proof": true
+    },
+    "prop:finite-subgroup-assembly": {
+      "statement_kind": "proposition",
+      "ready": true,
+      "notready": false,
+      "leanok": true,
+      "required_declarations": [
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.cosetUnitClass",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_cosetUnitClass",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedTraceK0_assembly_cosetUnitClass",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.subgroupElement_eq"
+      ],
+      "linked_declarations": [
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.cosetUnitClass",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_cosetUnitClass",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedTraceK0_assembly_cosetUnitClass",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.subgroupElement_eq"
+      ],
+      "explicit_checked_proof": true
+    },
+    "prop:finite-subgroup-trace-range": {
+      "statement_kind": "proposition",
+      "ready": true,
+      "notready": false,
+      "leanok": true,
+      "required_declarations": [
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup_le",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_ne_zero"
+      ],
+      "linked_declarations": [
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup_le",
+        "BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_ne_zero"
+      ],
+      "explicit_checked_proof": true
+    },
     "prop:finite-abelian-point-kk-split": {
       "statement_kind": "proposition",
       "ready": true,
@@ -1755,5 +1850,5 @@
   "notready_targets": [
     "conj:baum-connes"
   ],
-  "expected_type_examples": 138
+  "expected_type_examples": 151
 }
