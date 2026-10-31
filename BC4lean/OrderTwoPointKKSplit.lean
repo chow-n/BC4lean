@@ -1,8 +1,6 @@
 import BC4lean.OrderTwoEigenSplitAdditive
-import BC4lean.KasparovGroupChange
+import BC4lean.KasparovTrivialInflation
 import BC4lean.FiniteReducedGroupCStar
-import BC4lean.GroupUniverseParityGroup
-import BC4lean.CZeroAlgebra
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -40,37 +38,7 @@ variable {Γ : Type uΓ} {A : Type uA} {B : Type uB} {E : Type uE} [Group Γ]
   [CStarModule Bᵐᵒᵖ E] [CompleteSpace E]
   {α : CStarAlgebraAction Γ A} {β : CStarAlgebraAction Γ B}
 
-/-! ## Compatibility of the trivial actions with `Unit →* Γ` and `Γ →* Unit` -/
-
-namespace CStarAlgebraAction
-
-variable {C : Type*} [NonUnitalCStarAlgebra C]
-
-theorem trivial_unit_apply (γ : CStarAlgebraAction Γ C) (h : Unit) (c : C) :
-    (CStarAlgebraAction.trivial : CStarAlgebraAction Unit C).automorphism h c =
-      γ.automorphism ((1 : Unit →* Γ) h) c := by
-  simp [CStarAlgebraAction.trivial]
-
-theorem apply_eq_trivial_unit (γ : CStarAlgebraAction Γ C) [γ.IsTrivial] (h : Γ) (c : C) :
-    γ.automorphism h c =
-      (CStarAlgebraAction.trivial : CStarAlgebraAction Unit C).automorphism
-        ((1 : Γ →* Unit) h) c := by
-  rw [CStarAlgebraAction.IsTrivial.apply_eq]
-  simp [CStarAlgebraAction.trivial]
-
-end CStarAlgebraAction
-
 /-! ## Cycle-level facts -/
-
-omit [StarOrderedRing B] [CompleteSpace E] in
-/-- A projection that vanishes has the zero module as its range. -/
-theorem projectionModule_subsingleton_of_eq_zero {P : AdjointableMap B E E} (hP : P = 0) :
-    Subsingleton (ProjectionModule P) :=
-  ⟨fun x y => Subtype.ext (by
-    have hx : P (x : E) = x := x.property
-    have hy : P (y : E) = y := y.property
-    have h0 : ∀ z : E, P z = 0 := fun z => by rw [hP]; rfl
-    rw [← hx, ← hy, h0, h0])⟩
 
 namespace EquivariantHilbertModule
 
@@ -121,63 +89,6 @@ end KasparovHomotopyClass
 
 end Even
 
-/-! ## Restriction, inflation and the twist on cycles -/
-
-section Change
-
-variable [α.IsTrivial] [β.IsTrivial]
-
-namespace KasparovCycle
-
-/-- Restrict to the trivial group, then inflate and twist by `ψ`: if every `h` already acts by
-the scalar `ψ h`, this gives back the cycle. -/
-def inflResIso (c : KasparovCycle α β E) (ψ : Γ →* unitary ℂ)
-    (hc : ∀ h x, c.groupAction.action h x = ((ψ h : unitary ℂ) : ℂ) • x) :
-    KasparovCycleIso (((c.comap (1 : Unit →* Γ) (CStarAlgebraAction.trivial_unit_apply α)
-      (CStarAlgebraAction.trivial_unit_apply β)).comap (1 : Γ →* Unit)
-      (CStarAlgebraAction.apply_eq_trivial_unit α)
-      (CStarAlgebraAction.apply_eq_trivial_unit β)).twist ψ) c where
-  moduleEquiv := HilbertModuleEquiv.refl
-  grading_intertwine _ := rfl
-  action_intertwine h x := by
-    change ((ψ h : unitary ℂ) : ℂ) •
-      c.groupAction.action ((1 : Unit →* Γ) ((1 : Γ →* Unit) h)) x = c.groupAction.action h x
-    rw [MonoidHom.one_apply, EquivariantHilbertModule.one_apply, hc]
-  representation_intertwine _ _ := rfl
-  operator_intertwine _ := rfl
-
-variable (c : KasparovCycle (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
-  (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B) E)
-
-/-- Inflating a cycle over the trivial group and restricting it back gives the cycle. -/
-def resInflIso :
-    KasparovCycleIso ((c.comap (1 : Γ →* Unit) (CStarAlgebraAction.apply_eq_trivial_unit α)
-      (CStarAlgebraAction.apply_eq_trivial_unit β)).comap (1 : Unit →* Γ)
-      (CStarAlgebraAction.trivial_unit_apply α) (CStarAlgebraAction.trivial_unit_apply β)) c where
-  moduleEquiv := HilbertModuleEquiv.refl
-  grading_intertwine _ := rfl
-  action_intertwine _ _ := rfl
-  representation_intertwine _ _ := rfl
-  operator_intertwine _ := rfl
-
-/-- Inflating, twisting and restricting back gives the cycle. -/
-def resTwistInflIso (ψ : Γ →* unitary ℂ) :
-    KasparovCycleIso (((c.comap (1 : Γ →* Unit) (CStarAlgebraAction.apply_eq_trivial_unit α)
-      (CStarAlgebraAction.apply_eq_trivial_unit β)).twist ψ).comap (1 : Unit →* Γ)
-      (CStarAlgebraAction.trivial_unit_apply α) (CStarAlgebraAction.trivial_unit_apply β)) c where
-  moduleEquiv := HilbertModuleEquiv.refl
-  grading_intertwine _ := rfl
-  action_intertwine h x := by
-    change ((ψ ((1 : Unit →* Γ) h) : unitary ℂ) : ℂ) •
-      c.groupAction.action ((1 : Γ →* Unit) ((1 : Unit →* Γ) h)) x = c.groupAction.action h x
-    rw [MonoidHom.one_apply, map_one, OneMemClass.coe_one, one_smul]
-  representation_intertwine _ _ := rfl
-  operator_intertwine _ := rfl
-
-end KasparovCycle
-
-end Change
-
 /-! ## The splitting of the even group -/
 
 section EvenSplit
@@ -186,34 +97,6 @@ variable [Fintype Γ] [α.IsTrivial] [β.IsTrivial] {g : Γ} (hg : CentralInvolu
   (hΓ : ∀ h : Γ, h = 1 ∨ h = g) (χ : Γ →* unitary ℂ) (hχ : ((χ g : unitary ℂ) : ℂ) = -1)
 
 namespace KasparovHomotopyClass
-
-variable (A B) in
-/-- Even KK over the trivial group with trivial actions. -/
-abbrev UnitKK := KasparovHomotopyClass.{0, uA, uB, uE}
-  (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
-  (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B)
-
-/-- Restriction to the trivial group. -/
-def resHom : KasparovHomotopyClass.{uΓ, uA, uB, uE} α β →+ UnitKK.{uA, uB, uE} A B :=
-  comap (1 : Unit →* Γ) (CStarAlgebraAction.trivial_unit_apply α)
-    (CStarAlgebraAction.trivial_unit_apply β)
-
-/-- Inflation from the trivial group: `Γ` acts trivially on the module. -/
-def inflHom : UnitKK.{uA, uB, uE} A B →+ KasparovHomotopyClass.{uΓ, uA, uB, uE} α β :=
-  comap (1 : Γ →* Unit) (CStarAlgebraAction.apply_eq_trivial_unit α)
-    (CStarAlgebraAction.apply_eq_trivial_unit β)
-
-omit [Fintype Γ] in
-theorem resHom_inflHom (a : UnitKK.{uA, uB, uE} A B) :
-    resHom (α := α) (β := β) (inflHom a) = a := by
-  induction a using Quotient.inductionOn with
-  | h c => exact mk_eq_of_iso (c.cycle.resInflIso (Γ := Γ))
-
-omit [Fintype Γ] in
-theorem resHom_twist_inflHom (b : UnitKK.{uA, uB, uE} A B) :
-    resHom (α := α) (β := β) (twist χ (inflHom b)) = b := by
-  induction b using Quotient.inductionOn with
-  | h c => exact mk_eq_of_iso (c.cycle.resTwistInflIso χ)
 
 /-- `g` acts by `+1` on an inflated class, so its `-1` eigen class vanishes. -/
 theorem eigenClass_neg_inflHom (a : UnitKK.{uA, uB, uE} A B) :
@@ -342,58 +225,6 @@ end OddKK
 
 end Odd
 
-section OddChange
-
-variable [α.IsTrivial] [β.IsTrivial]
-
-namespace OddKasparovCycle
-
-/-- Restrict to the trivial group, then inflate and twist by `ψ`: if every `h` already acts by
-the scalar `ψ h`, this gives back the cycle. -/
-def inflResIso (c : OddKasparovCycle α β E) (ψ : Γ →* unitary ℂ)
-    (hc : ∀ h x, c.groupAction.action h x = ((ψ h : unitary ℂ) : ℂ) • x) :
-    OddKasparovCycleIso (((c.comap (1 : Unit →* Γ) (CStarAlgebraAction.trivial_unit_apply α)
-      (CStarAlgebraAction.trivial_unit_apply β)).comap (1 : Γ →* Unit)
-      (CStarAlgebraAction.apply_eq_trivial_unit α)
-      (CStarAlgebraAction.apply_eq_trivial_unit β)).twist ψ) c where
-  moduleEquiv := HilbertModuleEquiv.refl
-  action_intertwine h x := by
-    change ((ψ h : unitary ℂ) : ℂ) •
-      c.groupAction.action ((1 : Unit →* Γ) ((1 : Γ →* Unit) h)) x = c.groupAction.action h x
-    rw [MonoidHom.one_apply, EquivariantHilbertModule.one_apply, hc]
-  representation_intertwine _ _ := rfl
-  operator_intertwine _ := rfl
-
-variable (c : OddKasparovCycle (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
-  (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B) E)
-
-/-- Inflating a cycle over the trivial group and restricting it back gives the cycle. -/
-def resInflIso :
-    OddKasparovCycleIso ((c.comap (1 : Γ →* Unit) (CStarAlgebraAction.apply_eq_trivial_unit α)
-      (CStarAlgebraAction.apply_eq_trivial_unit β)).comap (1 : Unit →* Γ)
-      (CStarAlgebraAction.trivial_unit_apply α) (CStarAlgebraAction.trivial_unit_apply β)) c where
-  moduleEquiv := HilbertModuleEquiv.refl
-  action_intertwine _ _ := rfl
-  representation_intertwine _ _ := rfl
-  operator_intertwine _ := rfl
-
-/-- Inflating, twisting and restricting back gives the cycle. -/
-def resTwistInflIso (ψ : Γ →* unitary ℂ) :
-    OddKasparovCycleIso (((c.comap (1 : Γ →* Unit) (CStarAlgebraAction.apply_eq_trivial_unit α)
-      (CStarAlgebraAction.apply_eq_trivial_unit β)).twist ψ).comap (1 : Unit →* Γ)
-      (CStarAlgebraAction.trivial_unit_apply α) (CStarAlgebraAction.trivial_unit_apply β)) c where
-  moduleEquiv := HilbertModuleEquiv.refl
-  action_intertwine h x := by
-    change ((ψ ((1 : Unit →* Γ) h) : unitary ℂ) : ℂ) •
-      c.groupAction.action ((1 : Γ →* Unit) ((1 : Unit →* Γ) h)) x = c.groupAction.action h x
-    rw [MonoidHom.one_apply, map_one, OneMemClass.coe_one, one_smul]
-  representation_intertwine _ _ := rfl
-  operator_intertwine _ := rfl
-
-end OddKasparovCycle
-
-end OddChange
-
 section OddSplit
 
 variable [Fintype Γ] [α.IsTrivial] [β.IsTrivial] {g : Γ} (hg : CentralInvolution α g)
@@ -402,34 +233,6 @@ variable [Fintype Γ] [α.IsTrivial] [β.IsTrivial] {g : Γ} (hg : CentralInvolu
 namespace OddKK
 
 variable [TopologicalSpace.SeparableSpace B]
-
-variable (A B) in
-/-- Odd KK over the trivial group with trivial actions. -/
-abbrev UnitKK := OddKK.{0, uA, uB, uE}
-  (CStarAlgebraAction.trivial : CStarAlgebraAction Unit A)
-  (CStarAlgebraAction.trivial : CStarAlgebraAction Unit B)
-
-/-- Restriction to the trivial group. -/
-def resHom : OddKK.{uΓ, uA, uB, uE} α β →+ UnitKK.{uA, uB, uE} A B :=
-  comap (1 : Unit →* Γ) (CStarAlgebraAction.trivial_unit_apply α)
-    (CStarAlgebraAction.trivial_unit_apply β)
-
-/-- Inflation from the trivial group: `Γ` acts trivially on the module. -/
-def inflHom : UnitKK.{uA, uB, uE} A B →+ OddKK.{uΓ, uA, uB, uE} α β :=
-  comap (1 : Γ →* Unit) (CStarAlgebraAction.apply_eq_trivial_unit α)
-    (CStarAlgebraAction.apply_eq_trivial_unit β)
-
-omit [Fintype Γ] in
-theorem resHom_inflHom (a : UnitKK.{uA, uB, uE} A B) :
-    resHom (α := α) (β := β) (inflHom a) = a := by
-  induction a using Quotient.inductionOn with
-  | h c => exact mk_eq_of_iso (c.cycle.resInflIso (Γ := Γ))
-
-omit [Fintype Γ] in
-theorem resHom_twist_inflHom (b : UnitKK.{uA, uB, uE} A B) :
-    resHom (α := α) (β := β) (twist χ (inflHom b)) = b := by
-  induction b using Quotient.inductionOn with
-  | h c => exact mk_eq_of_iso (c.cycle.resTwistInflIso χ)
 
 /-- `g` acts by `+1` on an inflated class, so its `-1` eigen class vanishes. -/
 theorem eigenClass_neg_inflHom (a : UnitKK.{uA, uB, uE} A B) :
@@ -526,13 +329,6 @@ end OddSplit
 section CardTwo
 
 open GroupUniverseParityGroup BC4lean.OrderTwo
-
-/-- On a space with at most one point, the induced action on `C₀(X)` is trivial. -/
-instance CZero.isTrivial_action {X : Type*} [TopologicalSpace X] [Subsingleton X] [MulAction Γ X]
-    [ContinuousConstSMul Γ X] : (CZero.action Γ (X := X)).IsTrivial :=
-  ⟨fun g a => by
-    ext x
-    rw [CZero.action_apply, Subsingleton.elim (g⁻¹ • x) x]⟩
 
 variable (h2 : Nat.card Γ = 2)
 
