@@ -515,6 +515,96 @@ distance less than $2$ from $1$ and is joined to $1$. Their product is $u$.
 The class of $u$ is then that of an identity, which is zero.
 \end{proof}
 
+\section{Projections and unitaries over the circle}
+
+Write $\mathbb T=\mathbb R/\mathbb Z$ (Mathlib's \texttt{AddCircle 1}) and
+$e_n(\theta)=e^{2\pi i n\theta}$.
+
+\begin{proposition}\label{prop:circle-projection-constant}
+\uses{def:projection-equivalence,thm:scalar-k1}
+\lean{BC4lean.OperatorKTheory.CircleProjection.expUnitary_argSelfAdjoint_of_finite,BC4lean.OperatorKTheory.CircleProjection.exists_unitary_path,BC4lean.OperatorKTheory.CircleProjection.exists_partialIsometry_const}
+\leanok
+A unitary $u$ with finite spectrum in a unital $C^*$-algebra is joined to $1$
+by a norm-continuous path of unitaries, each commuting with every element
+that commutes with $u$ and $u^*$. Every projection $P\in M_n(C(\mathbb T))$
+is Murray--von Neumann equivalent to the constant projection $P(0)$: there is
+$v\in M_n(C(\mathbb T))$ with $vv^*=P$ and $v^*v=P(0)$.
+\end{proposition}
+\begin{proof}
+\leanok
+On a finite spectrum the argument is continuous, so $u=\exp(i\arg u)$ and
+$t\mapsto\exp(it\arg u)$ is the path; it lies in the $C^*$-algebra generated
+by $u$. This is stronger than the path used for
+Theorem~\ref{thm:scalar-k1}: it stays in the commutant and needs no
+rotation. For $P$, the projections $t\mapsto P(st)$, $s\in[0,1]$, form a path
+in $C([0,1],M_n(\mathbb C))$ from the constant $P(0)$ to $P$, which gives
+$w$ with $w(t)^*w(t)=P(0)$ and $w(t)w(t)^*=P(t)$. The unitary
+$U=w(1)^*w(0)+(1-P(0))$ commutes with $P(0)$ and has finite spectrum; with
+the path $\gamma$ from $1$ to $U$ above, $V(t)=w(t)\gamma(t)$ satisfies
+$V(1)=V(0)$ and descends to the circle.
+\end{proof}
+
+\begin{theorem}\label{thm:circle-k0}
+\uses{prop:circle-projection-constant,thm:scalar-k0,prop:unital-k0-functoriality}
+\lean{BC4lean.circleEv0,BC4lean.circleConst,BC4lean.circleK0Equiv}
+\leanok
+Evaluation at $0$ induces an additive isomorphism
+$K_0(C(\mathbb T))\cong K_0(\mathbb C)$, with inverse induced by the
+constants.
+\end{theorem}
+\begin{proof}
+\leanok
+Evaluation after inclusion of the constants is the identity. In the other
+order a class $[P]$ goes to $[P(0)]$, and $[P]=[P(0)]$ by
+Proposition~\ref{prop:circle-projection-constant}.
+\end{proof}
+
+\begin{lemma}\label{lem:euclidean-sl-elementary}
+\lean{BC4lean.EuclideanSL.exists_list_transvec_eq_of_det_eq_one,BC4lean.EuclideanSL.exists_list_transvec_mul_diagonal_eq,BC4lean.EuclideanLocalization.euclideanDomain}
+\leanok
+Over a Euclidean domain every square matrix of determinant $1$ is a product
+of elementary transvections, and every matrix with unit determinant is such a
+product times $\operatorname{diag}(\det M,1,\dots,1)$. For an algebraically
+closed field $K$ and $T\subseteq K$, the localisation of $K[X]$ at the nonzero
+polynomials without roots in $T$ is a Euclidean domain, with size function
+the number of roots in $T$ counted with multiplicity.
+\end{lemma}
+\begin{proof}
+\leanok
+Row transvections run the Euclidean algorithm on the last column until it is
+$d\,e_k$; invertibility makes $d$ a unit, two more transvections give
+$e_{\mathrm{last}}$, and the matrix splits into a block of smaller size
+and a product of transvections. For the localisation, split the numerator of
+$b$ into its monic part with roots in $T$ and a unit, and divide by the monic
+part in $K[X]$. This is a statement about rings and uses nothing from
+BC4lean; the pinned Mathlib has the case of a field only.
+\end{proof}
+
+\begin{lemma}\label{lem:circle-gl-winding}
+\uses{lem:euclidean-sl-elementary,def:operator-k1,def:unitary-norm-homotopy}
+\lean{BC4lean.OperatorKTheory.CircleWinding.winding,BC4lean.OperatorKTheory.CircleWinding.winding_mul,BC4lean.OperatorKTheory.CircleWinding.winding_fourier,BC4lean.OperatorKTheory.CircleWinding.winding_eq_of_path,BC4lean.OperatorKTheory.CircleWinding.joinedIn_one_of_winding_eq_zero,BC4lean.OperatorKTheory.CircleWinding.windingHom,BC4lean.OperatorKTheory.CircleWinding.windingHom_injective}
+\leanok
+A nowhere-vanishing $f\in C(\mathbb T)$ has a winding number $w(f)\in\mathbb Z$, with
+$w(fg)=w(f)+w(g)$ and $w(e_n)=n$, constant along norm-continuous paths. A matrix in $GL_n(C(\mathbb T))$ whose determinant has winding number
+$0$ is joined to $1$ inside $GL_n(C(\mathbb T))$. For a $*$-homomorphism
+$\varphi\colon A\to C(\mathbb T)$ the winding number of
+$\det\varphi(u)$ descends to an additive map $K_1(A)\to\mathbb Z$, injective
+when $\varphi$ is a $*$-isomorphism.
+\end{lemma}
+\begin{proof}
+\leanok
+Lift $f$ through $\exp$ along $[0,1]$. For the path: $GL_n(C(\mathbb T))$ is
+open and trigonometric polynomials are dense, so $U$ is joined to the image of
+a matrix $G$ over the rational functions without poles on the circle. That
+ring is Euclidean (Lemma~\ref{lem:euclidean-sl-elementary}), so
+$G$ is a product of transvections times $\operatorname{diag}(\det G,1,\dots)$;
+scaling the transvection parameters to $0$ keeps the determinant, and a
+determinant of winding number $0$ has a continuous logarithm. For injectivity
+pull the path back along $\varphi^{-1}$ and normalise it by the polar
+decomposition $g\mapsto g(g^*g)^{-1/2}$, which fixes unitaries.
+\end{proof}
+
+
 \section{Nonunital algebras and structural properties}
 
 \begin{proposition}\label{prop:k-product-decomposition}

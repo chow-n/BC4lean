@@ -1002,3 +1002,15 @@ import BC4lean.GroupIsoDescent
 import BC4lean.GroupIsoModel
 import BC4lean.GroupIsoKHomology
 import BC4lean.GroupIsoBaumConnes
+
+import BC4lean.IntegerGroup
+import BC4lean.IntegerLineModel
+import BC4lean.IntFourier
+import BC4lean.CircleProjection
+import BC4lean.IntK0
+import BC4lean.EuclideanSL
+import BC4lean.EuclideanLocalization
+import BC4lean.CircleWinding
+import BC4lean.IntWinding
+import BC4lean.IntK1
+import BC4lean.IntPointClass
