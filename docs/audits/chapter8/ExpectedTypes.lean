@@ -19,6 +19,7 @@ import BC4lean.OrderTwoAssemblyEquivalence
 import BC4lean.FiniteGroupOperatorK
 import BC4lean.FiniteAssemblyUnit
 import BC4lean.FiniteAbelianAssemblyEquivalence
+import BC4lean.CosetAssemblyUnit
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -32,7 +33,7 @@ four the endpoints for groups with one element, the next their scalar
 K-group endpoints, the next two the endpoints for groups of order two, the
 next one the K-groups of finite groups, and the last two the assembly of
 character classes of finite groups and the endpoints for finite abelian
-groups.
+groups; the very last one the assembly of the coset space of a finite subgroup.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -1186,4 +1187,109 @@ example [Fintype Γ] : ReducedK0 Γ ≃+ (CharacterDual Γ → ℤ) :=
   finiteAbelianReducedK0Equiv Γ
 
 end FiniteAbelianAssembly
+
+section CosetAssembly
+open BC4lean.Chapter8Examples.CosetAssembly BC4lean.Chapter8Examples.CosetUnitCycle
+open BC4lean.Chapter8Examples.CosetAssemblyUnit BC4lean.KKTheory.CosetCompressedDescent
+open BC4lean.Chapter8Examples.FinitePointAssembly (crossedHom)
+open BC4lean.KKTheory.GroupUniverseParityGroup BC4lean.KKTheory.GroupUniverseParityFunctoriality
+open BC4lean.KKTheory.FinitePointCharacterTensor
+open scoped InnerProductSpace ScalarHilbertModule
+
+-- endpoint: BC4lean.Chapter8Examples.CosetUnitCycle.multiplication_isModuleCompact
+example {X : Type} [TopologicalSpace X] [DiscreteTopology X] (a : C₀(X, ℂ)) :
+    IsModuleCompact (multiplication a) :=
+  multiplication_isModuleCompact a
+
+variable (Γ : Type) [Group Γ] [Countable Γ] [TopologicalSpace Γ] [DiscreteTopology Γ]
+  (F : Subgroup Γ)
+
+local instance cosetModelProperForExpectedTypes : ProperSMul Γ (LabeledOrbitTelescope.Model Γ) :=
+  LabeledOrbitTelescope.proper Γ
+
+local instance cosetCZeroSeparableForExpectedTypes :
+    TopologicalSpace.SeparableSpace C₀(Γ ⧸ F, ℂ) :=
+  TopologicalKHomology.cZero_separableSpace
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssembly.coset_proper
+example [Finite F] : ProperSMul Γ (Γ ⧸ F) := coset_proper Γ F
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssembly.toModel
+-- The equivariant map sends the coset `gF` to `g` applied to the chosen `F`-fixed point.
+example [Finite F] (g : Γ) :
+    (toModel Γ F : Γ ⧸ F → LabeledOrbitTelescope.Model Γ) (g : Γ ⧸ F) = g • (fixedPoint Γ F).val :=
+  rfl
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssembly.reducedAssemblyHom_toModel
+example [Finite F] (p : Bool) (c : Cutoff.CutoffFunction Γ (Γ ⧸ F))
+    (y : TopologicalKHomology.spaceGroup p Γ (Γ ⧸ F)) :
+    letI : LocallyCompactSpace (wholePiece Γ F).toInvariantSubset := (wholePiece Γ F).locallyCompact
+    Assembly.reducedAssemblyHom Γ p
+        (TopologicalKHomology.pushforward p (toModel Γ F)
+          (TopologicalKHomology.ofPiece p (wholePiece Γ F)
+            (TopologicalKHomology.properPushforward p (wholeLift Γ F) (wholeLift_proper Γ F) y))) =
+      Assembly.spaceAssemblyHom Γ (Γ ⧸ F) p c y :=
+  reducedAssemblyHom_toModel Γ F p c y
+
+-- endpoint: BC4lean.KKTheory.CosetCompressedDescent.subgroupProjection_isStarProjection
+example [Fintype F] : IsStarProjection (∑ f : F, (Nat.card F : ℂ)⁻¹ • regular Γ (f : Γ)) :=
+  subgroupProjection_isStarProjection Γ F
+
+-- endpoint: BC4lean.KKTheory.CosetCompressedDescent.even_compressedDescent
+example [Fintype F] {H : Type} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+    {v : H} (hv : ⟪v, v⟫_ℂ = 1) (c : KasparovCycle (cosetAction F) (scalarAction Γ) H)
+    (hrep : ∀ x, c.representation (cosetDelta Γ F) x = ⟪v, x⟫_ℂ • v)
+    (hfix : ∀ f ∈ F, c.groupAction.action f v = v)
+    (hop : c.operator = 0) (hgr : ∀ x, c.grading.grading x = x) :
+    sourcePullback.{0,0,0,0,0} (Γ := Unit) (A := ℂ)
+        (B := ReducedCrossedProduct (cosetAction F)) (C := GroupCrossed Γ)
+        («α» := (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ))
+        («β» := CStarAlgebraAction.trivial) («γ» := CStarAlgebraAction.trivial)
+        false (cutoffHom F) (cutoffHom_equivariant F)
+        (KasparovDescent.evenClass (scalarAction Γ) (cosetAction F)
+          (KasparovHomotopyClass.mk (BundledKasparovCycle.of c))) =
+      GroupUniverseOrdinaryEven.coefficientPushforward.{0,0,0} (subgroupHom Γ F)
+        (GroupUniverseParityUnits.identity.{0,0,0} ScalarUnitProjection.scalarIdentityAction) :=
+  even_compressedDescent hv c hrep hfix hop hgr
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssemblyUnit.cosetUnitClass
+-- The class is the unit cycle of `Γ ⧸ F`, pushed into the whole piece and into the model.
+example [Fintype F] :
+    letI : LocallyCompactSpace (wholePiece Γ F).toInvariantSubset := (wholePiece Γ F).locallyCompact
+    cosetUnitClass Γ F =
+      TopologicalKHomology.pushforward false (toModel Γ F)
+        (TopologicalKHomology.ofPiece false (wholePiece Γ F)
+          (TopologicalKHomology.properPushforward false (wholeLift Γ F) (wholeLift_proper Γ F)
+            (KasparovHomotopyClass.mk (BundledKasparovCycle.of (unitCycle Γ F))))) :=
+  rfl
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssemblyUnit.subgroupElement_eq
+example [Fintype F] :
+    crossedHom Γ (subgroupProjection Γ F) = (Nat.card F : ℂ)⁻¹ • ∑ f : F, reducedDelta Γ (f : Γ) :=
+  subgroupElement_eq F
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_cosetUnitClass
+example [Fintype F] : Assembly.reducedAssemblyHom Γ false (cosetUnitClass Γ F) = subgroupK0Class Γ F :=
+  reducedAssemblyHom_cosetUnitClass F
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedTraceK0_assembly_cosetUnitClass
+example [Fintype F] :
+    reducedTraceK0 Γ (Assembly.reducedAssemblyHom Γ false (cosetUnitClass Γ F)) =
+      (Nat.card F : ℝ)⁻¹ :=
+  reducedTraceK0_assembly_cosetUnitClass F
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup
+example : lambdaGroup Γ =
+    AddSubgroup.closure {r : ℝ | ∃ F : Subgroup Γ, Finite F ∧ r = (Nat.card F : ℝ)⁻¹} :=
+  rfl
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup_le
+example : lambdaGroup Γ ≤ (Assembly.reducedAssemblyHom Γ false).range.map (reducedTraceK0 Γ) :=
+  lambdaGroup_le Γ
+
+-- endpoint: BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_ne_zero
+example : Assembly.reducedAssemblyHom Γ false ≠ 0 := reducedAssemblyHom_ne_zero Γ
+
+end CosetAssembly
+
 end Chapter8ExpectedTypes
