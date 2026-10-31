@@ -66,10 +66,16 @@ COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.UnitPointCutoff"]
 Build completed successfully (3879 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FinitePointCutoff"]
 Build completed successfully (4190 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.CosetAssembly"]
+Build completed successfully (4191 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FinitePointCharacterTensor"]
 Build completed successfully (4194 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.CosetUnitCycle"]
+Build completed successfully (4250 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FinitePointCompressedDescent"]
 Build completed successfully (4195 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.CosetCompressedDescent"]
+Build completed successfully (4197 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.KasparovTrivialInflation"]
 Build completed successfully (3883 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteAbelianCharacterSplit"]
@@ -85,19 +91,16 @@ Build completed successfully (3487 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.UnitAssemblyEquivalence"]
 Build completed successfully (4207 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FinitePointCharacterAssembly"]
-✔ [4216/4216] Built BC4lean.FinitePointCharacterAssembly (207s)
 Build completed successfully (4216 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteAbelianAssemblyEquivalence"]
-✔ [4390/4390] Built BC4lean.FiniteAbelianAssemblyEquivalence (119s)
 Build completed successfully (4390 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteAssemblyUnit"]
-✔ [4218/4218] Built BC4lean.FiniteAssemblyUnit (104s)
 Build completed successfully (4218 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.CosetAssemblyUnit"]
+Build completed successfully (4276 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.OrderTwoAssemblyEquivalence"]
-✔ [4226/4226] Built BC4lean.OrderTwoAssemblyEquivalence (118s)
 Build completed successfully (4226 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.SubsingletonAssemblyEquivalence"]
 Build completed successfully (4211 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean"]
-✔ [4517/4518] Built BC4lean (80s)
-Build completed successfully (4518 jobs).
+Build completed successfully (4522 jobs).
