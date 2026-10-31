@@ -30,6 +30,12 @@
     "BC4lean.GreenJulgPoint",
     "BC4lean.GreenJulgPointLeft",
     "BC4lean.GreenJulgRepresentative",
+    "BC4lean.GroupIsoBaumConnes",
+    "BC4lean.GroupIsoCrossedProduct",
+    "BC4lean.GroupIsoDescent",
+    "BC4lean.GroupIsoKHomology",
+    "BC4lean.GroupIsoModel",
+    "BC4lean.GroupIsoReducedCStar",
     "BC4lean.KKGroupRestriction",
     "BC4lean.KasparovEquivariantDirectSum",
     "BC4lean.KasparovEquivariantRepresentative",
@@ -73,7 +79,7 @@
     "BC4lean.Assembly.BaumConnesConjecture": "definition",
     "BC4lean.Chapter8Examples.baumConnesProperty_unit": "theorem"
   },
-  "expected_type_examples": 162,
+  "expected_type_examples": 167,
   "targets": {
     "def:baum-connes-property": {
       "status": "implemented",
@@ -239,6 +245,16 @@
         "BC4lean.Chapter8Examples.baumConnesProperty_unit",
         "BC4lean.Chapter8Examples.reducedAssemblyHom_unit_eq",
         "BC4lean.Chapter8Examples.unitAssemblyAddEquiv"
+      ]
+    },
+    "thm:baum-connes-group-iso": {
+      "status": "implemented",
+      "statement_kind": "theorem",
+      "description": "Constructed mathematical endpoints; native verification is recorded separately by the strict audit.",
+      "required_declarations": [
+        "BC4lean.Assembly.baumConnesProperty_congr",
+        "BC4lean.KKTheory.GroupIso.crossedProductEquiv",
+        "BC4lean.KKTheory.GroupIso.reducedGroupCStarEquiv"
       ]
     },
     "prop:kk-group-restriction": {
@@ -431,6 +447,7 @@
     "BC4lean.Assembly.assemblyHom_injective_iff_homotopyEquiv",
     "BC4lean.Assembly.assemblyHom_surjective_iff_homotopyEquiv",
     "BC4lean.Assembly.assemblyHom_surjective_iff_pieceImages",
+    "BC4lean.Assembly.baumConnesProperty_congr",
     "BC4lean.Assembly.baumConnesProperty_iff_even_and_odd",
     "BC4lean.Assembly.indexedAssemblyHom_bijective_iff_cofinalComparison",
     "BC4lean.Assembly.indexedAssemblyHom_bijective_iff_cofinalIndex",
@@ -540,6 +557,8 @@
     "BC4lean.KKTheory.GreenJulgPoint.greenJulgPointEquiv",
     "BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom",
     "BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom_greenJulgInverse",
+    "BC4lean.KKTheory.GroupIso.crossedProductEquiv",
+    "BC4lean.KKTheory.GroupIso.reducedGroupCStarEquiv",
     "BC4lean.KKTheory.GroupRestriction.cycleComap",
     "BC4lean.KKTheory.GroupRestriction.evenComap",
     "BC4lean.KKTheory.GroupRestriction.oddComap",
@@ -584,6 +603,7 @@
     "BC4lean.Assembly.assemblyHom_injective_iff_homotopyEquiv",
     "BC4lean.Assembly.assemblyHom_surjective_iff_homotopyEquiv",
     "BC4lean.Assembly.assemblyHom_surjective_iff_pieceImages",
+    "BC4lean.Assembly.baumConnesProperty_congr",
     "BC4lean.Assembly.baumConnesProperty_iff_even_and_odd",
     "BC4lean.Assembly.indexedAssemblyHom_bijective_iff_cofinalComparison",
     "BC4lean.Assembly.indexedAssemblyHom_bijective_iff_cofinalIndex",
@@ -693,6 +713,8 @@
     "BC4lean.KKTheory.GreenJulgPoint.greenJulgPointEquiv",
     "BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom",
     "BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom_greenJulgInverse",
+    "BC4lean.KKTheory.GroupIso.crossedProductEquiv",
+    "BC4lean.KKTheory.GroupIso.reducedGroupCStarEquiv",
     "BC4lean.KKTheory.GroupRestriction.cycleComap",
     "BC4lean.KKTheory.GroupRestriction.evenComap",
     "BC4lean.KKTheory.GroupRestriction.oddComap",
@@ -735,6 +757,7 @@
     "BC4lean.Assembly.assemblyHom_injective_iff_homotopyEquiv",
     "BC4lean.Assembly.assemblyHom_surjective_iff_homotopyEquiv",
     "BC4lean.Assembly.assemblyHom_surjective_iff_pieceImages",
+    "BC4lean.Assembly.baumConnesProperty_congr",
     "BC4lean.Assembly.baumConnesProperty_iff_even_and_odd",
     "BC4lean.Assembly.indexedAssemblyHom_bijective_iff_cofinalIndex",
     "BC4lean.Assembly.indexedAssemblyHom_injective_iff_cofinalIndex",
@@ -822,6 +845,8 @@
     "BC4lean.KKTheory.GreenJulgPoint.greenJulgPointEquiv",
     "BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom",
     "BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom_greenJulgInverse",
+    "BC4lean.KKTheory.GroupIso.crossedProductEquiv",
+    "BC4lean.KKTheory.GroupIso.reducedGroupCStarEquiv",
     "BC4lean.KKTheory.GroupRestriction.cycleComap",
     "BC4lean.KKTheory.GroupRestriction.evenComap",
     "BC4lean.KKTheory.GroupRestriction.oddComap",
@@ -858,5 +883,5 @@
     "BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso": "definition",
     "BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso": "definition"
   },
-  "coverage_note": "The 162 independent typed examples cover 151 endpoints; 126 blueprint links contain 124 of those plus two explicit coefficient-restriction cycle-isomorphism data definitions. These two definitions receive exact native kind/origin/axiom checks and semantic source review, without a separate expected-type example."
+  "coverage_note": "The 167 independent typed examples cover 154 endpoints; 129 blueprint links contain 127 of those plus two explicit coefficient-restriction cycle-isomorphism data definitions. These two definitions receive exact native kind/origin/axiom checks and semantic source review, without a separate expected-type example."
 }

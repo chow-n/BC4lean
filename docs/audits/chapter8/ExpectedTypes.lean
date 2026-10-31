@@ -21,6 +21,7 @@ import BC4lean.FiniteAssemblyUnit
 import BC4lean.FiniteAbelianAssemblyEquivalence
 import BC4lean.CosetAssemblyUnit
 import BC4lean.FiniteAssemblyEquivalence
+import BC4lean.GroupIsoBaumConnes
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -35,7 +36,8 @@ K-group endpoints, the next two the endpoints for groups of order two, the
 next one the K-groups of finite groups, and the last two the assembly of
 character classes of finite groups and the endpoints for finite abelian
 groups; the next one the assembly of the coset space of a finite subgroup,
-and the very last one the endpoints for every finite group.
+the next one the endpoints for every finite group, and the very last one
+invariance under group isomorphism.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -1381,5 +1383,44 @@ example :
   ⟨by decide, baumConnesProperty_of_finite _⟩
 
 end FiniteGroupAssembly
+
+section GroupIsomorphismInvariance
+open BC4lean.KKTheory.GroupIso BC4lean.KKTheory.GroupRestriction
+
+variable {Γ Γ' : Type} [Group Γ] [Group Γ'] (e : Γ ≃* Γ')
+
+-- endpoint: BC4lean.KKTheory.GroupIso.reducedGroupCStarEquiv
+example : ReducedGroupCStar Γ ≃⋆ₐ[ℂ] ReducedGroupCStar Γ' :=
+  reducedGroupCStarEquiv e
+
+-- endpoint: BC4lean.KKTheory.GroupIso.crossedProductEquiv
+-- The reduced crossed product by the action of `Γ'` pulled back along `e`.
+example {B : Type} [NonUnitalCStarAlgebra B] [PartialOrder B] [StarOrderedRing B]
+    (α : CStarAlgebraAction Γ' B) :
+    ReducedCrossedProduct (actionComap e.toMonoidHom α) ≃⋆ₐ[ℂ] ReducedCrossedProduct α :=
+  crossedProductEquiv e α
+
+-- The equivalence sends the generator `b u_g` to `b u_(e g)`.
+example {B : Type} [NonUnitalCStarAlgebra B] [PartialOrder B] [StarOrderedRing B]
+    (α : CStarAlgebraAction Γ' B) (b : B) (g : Γ) :
+    (crossedProductEquiv e α ⟨_, reducedCrossedGenerator_mem _ b g⟩ :
+      AdjointableMap B (ReducedCrossedHilbertModule B Γ') (ReducedCrossedHilbertModule B Γ')) =
+      reducedCrossedGenerator α b (e g) :=
+  crossedProductEquiv_generator e α b g
+
+variable [Countable Γ] [Countable Γ'] [TopologicalSpace Γ] [DiscreteTopology Γ]
+  [TopologicalSpace Γ'] [DiscreteTopology Γ']
+
+-- endpoint: BC4lean.Assembly.baumConnesProperty_congr
+example : Assembly.BaumConnesProperty Γ ↔ Assembly.BaumConnesProperty Γ' :=
+  Assembly.baumConnesProperty_congr e
+
+-- The property unfolded: bijectivity of the canonical reduced assembly maps in both parities.
+example :
+    (∀ p : Bool, Function.Bijective (Assembly.reducedAssemblyHom Γ p)) ↔
+      ∀ p : Bool, Function.Bijective (Assembly.reducedAssemblyHom Γ' p) :=
+  Assembly.baumConnesProperty_congr e
+
+end GroupIsomorphismInvariance
 
 end Chapter8ExpectedTypes
