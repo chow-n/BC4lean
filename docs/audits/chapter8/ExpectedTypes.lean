@@ -20,6 +20,7 @@ import BC4lean.FiniteGroupOperatorK
 import BC4lean.FiniteAssemblyUnit
 import BC4lean.FiniteAbelianAssemblyEquivalence
 import BC4lean.CosetAssemblyUnit
+import BC4lean.FiniteAssemblyEquivalence
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -33,7 +34,8 @@ four the endpoints for groups with one element, the next their scalar
 K-group endpoints, the next two the endpoints for groups of order two, the
 next one the K-groups of finite groups, and the last two the assembly of
 character classes of finite groups and the endpoints for finite abelian
-groups; the very last one the assembly of the coset space of a finite subgroup.
+groups; the next one the assembly of the coset space of a finite subgroup,
+and the very last one the endpoints for every finite group.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -1291,5 +1293,93 @@ example : lambdaGroup Γ ≤ (Assembly.reducedAssemblyHom Γ false).range.map (r
 example : Assembly.reducedAssemblyHom Γ false ≠ 0 := reducedAssemblyHom_ne_zero Γ
 
 end CosetAssembly
+
+section FiniteGroupAssembly
+open BC4lean.Chapter8Examples
+open BC4lean.KKTheory.GreenJulgPoint BC4lean.KKTheory.GreenJulgCorrespondence
+open BC4lean.KKTheory.GroupUniverseParityGroup
+
+variable (Γ : Type) [Group Γ] [Countable Γ] [TopologicalSpace Γ] [DiscreteTopology Γ] [Finite Γ]
+
+-- endpoint: BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom
+-- The point Green–Julg map is descent followed by the cutoff product.
+example (p : Bool) :
+    (pointGreenJulgHom Γ p :
+      KKParityGroup.{0, 0, 0, 0} p (CZero.action Γ (X := FiniteGroupPoint.{0}))
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ) →+
+        KKParityGroup.{0, 0, 0, 0} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+          (CStarAlgebraAction.trivial : CStarAlgebraAction Unit
+            (ReducedCrossedProduct (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ)))) =
+      (Assembly.cutoffProductHom Γ FiniteGroupPoint.{0} p (finitePointCutoff Γ)).comp
+        (KasparovDescent.classHom (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ)
+          (CZero.action Γ (X := FiniteGroupPoint.{0})) p) :=
+  rfl
+
+-- endpoint: BC4lean.KKTheory.GreenJulgCorrespondence.greenJulgInverse
+example (p : Bool) :
+    KKParityGroup.{0, 0, 0, 0} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit
+          (ReducedCrossedProduct (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ))) →+
+      KKParityGroup.{0, 0, 0, 0} p (CZero.action Γ (X := FiniteGroupPoint.{0}))
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ) :=
+  greenJulgInverse Γ p
+
+-- endpoint: BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom_greenJulgInverse
+example (p : Bool)
+    (y : KKParityGroup.{0, 0, 0, 0} p (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Unit
+        (ReducedCrossedProduct (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ)))) :
+    pointGreenJulgHom Γ p (greenJulgInverse Γ p y) = y :=
+  pointGreenJulgHom_greenJulgInverse Γ p y
+
+-- endpoint: BC4lean.KKTheory.GreenJulgPoint.greenJulgInverse_pointGreenJulgHom
+example (p : Bool)
+    (x : KKParityGroup.{0, 0, 0, 0} p (CZero.action Γ (X := FiniteGroupPoint.{0}))
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ)) :
+    greenJulgInverse Γ p (pointGreenJulgHom Γ p x) = x :=
+  greenJulgInverse_pointGreenJulgHom Γ p x
+
+-- endpoint: BC4lean.KKTheory.GreenJulgPoint.greenJulgPointEquiv
+-- The isomorphism is the point Green–Julg map, with Julg's map as its inverse.
+example (p : Bool) :
+    ⇑(greenJulgPointEquiv Γ p) = pointGreenJulgHom Γ p ∧
+      ⇑(greenJulgPointEquiv Γ p).symm = greenJulgInverse Γ p :=
+  ⟨rfl, rfl⟩
+
+-- endpoint: BC4lean.Chapter8Examples.reducedScalarKKToAnalyticHom_bijective
+example (p : Bool) : Function.Bijective (Assembly.reducedScalarKKToAnalyticHom.{0, 0} Γ p) :=
+  reducedScalarKKToAnalyticHom_bijective Γ p
+
+-- endpoint: BC4lean.Chapter8Examples.baumConnesProperty_of_pointGreenJulg_bijective
+example (h : ∀ p, Function.Bijective (pointGreenJulgHom Γ p)) :
+    ∀ p, Function.Bijective (Assembly.reducedAssemblyHom Γ p) :=
+  baumConnesProperty_of_pointGreenJulg_bijective Γ h
+
+-- endpoint: BC4lean.Chapter8Examples.finiteAssemblyAddEquiv
+example (p : Bool) :
+    TopologicalKHomology.topologicalGroup p Γ ≃+ Assembly.analyticGroup Γ p :=
+  finiteAssemblyAddEquiv Γ p
+
+-- endpoint: BC4lean.Chapter8Examples.reducedAssemblyHom_finite_eq
+example (p : Bool) (x : TopologicalKHomology.topologicalGroup p Γ) :
+    Assembly.reducedAssemblyHom Γ p x = finiteAssemblyAddEquiv Γ p x :=
+  reducedAssemblyHom_finite_eq Γ p x
+
+-- endpoint: BC4lean.Chapter8Examples.baumConnesProperty_of_finite
+-- The property unfolded: the canonical reduced assembly map is bijective in both parities.
+example : ∀ p : Bool, Function.Bijective (Assembly.reducedAssemblyHom Γ p) :=
+  baumConnesProperty_of_finite Γ
+
+-- The theorem applies to a nonabelian group: the symmetric group on three letters.
+example :
+    letI : TopologicalSpace (Equiv.Perm (Fin 3)) := ⊥
+    haveI : DiscreteTopology (Equiv.Perm (Fin 3)) := ⟨rfl⟩
+    (¬ ∀ a b : Equiv.Perm (Fin 3), a * b = b * a) ∧
+      ∀ p : Bool, Function.Bijective (Assembly.reducedAssemblyHom (Equiv.Perm (Fin 3)) p) :=
+  letI : TopologicalSpace (Equiv.Perm (Fin 3)) := ⊥
+  haveI : DiscreteTopology (Equiv.Perm (Fin 3)) := ⟨rfl⟩
+  ⟨by decide, baumConnesProperty_of_finite _⟩
+
+end FiniteGroupAssembly
 
 end Chapter8ExpectedTypes
