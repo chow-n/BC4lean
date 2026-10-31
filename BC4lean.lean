@@ -982,3 +982,8 @@ import BC4lean.FiniteAbelianCharacterProjection
 import BC4lean.FiniteAbelianCharacterSplit
 import BC4lean.FiniteAbelianReducedEquiv
 import BC4lean.FiniteAbelianAssemblyEquivalence
+
+import BC4lean.CosetAssembly
+import BC4lean.CosetUnitCycle
+import BC4lean.CosetCompressedDescent
+import BC4lean.CosetAssemblyUnit

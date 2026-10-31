@@ -325,6 +325,111 @@ $\tau(P_\chi)=1/|\Gamma|$, as only the summand at $g=e$ contributes, and from
 Proposition~\ref{prop:finite-group-averaging-projection}.
 \end{proof}
 
+\begin{proposition}\label{prop:coset-space-assembly}
+\uses{def:assembly-map,def:cocompact-pieces,prop:assembly-compatibility,prop:labeled-realization-fixed-criterion}
+\lean{BC4lean.Chapter8Examples.CosetAssembly.coset_proper,BC4lean.Chapter8Examples.CosetAssembly.toModel,BC4lean.Chapter8Examples.CosetAssembly.reducedAssemblyHom_toModel,BC4lean.Chapter8Examples.CosetUnitCycle.multiplication_isModuleCompact}
+\leanok
+Let $\Gamma$ be a countable discrete group in the lowest universe and
+$F\le\Gamma$ a finite subgroup. The discrete coset space $\Gamma/F$ is a proper
+$\Gamma$-space with one orbit. Let $x_0$ be a point of the canonical model of
+$\underline E\Gamma$ fixed by $F$, and let $\Gamma/F\to\underline E\Gamma$ be the
+$\Gamma$-map $gF\mapsto gx_0$. For every cutoff function $c$ on $\Gamma/F$ and every
+$y\in K^\Gamma_p(\Gamma/F)$, the canonical reduced assembly map sends the image of $y$
+in $K^\Gamma_p(\underline E\Gamma)$ to the assembly of $y$ on $\Gamma/F$ formed with
+$c$. Moreover, for every countable discrete $\Gamma$-set $X$ and $a\in C_0(X)$,
+multiplication by $a$ on $\ell^2(X)$ is a compact operator, so $\ell^2(X)$ with the
+translation action, the multiplication representation and the zero operator is an
+even Kasparov cycle.
+\end{proposition}
+\begin{proof}
+\leanok
+For $a,b\in\Gamma/F$ the set $\{g: ga=b\}$ is a single coset of a conjugate of $F$,
+hence finite, so the action is proper. The point $x_0$ exists because the fixed
+set of $F$ is contractible
+(Proposition~\ref{prop:labeled-realization-fixed-criterion}); in Lean it is one
+point chosen from that set. Since $\Gamma/F$ is one orbit, it is itself a cocompact
+piece. Push $y$ into that piece and then along $\Gamma/F\to\underline E\Gamma$;
+assembly is natural for $\Gamma$-maps and for the inclusion of pieces, and does not
+depend on the cutoff (Proposition~\ref{prop:assembly-compatibility}). For the last
+statement, $\{x:|a(x)|\ge\varepsilon\}$ is finite for every $\varepsilon>0$, so
+multiplication by $a$ is a norm limit of finite-rank operators.
+\end{proof}
+
+\begin{proposition}\label{prop:coset-compressed-descent}
+\uses{prop:coset-space-assembly,prop:finite-point-cutoff-averaging,prop:finite-point-compressed-descent,prop:scalar-unit-projection-identity,def:reduced-descent}
+\lean{BC4lean.KKTheory.CosetCompressedDescent.subgroupProjection_isStarProjection,BC4lean.KKTheory.CosetCompressedDescent.even_compressedDescent}
+\leanok
+Let $\Gamma$ be a countable discrete group in the lowest universe, $F\le\Gamma$ a
+finite subgroup and $P_F=|F|^{-1}\sum_{f\in F}\lambda_f$, a projection in the reduced
+crossed product of $\Gamma$ with $\mathbb C$. Let $c$ be an even
+$\Gamma$-equivariant cycle from $C_0(\Gamma/F)$ to $\mathbb C$ on a Hilbert space $H$,
+with zero operator and trivial grading, in which $\delta_{eF}$ acts as the rank-one
+projection onto a unit vector $v$ fixed by $F$. Let $p=\sum_{f\in F}|F|^{-1}\delta_{eF}\,
+\delta_f$ be the cutoff projection of $|F|^{-1/2}1_{eF}$. Then the descent of $[c]$,
+pulled back along $z\mapsto zp$, is the identity class of $KK(\mathbb C,\mathbb C)$
+pushed forward along $z\mapsto zP_F$.
+\end{proposition}
+\begin{proof}
+\leanok
+This is Proposition~\ref{prop:finite-point-compressed-descent} with the point
+replaced by $\Gamma/F$ and the averaging projection by $P_F$. On the descended module
+$H\otimes C^*_r(\Gamma)$ the projection $p$ acts as
+$x\otimes d\mapsto\langle v,x\rangle v\otimes P_Fd$. Hence
+$z\otimes d\mapsto zv\otimes P_Fd$ is an isometry from the coefficient extension of
+the identity cycle of $KK(\mathbb C,\mathbb C)$ along $z\mapsto zP_F$ onto the range
+of $p$, and it intertwines representations, gradings and the zero operators. The
+pulled-back descent is homotopic to its support cycle, which is therefore
+isomorphic to the coefficient extension.
+\end{proof}
+
+\begin{proposition}\label{prop:finite-subgroup-assembly}
+\uses{prop:coset-space-assembly,prop:coset-compressed-descent,prop:finite-point-cutoff-averaging,prop:scalar-unit-projection-identity,prop:scalar-reduced-crossed-product,prop:reduced-group-trace}
+\lean{BC4lean.Chapter8Examples.CosetAssemblyUnit.cosetUnitClass,BC4lean.Chapter8Examples.CosetAssemblyUnit.subgroupElement_eq,BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_cosetUnitClass,BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedTraceK0_assembly_cosetUnitClass}
+\leanok
+Let $\Gamma$ be a countable discrete group in the lowest universe and
+$F\le\Gamma$ a finite subgroup. Let $[\Gamma/F]\in K^\Gamma_0(\underline E\Gamma)$ be
+the class of the cycle $\ell^2(\Gamma/F)$ of
+Proposition~\ref{prop:coset-space-assembly}, pushed forward along
+$\Gamma/F\to\underline E\Gamma$. Then
+\[
+  \mu_0[\Gamma/F]=[p_F],\qquad p_F=|F|^{-1}\sum_{f\in F}\lambda_f\in C^*_r\Gamma,
+\]
+for the canonical reduced assembly map $\mu_0$, and $\tau_*\mu_0[\Gamma/F]=1/|F|$ for
+the canonical trace.
+\end{proposition}
+\begin{proof}
+\leanok
+By Proposition~\ref{prop:coset-space-assembly} it suffices to assemble on
+$\Gamma/F$ with the cutoff $|F|^{-1/2}1_{eF}$. The cutoff product is pullback along
+$z\mapsto zp$ (Proposition~\ref{prop:finite-point-cutoff-averaging}). In the cycle
+$\ell^2(\Gamma/F)$ the function $\delta_{eF}$ acts as the projection onto
+$\delta_{eF}$, a unit vector fixed by $F$, so
+Proposition~\ref{prop:coset-compressed-descent} applies. The scalar index of the
+identity class is $[1]$
+(Proposition~\ref{prop:scalar-unit-projection-identity}), and $z\mapsto zP_F$ carries
+it to $[P_F]$. Under the crossed-product identification
+(Proposition~\ref{prop:scalar-reduced-crossed-product}) $\lambda_f$ goes to
+$\lambda_f$, so $P_F$ goes to $p_F$. Finally $\tau(\lambda_f)$ is $1$ for $f=e$ and
+$0$ otherwise (Proposition~\ref{prop:reduced-group-trace}), so $\tau(p_F)=1/|F|$.
+\end{proof}
+
+\begin{proposition}\label{prop:finite-subgroup-trace-range}
+\uses{prop:finite-subgroup-assembly}
+\lean{BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup,BC4lean.Chapter8Examples.CosetAssemblyUnit.lambdaGroup_le,BC4lean.Chapter8Examples.CosetAssemblyUnit.reducedAssemblyHom_ne_zero}
+\leanok
+Let $\Gamma$ be a countable discrete group in the lowest universe and
+$\Lambda_\Gamma\subseteq\mathbb R$ the additive subgroup generated by the numbers
+$1/|F|$, $F$ a finite subgroup of $\Gamma$. Then
+$\Lambda_\Gamma\subseteq\tau_*(\mu_0(K^\Gamma_0(\underline E\Gamma)))$. In particular
+$\mu_0\neq0$ in degree $0$.
+\end{proposition}
+\begin{proof}
+\leanok
+Each generator $1/|F|$ is $\tau_*\mu_0[\Gamma/F]$ by
+Proposition~\ref{prop:finite-subgroup-assembly}, and the right-hand side is a
+subgroup. For $F=1$ the value is $1\neq0$.
+\end{proof}
+
 \begin{proposition}\label{prop:unit-scalar-descent-calibration}
 \uses{def:reduced-descent,prop:descent-source-naturality}
 \lean{BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.evenClass_coefficientRestriction,BC4lean.KKTheory.UnitScalarDescent.oddClass_coefficientRestriction}
@@ -573,7 +678,10 @@ and the genuine assembly isomorphism for the literal Unit group, for
 every group with exactly one element, for every group of order two in
 the lowest universe, and for every finite abelian group in the lowest
 universe. For every finite group the assembly map sends the trivial
-representation to the class of the averaging projection. The general
+representation to the class of the averaging projection; for every
+countable discrete group in the lowest universe and every finite subgroup $F$
+it sends the class of $\Gamma/F$ to $[p_F]$, so the canonical trace of its
+image contains every $1/|F|$. The general
 conjecture remains unproved, so the chapter is a verified milestone rather
 than a completed proof of all its targets. The scalar $K$-groups
 $K_0(\mathbb C)\cong\mathbb Z$ and $K_1(\mathbb C)=0$ are computed, and with
