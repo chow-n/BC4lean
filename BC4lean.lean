@@ -987,3 +987,11 @@ import BC4lean.CosetAssembly
 import BC4lean.CosetUnitCycle
 import BC4lean.CosetCompressedDescent
 import BC4lean.CosetAssemblyUnit
+
+import BC4lean.GreenJulgCorrespondence
+import BC4lean.GreenJulgRepresentative
+import BC4lean.FinitePointDescentRange
+import BC4lean.FiniteScalarCrossed
+import BC4lean.GreenJulgPoint
+import BC4lean.GreenJulgPointLeft
+import BC4lean.FiniteAssemblyEquivalence

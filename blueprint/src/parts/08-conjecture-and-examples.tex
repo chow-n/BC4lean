@@ -660,6 +660,69 @@ the middle step is $K_p$ of a finite product, with the coordinate maps explicit.
 With $K_0(\mathbb C)\cong\mathbb Z$ this also gives the stated form of $K_0$.
 \end{proof}
 
+\begin{proposition}\label{prop:finite-point-green-julg}
+\uses{prop:finite-group-point-reduction}
+\lean{BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom,BC4lean.KKTheory.GreenJulgCorrespondence.greenJulgInverse,BC4lean.KKTheory.GreenJulgPoint.pointGreenJulgHom_greenJulgInverse,BC4lean.KKTheory.GreenJulgPoint.greenJulgInverse_pointGreenJulgHom,BC4lean.KKTheory.GreenJulgPoint.greenJulgPointEquiv}
+\leanok
+Let $\Gamma$ be a finite discrete group of order $n$ in the lowest universe and
+write $C^*_r\Gamma=\mathbb C\rtimes_r\Gamma$. In both degrees $p$, the point
+Green--Julg map
+\[
+  \Psi_p\colon KK^\Gamma_p(C_0(\mathrm{pt}),\mathbb C)\to KK_p(\mathbb C,\mathbb C\rtimes_r\Gamma),
+\]
+descent followed by the product with the point cutoff class, is an additive
+isomorphism. Its inverse is Julg's map
+$L_p(y)=\mathrm{ev}^*\bigl(\mathrm{infl}(y)\cdot[\ell^2\Gamma]\bigr)$:
+inflate $y$ along $\Gamma\to 1$, take the Kasparov product with the class of
+the compact correspondence $\ell^2\Gamma$ from $\mathbb C\rtimes_r\Gamma$ to
+$\mathbb C$ (with $\Gamma$ acting by right translation), and pull back along
+the evaluation $C_0(\mathrm{pt})\to\mathbb C$.
+\end{proposition}
+\begin{proof}
+\leanok
+Both composites are computed on cycles. Let $Q=n^{-1}\sum_g U_g\otimes\lambda_g$
+be the averaging projection on the descended module. For a cycle $(E,U,F)$
+with unital point representation and $U$-invariant operator, $\Psi_p[E]$ is
+the class of the compression to the range of $Q$, and $L_p$ of that class is
+the class of the interior tensor cycle on
+$\operatorname{range}(Q)\otimes_{\mathbb C\rtimes_r\Gamma}\ell^2\Gamma$. The map
+$x\mapsto\sqrt n\,Q(x\otimes\lambda_e)\otimes\delta_e$ is a unitary from $E$
+onto this module which intertwines the gradings, actions, representations and
+operators, so $L_p\Psi_p=\mathrm{id}$. Conversely, for a cycle on a Hilbert
+$\mathbb C\rtimes_r\Gamma$-module $M$, the map
+$m\mapsto n^{-1/2}\sum_g (m\lambda_g^*\otimes\delta_e)\otimes\lambda_g$ is a
+unitary from $M$ onto the range of $Q$ on
+$(M\otimes\ell^2\Gamma)\otimes(\mathbb C\rtimes_r\Gamma)$. It preserves inner
+products by the Fourier inversion
+$\sum_{g,h}\tau(\lambda_g b\lambda_h^*)\lambda_g^*\lambda_h=n\,b$ for the
+canonical trace $\tau$, and it intertwines the cycle data, so
+$\Psi_pL_p=\mathrm{id}$. Every class has representatives of the required
+form, and the odd degree is treated in the same way.
+\end{proof}
+
+\begin{theorem}\label{thm:baum-connes-finite}
+\uses{def:baum-connes-property,prop:finite-group-point-reduction,prop:finite-point-green-julg}
+\lean{BC4lean.Chapter8Examples.reducedScalarKKToAnalyticHom_bijective,BC4lean.Chapter8Examples.baumConnesProperty_of_pointGreenJulg_bijective,BC4lean.Chapter8Examples.finiteAssemblyAddEquiv,BC4lean.Chapter8Examples.reducedAssemblyHom_finite_eq,BC4lean.Chapter8Examples.baumConnesProperty_of_finite}
+\leanok
+Every finite discrete group $\Gamma$ in the lowest universe has the
+coefficient-free reduced Baum--Connes property: the actual assembly map is an
+isomorphism in both degrees. It equals an explicit additive equivalence.
+\end{theorem}
+\begin{proof}
+\leanok
+By Proposition~\ref{prop:finite-group-point-reduction} the canonical
+assembly map is the composite of the point-model equivalence, the point
+Green--Julg map $\Psi_p$ and the analytic comparison
+$KK_p(\mathbb C,\mathbb C\rtimes_r\Gamma)\to K_p(C^*_r\Gamma)$. The comparison
+is bijective for every countable group: it is a composite of additive
+equivalences and of $K_p$ of the $*$-isomorphism
+$\mathbb C\rtimes_r\Gamma\cong C^*_r\Gamma$. The map $\Psi_p$ is an isomorphism
+by Proposition~\ref{prop:finite-point-green-julg}. No assembly-bijectivity
+premise occurs. Theorems~\ref{thm:baum-connes-order-two}
+and~\ref{thm:baum-connes-finite-abelian} are special cases; they keep their
+direct proofs, which also give the explicit coordinates of $K_0(C^*_r\Gamma)$.
+\end{proof}
+
 \section{Research and formalization status}
 Keep established mathematics, completed Lean work, and open mathematical
 questions separate. Completed Lean work includes the universal proper-space
@@ -675,9 +738,9 @@ The verified Chapter~8 milestone consists of the exact property and conjecture
 definitions, the proved model and cofinal-index comparison theorems, exact
 piecewise bijectivity criteria, the geometric and analytic calibrations,
 and the genuine assembly isomorphism for the literal Unit group, for
-every group with exactly one element, for every group of order two in
-the lowest universe, and for every finite abelian group in the lowest
-universe. For every finite group the assembly map sends the trivial
+every group with exactly one element, and for every finite group in the
+lowest universe (the order-two and finite-abelian cases are also proved
+directly). For every finite group the assembly map sends the trivial
 representation to the class of the averaging projection; for every
 countable discrete group in the lowest universe and every finite subgroup $F$
 it sends the class of $\Gamma/F$ to $[p_F]$, so the canonical trace of its
@@ -688,6 +751,5 @@ $K_0(\mathbb C)\cong\mathbb Z$ and $K_1(\mathbb C)=0$ are computed, and with
 them the reduced $K$-groups of every group with exactly one element. For
 every finite group with $c$ conjugacy classes the reduced $K$-groups are
 computed as $K_0\cong\mathbb Z^c$ and $K_1=0$. No
-assembly isomorphism for a nonabelian finite group, no
-$\mathbb Z$ case, and no $\mathrm{SL}(3,\mathbb Z)$ result is asserted by
+$\mathbb Z$ case and no $\mathrm{SL}(3,\mathbb Z)$ result is asserted by
 this milestone.
