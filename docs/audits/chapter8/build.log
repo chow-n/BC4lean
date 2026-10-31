@@ -12,6 +12,8 @@ COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteReducedGroupCS
 Build completed successfully (2413 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteGroupCStarMatrix"]
 Build completed successfully (3009 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteScalarCrossed"]
+Build completed successfully (3012 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.KKGroupRestriction"]
 Build completed successfully (3106 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.KasparovGroupChange"]
@@ -76,6 +78,18 @@ COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FinitePointCompresse
 Build completed successfully (4195 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.CosetCompressedDescent"]
 Build completed successfully (4197 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FinitePointDescentRange"]
+Build completed successfully (4196 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.GreenJulgCorrespondence"]
+Build completed successfully (4191 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.GreenJulgRepresentative"]
+Build completed successfully (4192 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.GreenJulgPoint"]
+Build completed successfully (4201 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.GreenJulgPointLeft"]
+Build completed successfully (4208 jobs).
+COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteAssemblyEquivalence"]
+Build completed successfully (4210 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.KasparovTrivialInflation"]
 Build completed successfully (3883 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.FiniteAbelianCharacterSplit"]
@@ -103,4 +117,5 @@ Build completed successfully (4226 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean.SubsingletonAssemblyEquivalence"]
 Build completed successfully (4211 jobs).
 COMMAND ["lake", "--wfail", "--no-cache", "build", "BC4lean"]
-Build completed successfully (4522 jobs).
+✔ [4528/4529] Built BC4lean (170s)
+Build completed successfully (4529 jobs).
