@@ -17,6 +17,8 @@ import BC4lean.TrivialAnalyticScalar
 import BC4lean.FinitePointCompressedDescent
 import BC4lean.OrderTwoAssemblyEquivalence
 import BC4lean.FiniteGroupOperatorK
+import BC4lean.FiniteAssemblyUnit
+import BC4lean.FiniteAbelianAssemblyEquivalence
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -27,8 +29,10 @@ Independent source-only expected mathematical signatures, prepared without a
 Lean invocation. The first ten imports denote the ten proposed final module
 locations; the eleventh supplies the finite-point cutoff endpoints, the next
 four the endpoints for groups with one element, the next their scalar
-K-group endpoints, the next two the endpoints for groups of order two, and
-the last one the K-groups of finite groups.
+K-group endpoints, the next two the endpoints for groups of order two, the
+next one the K-groups of finite groups, and the last two the assembly of
+character classes of finite groups and the endpoints for finite abelian
+groups.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -1047,4 +1051,139 @@ example (h2 : Nat.card Γ = 2) : Nonempty (ReducedK0 Γ ≃+ (Fin 2 → ℤ)) :=
   reducedK0_of_card_eq_two h2
 
 end FiniteGroupKGroups
+
+section FiniteGroupCharacterAssembly
+open BC4lean.Chapter8Examples.FinitePointAssembly BC4lean.Chapter8Examples.FiniteAssemblyUnit
+open BC4lean.KKTheory.FinitePointCharacterTensor BC4lean.KKTheory.GroupUniverseParityGroup
+open BC4lean.KKTheory.GroupUniverseParityFunctoriality
+variable {Γ : Type} [Group Γ] [Countable Γ] [Fintype Γ] [TopologicalSpace Γ] [DiscreteTopology Γ]
+
+local instance pointCZeroSeparableForCharacterAssembly :
+    TopologicalSpace.SeparableSpace C₀(FiniteGroupPoint.{0}, ℂ) :=
+  TopologicalKHomology.cZero_separableSpace
+
+-- endpoint: BC4lean.Chapter8Examples.FinitePointAssembly.spaceAssembly_even_class
+example (c0 : Cutoff.CutoffFunction Γ FiniteGroupPoint.{0}) (χ : Γ →* unitary ℂ)
+    (a : KasparovHomotopyClass.{0,0,0,0} (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)) :
+    Assembly.spaceAssemblyHom Γ FiniteGroupPoint.{0} false c0
+        (KasparovHomotopyClass.twist χ (KasparovHomotopyClass.comap (1 : Γ →* Unit)
+          (CStarAlgebraAction.apply_eq_trivial_unit (pointAction Γ))
+          (CStarAlgebraAction.apply_eq_trivial_unit (scalarAction Γ))
+          (sourcePullback.{0,0,0,0,0} false pointEval pointEval_equivariant a))) =
+      letI : PartialOrder (ReducedGroupCStar Γ) := CStarAlgebra.spectralOrder _
+      letI : StarOrderedRing (ReducedGroupCStar Γ) := CStarAlgebra.spectralOrderedRing _
+      operatorK0UnitalEquiv (ReducedGroupCStar Γ)
+        (operatorK0Map ((crossedHom Γ).comp (FinitePointCharacterTensor.characterHom Γ χ))
+          (scalarKKOperatorK0AddEquiv a)) :=
+  spaceAssembly_even_class c0 χ a
+
+-- endpoint: BC4lean.Chapter8Examples.FinitePointAssembly.spaceAssembly_odd_class
+example (c0 : Cutoff.CutoffFunction Γ FiniteGroupPoint.{0}) (χ : Γ →* unitary ℂ)
+    (a : OddKK.{0,0,0,0} (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+      (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)) :
+    Assembly.spaceAssemblyHom Γ FiniteGroupPoint.{0} true c0
+        (OddKK.twist χ (OddKK.comap (1 : Γ →* Unit)
+          (CStarAlgebraAction.apply_eq_trivial_unit (pointAction Γ))
+          (CStarAlgebraAction.apply_eq_trivial_unit (scalarAction Γ))
+          (sourcePullback.{0,0,0,0,0} true pointEval pointEval_equivariant a))) =
+      letI : PartialOrder (ReducedGroupCStar Γ) := CStarAlgebra.spectralOrder _
+      letI : StarOrderedRing (ReducedGroupCStar Γ) := CStarAlgebra.spectralOrderedRing _
+      operatorK1UnitalEquiv (ReducedGroupCStar Γ)
+        (operatorK1Map ((crossedHom Γ).comp (FinitePointCharacterTensor.characterHom Γ χ))
+          (oddKKOperatorK1AllModuleUniversesAddEquiv a)) :=
+  spaceAssembly_odd_class c0 χ a
+
+-- endpoint: BC4lean.Chapter8Examples.FiniteAssemblyUnit.reducedAssemblyHom_characterClass
+example (χ : Γ →* unitary ℂ) :
+    Assembly.reducedAssemblyHom Γ false (characterClass Γ χ) = characterK0Class Γ χ :=
+  reducedAssemblyHom_characterClass χ
+
+-- endpoint: BC4lean.Chapter8Examples.FiniteAssemblyUnit.reducedAssemblyHom_unitClass
+example : Assembly.reducedAssemblyHom Γ false (unitClass Γ) = averagingClass Γ :=
+  reducedAssemblyHom_unitClass
+
+-- endpoint: BC4lean.Chapter8Examples.FiniteAssemblyUnit.reducedTraceK0_assembly_unitClass
+example :
+    reducedTraceK0 Γ (Assembly.reducedAssemblyHom Γ false (unitClass Γ)) =
+      (Fintype.card Γ : ℝ)⁻¹ :=
+  reducedTraceK0_assembly_unitClass
+
+-- endpoint: BC4lean.Chapter8Examples.FiniteAssemblyUnit.assembly_unitClass_not_mem_zmultiples
+example (h : 1 < Fintype.card Γ) :
+    Assembly.reducedAssemblyHom Γ false (unitClass Γ) ∉
+      AddSubgroup.zmultiples (reducedUnitClass Γ) :=
+  assembly_unitClass_not_mem_zmultiples h
+
+end FiniteGroupCharacterAssembly
+
+section FiniteAbelianAssembly
+open BC4lean.Chapter8Examples.FiniteAbelianAssembly
+open BC4lean.KKTheory.GroupUniverseParityGroup
+
+local instance pointCZeroSeparableForFiniteAbelian :
+    TopologicalSpace.SeparableSpace C₀(FiniteGroupPoint.{0}, ℂ) :=
+  TopologicalKHomology.cZero_separableSpace
+
+-- endpoint: BC4lean.CharacterDual.card_eq
+example (Γ : Type u) [CommGroup Γ] [Fintype Γ] :
+    Fintype.card (CharacterDual Γ) = Fintype.card Γ :=
+  CharacterDual.card_eq
+
+-- endpoint: BC4lean.KKTheory.finiteAbelianPointKKSplit
+example (Γ : Type) [CommGroup Γ] [Fintype Γ] (p : Bool) :
+    KKParityGroup.{0,0,0,0} p (CZero.action Γ (X := FiniteGroupPoint.{0}))
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Γ ℂ) ≃+
+      (CharacterDual Γ → KKParityGroup.{0,0,0,0} p
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)) :=
+  finiteAbelianPointKKSplit.{0,0} FiniteGroupPoint.{0} default p
+
+variable (Γ : Type) [CommGroup Γ] [Countable Γ] [TopologicalSpace Γ] [DiscreteTopology Γ]
+
+-- endpoint: BC4lean.finiteAbelianReducedEquiv
+example [Fintype Γ] : (CharacterDual Γ → ℂ) ≃⋆ₐ[ℂ] ReducedGroupCStar Γ :=
+  finiteAbelianReducedEquiv Γ
+
+-- endpoint: BC4lean.Chapter8Examples.FiniteAbelianAssembly.finiteAbelianAnalyticEquiv
+example [Fintype Γ] (p : Bool) :
+    (CharacterDual Γ → KKParityGroup.{0,0,0,0} p
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)
+        (CStarAlgebraAction.trivial : CStarAlgebraAction Unit ℂ)) ≃+
+      Assembly.analyticGroup Γ p :=
+  finiteAbelianAnalyticEquiv Γ p
+
+-- endpoint: BC4lean.Chapter8Examples.FiniteAbelianAssembly.spaceAssemblyHom_finiteAbelian
+example [Fintype Γ] (c0 : Cutoff.CutoffFunction Γ FiniteGroupPoint.{0}) (p : Bool)
+    (x : TopologicalKHomology.spaceGroup p Γ FiniteGroupPoint.{0}) :
+    Assembly.spaceAssemblyHom Γ FiniteGroupPoint.{0} p c0 x =
+      finiteAbelianAnalyticEquiv Γ p
+        (finiteAbelianPointKKSplit.{0,0} (Γ := Γ) FiniteGroupPoint.{0} default p x) :=
+  spaceAssemblyHom_finiteAbelian c0 p x
+
+variable [Finite Γ]
+
+-- endpoint: BC4lean.Chapter8Examples.finiteAbelianAssemblyAddEquiv
+example (p : Bool) :
+    TopologicalKHomology.topologicalGroup p Γ ≃+ Assembly.analyticGroup Γ p :=
+  finiteAbelianAssemblyAddEquiv Γ p
+
+-- endpoint: BC4lean.Chapter8Examples.reducedAssemblyHom_finiteAbelian_eq
+example (p : Bool) (x : TopologicalKHomology.topologicalGroup p Γ) :
+    Assembly.reducedAssemblyHom Γ p x = finiteAbelianAssemblyAddEquiv Γ p x :=
+  reducedAssemblyHom_finiteAbelian_eq Γ p x
+
+-- endpoint: BC4lean.Chapter8Examples.baumConnesProperty_of_finite_commGroup
+-- No supplied assembly bijectivity, inverse, or compatibility hypothesis.
+example : ∀ p : Bool, Function.Bijective (Assembly.reducedAssemblyHom Γ p) :=
+  baumConnesProperty_of_finite_commGroup Γ
+
+-- endpoint: BC4lean.Chapter8Examples.baumConnesProperty_of_finite_commGroup (named property)
+example : Assembly.BaumConnesProperty Γ := baumConnesProperty_of_finite_commGroup Γ
+
+-- endpoint: BC4lean.Chapter8Examples.finiteAbelianReducedK0Equiv
+example [Fintype Γ] : ReducedK0 Γ ≃+ (CharacterDual Γ → ℤ) :=
+  finiteAbelianReducedK0Equiv Γ
+
+end FiniteAbelianAssembly
 end Chapter8ExpectedTypes
