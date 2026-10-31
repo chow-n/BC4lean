@@ -16,6 +16,7 @@ import BC4lean.SubsingletonAssemblyEquivalence
 import BC4lean.TrivialAnalyticScalar
 import BC4lean.FinitePointCompressedDescent
 import BC4lean.OrderTwoAssemblyEquivalence
+import BC4lean.FiniteGroupOperatorK
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -26,7 +27,8 @@ Independent source-only expected mathematical signatures, prepared without a
 Lean invocation. The first ten imports denote the ten proposed final module
 locations; the eleventh supplies the finite-point cutoff endpoints, the next
 four the endpoints for groups with one element, the next their scalar
-K-group endpoints, and the last two the endpoints for groups of order two.
+K-group endpoints, the next two the endpoints for groups of order two, and
+the last one the K-groups of finite groups.
 No native acceptance is claimed by this file. A source hash change requires a
 fresh review before the fixture becomes an acceptance input.
 
@@ -1012,4 +1014,37 @@ example :
   baumConnesProperty_zmod_two
 
 end OrderTwoAssembly
+
+section FiniteGroupKGroups
+variable (Γ : Type u) [Group Γ]
+
+-- endpoint: BC4lean.reducedK0EquivOfStarAlgEquiv
+example {n : ℕ} {d : Fin n → ℕ} [∀ i, NeZero (d i)]
+    (e : ReducedGroupCStar Γ ≃⋆ₐ[ℂ] Π i, CStarMatrix (Fin (d i)) (Fin (d i)) ℂ) :
+    ReducedK0 Γ ≃+ (Fin n → ℤ) :=
+  reducedK0EquivOfStarAlgEquiv e
+
+-- endpoint: BC4lean.reducedK1_eq_zero_of_starAlgEquiv
+example {n : ℕ} {d : Fin n → ℕ} [∀ i, NeZero (d i)]
+    (e : ReducedGroupCStar Γ ≃⋆ₐ[ℂ] Π i, CStarMatrix (Fin (d i)) (Fin (d i)) ℂ)
+    (x : ReducedK1 Γ) : x = 0 :=
+  reducedK1_eq_zero_of_starAlgEquiv e x
+
+-- endpoint: BC4lean.reducedK0_finite
+example [Finite Γ] : Nonempty (ReducedK0 Γ ≃+ (Fin (Nat.card (ConjClasses Γ)) → ℤ)) :=
+  reducedK0_finite
+
+-- endpoint: BC4lean.reducedK1_finite
+example [Finite Γ] (x : ReducedK1 Γ) : x = 0 := reducedK1_finite x
+
+-- endpoint: BC4lean.reducedK0_of_commute
+example [Finite Γ] (h : ∀ a b : Γ, a * b = b * a) :
+    Nonempty (ReducedK0 Γ ≃+ (Fin (Nat.card Γ) → ℤ)) :=
+  reducedK0_of_commute h
+
+-- endpoint: BC4lean.reducedK0_of_card_eq_two
+example (h2 : Nat.card Γ = 2) : Nonempty (ReducedK0 Γ ≃+ (Fin 2 → ℤ)) :=
+  reducedK0_of_card_eq_two h2
+
+end FiniteGroupKGroups
 end Chapter8ExpectedTypes
