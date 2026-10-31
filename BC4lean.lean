@@ -957,12 +957,18 @@ import BC4lean.FinitePointCharacterTensor
 import BC4lean.FinitePointCompressedDescent
 import BC4lean.KasparovReducingCompression
 import BC4lean.KasparovReducingCompressionFibre
+import BC4lean.KasparovFiniteAveraging
+import BC4lean.KasparovEquivariantRepresentative
+import BC4lean.KasparovEquivariantDirectSum
 import BC4lean.OrderTwoPointKK
 import BC4lean.OrderTwoEigenSplitInvariance
 import BC4lean.KasparovGroupChange
+import BC4lean.KasparovTrivialInflation
 import BC4lean.OrderTwoEigenSplitAdditive
 import BC4lean.OrderTwoPointKKSplit
 import BC4lean.OrderTwoPointKKScalar
+import BC4lean.OperatorKProductEquiv
+import BC4lean.FinitePointCharacterAssembly
 import BC4lean.OrderTwoAssemblyEquivalence
 
 import BC4lean.OperatorKMatrixStability
@@ -970,3 +976,9 @@ import BC4lean.OperatorKFinitePi
 import BC4lean.FiniteGroupCStarMatrix
 import BC4lean.FiniteGroupOperatorK
 import BC4lean.ReducedGroupTrace
+import BC4lean.FiniteAssemblyUnit
+
+import BC4lean.FiniteAbelianCharacterProjection
+import BC4lean.FiniteAbelianCharacterSplit
+import BC4lean.FiniteAbelianReducedEquiv
+import BC4lean.FiniteAbelianAssemblyEquivalence

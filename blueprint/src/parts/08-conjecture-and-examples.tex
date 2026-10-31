@@ -289,6 +289,42 @@ intertwined on elementary tensors and therefore everywhere. This is a whole-cycl
 isomorphism with the coefficient-extension cycle.
 \end{proof}
 
+\begin{proposition}\label{prop:finite-group-character-assembly}
+\uses{prop:finite-group-point-reduction,prop:finite-point-cutoff-averaging,prop:finite-point-compressed-descent,prop:scalar-unit-projection-identity,prop:finite-group-averaging-projection,prop:reduced-group-trace}
+\lean{BC4lean.Chapter8Examples.FinitePointAssembly.spaceAssembly_even_class,BC4lean.Chapter8Examples.FinitePointAssembly.spaceAssembly_odd_class,BC4lean.Chapter8Examples.FiniteAssemblyUnit.reducedAssemblyHom_characterClass,BC4lean.Chapter8Examples.FiniteAssemblyUnit.reducedAssemblyHom_unitClass,BC4lean.Chapter8Examples.FiniteAssemblyUnit.reducedTraceK0_assembly_unitClass,BC4lean.Chapter8Examples.FiniteAssemblyUnit.assembly_unitClass_not_mem_zmultiples}
+\leanok
+Let $\Gamma$ be a finite group in the lowest universe and $\chi\colon\Gamma\to U(1)$
+a character. For $a\in KK_p(\mathbb C,\mathbb C)$, pulled back to
+$C_0(\mathrm{pt})$, inflated along $\Gamma\to1$ and twisted by $\chi$, the point
+assembly map gives $(P_\chi)_*[a]\in K_p(C^*_r\Gamma)$, where
+$P_\chi=|\Gamma|^{-1}\sum_g\chi(g)\lambda_g$. In particular, if $1_\Gamma$ denotes
+the identity class of $KK_0(\mathbb C,\mathbb C)$ read in this way (the trivial
+representation on $\mathbb C$), then
+\[
+  \mu_0(\chi\otimes1_\Gamma)=[P_\chi],\qquad \mu_0(1_\Gamma)=[p_\Gamma],
+\]
+with $p_\Gamma=|\Gamma|^{-1}\sum_g\lambda_g$, for the canonical reduced assembly map
+$\mu_0$. Consequently $\tau_*\mu_0(\chi\otimes1_\Gamma)=1/|\Gamma|$ for the
+canonical trace, and for $|\Gamma|>1$ the class $\mu_0(1_\Gamma)$ is not an
+integer multiple of $[1]$.
+\end{proposition}
+\begin{proof}
+\leanok
+Reduce to the point model
+(Proposition~\ref{prop:finite-group-point-reduction}). Represent $a$ by a cycle
+with unital scalar representation. On the inflated, $\chi$-twisted cycle the group
+acts by $\chi$ and the point acts unitally, so the cutoff product is pullback along
+$z\mapsto ze$ (Proposition~\ref{prop:finite-point-cutoff-averaging}) and compressed
+descent (Proposition~\ref{prop:finite-point-compressed-descent}) gives the coefficient
+extension of $a$ along $z\mapsto zP_\chi$; the scalar index of the extension is
+$(P_\chi)_*$ of the index of $a$. The index of the identity class is $[1]$
+(Proposition~\ref{prop:scalar-unit-projection-identity}), and $z\mapsto zP_\chi$
+carries $[1]$ to $[P_\chi]$. At $\chi=1$ the projection is $p_\Gamma$, and twisting
+by the trivial character is the identity. The trace statements follow from
+$\tau(P_\chi)=1/|\Gamma|$, as only the summand at $g=e$ contributes, and from
+Proposition~\ref{prop:finite-group-averaging-projection}.
+\end{proof}
+
 \begin{proposition}\label{prop:unit-scalar-descent-calibration}
 \uses{def:reduced-descent,prop:descent-source-naturality}
 \lean{BC4lean.KKTheory.UnitScalarDescent.evenCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.oddCoefficientRestrictionIso,BC4lean.KKTheory.UnitScalarDescent.evenClass_coefficientRestriction,BC4lean.KKTheory.UnitScalarDescent.oddClass_coefficientRestriction}
@@ -433,7 +469,7 @@ Finally pull back along $\mathbb C\cong C_0(\mathrm{pt})$.
 \end{proof}
 
 \begin{theorem}\label{thm:baum-connes-order-two}
-\uses{def:baum-connes-property,prop:finite-group-point-reduction,prop:finite-point-cutoff-averaging,prop:finite-point-compressed-descent,prop:order-two-point-kk-split,prop:reduced-group-cstar-order-two,prop:k-product-decomposition,cor:operator-k-zero-iso-product}
+\uses{def:baum-connes-property,prop:finite-group-point-reduction,prop:finite-point-cutoff-averaging,prop:finite-point-compressed-descent,prop:finite-group-character-assembly,prop:order-two-point-kk-split,prop:reduced-group-cstar-order-two,prop:k-product-decomposition,cor:operator-k-zero-iso-product}
 \lean{BC4lean.Chapter8Examples.OrderTwoAssembly.spaceAssemblyHom_orderTwo,BC4lean.Chapter8Examples.OrderTwoAssembly.orderTwoAnalyticEquiv,BC4lean.Chapter8Examples.orderTwoAssemblyAddEquiv,BC4lean.Chapter8Examples.reducedAssemblyHom_orderTwo_eq,BC4lean.Chapter8Examples.baumConnesProperty_of_card_two,BC4lean.Chapter8Examples.baumConnesProperty_zmod_two}
 \leanok
 Every countable discrete group $\Gamma$ with $|\Gamma|=2$ in the lowest universe
@@ -458,6 +494,67 @@ for one-element groups (Theorem~\ref{thm:baum-connes-subsingleton}), or invarian
 of the property under group isomorphism; neither is used here.
 \end{proof}
 
+\begin{proposition}\label{prop:finite-abelian-point-kk-split}
+\uses{prop:finite-group-point-model,prop:order-two-point-kk-split}
+\lean{BC4lean.CharacterDual.card_eq,BC4lean.KKTheory.finiteAbelianPointKKSplit}
+\leanok
+Let $\Gamma$ be a finite abelian group and $\widehat\Gamma$ its group of characters,
+which has $|\Gamma|$ elements. Let $\Gamma$ act trivially on $A$ and on $B$. Then
+\[
+  KK^\Gamma_p(A,B)\cong\prod_{\chi\in\widehat\Gamma}KK_p(A,B),\qquad
+  x\mapsto(\mathrm{res}\,x_\chi)_\chi,
+\]
+in both parities, where $x_\chi$ is the $\chi$-isotypic part; the inverse is
+$u\mapsto\sum_\chi\chi\otimes\mathrm{infl}\,u_\chi$. In particular
+$KK^\Gamma_p(C_0(\mathrm{pt}),\mathbb C)\cong\prod_{\chi\in\widehat\Gamma}
+KK_p(\mathbb C,\mathbb C)$.
+\end{proposition}
+\begin{proof}
+\leanok
+As in Proposition~\ref{prop:order-two-point-kk-split}, replace the operator by its
+average over $\Gamma$, so that every $U_g$ commutes with the cycle. The projections
+$P_\chi=|\Gamma|^{-1}\sum_g\overline{\chi(g)}U_g$ are then mutually orthogonal
+projections commuting with the cycle, with $U_hP_\chi=\chi(h)P_\chi$, and
+$\sum_\chi P_\chi=1$ by orthogonality of characters. Compressing to $P_\chi$ gives
+the $\chi$-part; it respects cycle isomorphisms, homotopies and direct sums. A class
+is the sum of its $\chi$-parts, by induction over the set of characters on whose
+part the module is nonzero. On the $\chi$-part $\Gamma$ acts through $\chi$, so
+restriction followed by inflation and twisting by $\chi$ is the identity up to a
+cycle isomorphism, and the $\psi$-part of a $\chi$-twisted inflated class vanishes
+for $\psi\neq\chi$. For the point, pull back along $\mathbb C\cong C_0(\mathrm{pt})$.
+\end{proof}
+
+\begin{theorem}\label{thm:baum-connes-finite-abelian}
+\uses{def:baum-connes-property,prop:finite-group-point-reduction,prop:finite-group-character-assembly,prop:finite-abelian-point-kk-split,prop:reduced-group-cstar-finite,prop:operator-k-finite-product,prop:k-product-decomposition}
+\lean{BC4lean.finiteAbelianReducedEquiv,BC4lean.Chapter8Examples.FiniteAbelianAssembly.finiteAbelianAnalyticEquiv,BC4lean.Chapter8Examples.FiniteAbelianAssembly.spaceAssemblyHom_finiteAbelian,BC4lean.Chapter8Examples.finiteAbelianAssemblyAddEquiv,BC4lean.Chapter8Examples.reducedAssemblyHom_finiteAbelian_eq,BC4lean.Chapter8Examples.baumConnesProperty_of_finite_commGroup,BC4lean.Chapter8Examples.finiteAbelianReducedK0Equiv}
+\leanok
+Every finite abelian group $\Gamma$ in the lowest universe, with the discrete
+topology, has the coefficient-free reduced Baum--Connes property: the actual
+assembly map is an isomorphism in both degrees. Moreover
+$K_0(C^*_r\Gamma)\cong\mathbb Z^{\widehat\Gamma}$, with one coordinate for each
+character.
+\end{theorem}
+\begin{proof}
+\leanok
+This is the proof of Theorem~\ref{thm:baum-connes-order-two} with the two
+characters of a group of order two replaced by the $|\Gamma|$ characters of
+$\Gamma$. Reduce to the point model and split
+$KK^\Gamma_p(C_0(\mathrm{pt}),\mathbb C)$ over the characters
+(Proposition~\ref{prop:finite-abelian-point-kk-split}). By
+Proposition~\ref{prop:finite-group-character-assembly} the assembly map sends
+$\chi\otimes\mathrm{infl}\,a$ to $(P_\chi)_*[a]$. The map
+$\delta_g\mapsto(\psi\mapsto\overline{\psi(g)})$ is a $*$-isomorphism of the group
+algebra onto $\mathbb C^{\widehat\Gamma}$, by orthogonality of characters and a
+dimension count; composed with $\mathbb C\Gamma\cong C^*_r\Gamma$
+(Proposition~\ref{prop:reduced-group-cstar-finite}) it identifies
+$z\mapsto zP_\chi$ with the coordinate inclusion at $\chi$. Hence the assembly map is
+the composite
+$\prod_\chi KK_p(\mathbb C,\mathbb C)\cong\prod_\chi K_p(\mathbb C)\cong
+K_p(\mathbb C^{\widehat\Gamma})\cong K_p(C^*_r\Gamma)$ of additive equivalences;
+the middle step is $K_p$ of a finite product, with the coordinate maps explicit.
+With $K_0(\mathbb C)\cong\mathbb Z$ this also gives the stated form of $K_0$.
+\end{proof}
+
 \section{Research and formalization status}
 Keep established mathematics, completed Lean work, and open mathematical
 questions separate. Completed Lean work includes the universal proper-space
@@ -473,14 +570,16 @@ The verified Chapter~8 milestone consists of the exact property and conjecture
 definitions, the proved model and cofinal-index comparison theorems, exact
 piecewise bijectivity criteria, the geometric and analytic calibrations,
 and the genuine assembly isomorphism for the literal Unit group, for
-every group with exactly one element, and for every group of order two in
-the lowest universe. The general
+every group with exactly one element, for every group of order two in
+the lowest universe, and for every finite abelian group in the lowest
+universe. For every finite group the assembly map sends the trivial
+representation to the class of the averaging projection. The general
 conjecture remains unproved, so the chapter is a verified milestone rather
 than a completed proof of all its targets. The scalar $K$-groups
 $K_0(\mathbb C)\cong\mathbb Z$ and $K_1(\mathbb C)=0$ are computed, and with
 them the reduced $K$-groups of every group with exactly one element. For
 every finite group with $c$ conjugacy classes the reduced $K$-groups are
 computed as $K_0\cong\mathbb Z^c$ and $K_1=0$. No
-assembly isomorphism for a finite group of order greater than two, no
+assembly isomorphism for a nonabelian finite group, no
 $\mathbb Z$ case, and no $\mathrm{SL}(3,\mathbb Z)$ result is asserted by
 this milestone.
