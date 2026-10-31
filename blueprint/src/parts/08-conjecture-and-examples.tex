@@ -466,6 +466,34 @@ extends this to every group with one element, in every universe, without
 group-isomorphism invariance.
 \end{proof}
 
+\begin{theorem}\label{thm:baum-connes-group-iso}
+\uses{def:baum-connes-property,prop:baum-connes-model-invariance,prop:kk-group-restriction}
+\lean{BC4lean.Assembly.baumConnesProperty_congr,BC4lean.KKTheory.GroupIso.reducedGroupCStarEquiv,BC4lean.KKTheory.GroupIso.crossedProductEquiv}
+\leanok
+Let $e\colon\Gamma\to\Gamma'$ be an isomorphism of countable discrete groups in
+the same universe. Then $\Gamma$ has the coefficient-free reduced Baum--Connes
+property if and only if $\Gamma'$ has it.
+\end{theorem}
+\begin{proof}
+\leanok
+Pull the canonical telescope of $\Gamma'$ back along $e$. It is
+$\Gamma$-equivariantly homotopy equivalent to the canonical telescope of
+$\Gamma$, so by Proposition~\ref{prop:baum-connes-model-invariance} the assembly
+map of $\Gamma$ may be computed on it. Restriction of equivariant Kasparov
+cycles along $e$ (Proposition~\ref{prop:kk-group-restriction}) identifies the
+piece groups of the two labellings compatibly with the transitions, hence the
+topological $K$-homology groups. The isomorphism
+$A\rtimes_r(\alpha\circ e)\Gamma\cong A\rtimes_r\alpha\,\Gamma'$,
+$a\,u_g\mapsto a\,u_{e(g)}$, commutes with descent in both degrees and carries
+the cutoff class of $\Gamma$ to that of $\Gamma'$; for $A=\mathbb C$ it is the
+isomorphism $C^*_r\Gamma\cong C^*_r\Gamma'$ induced by $e$. So on every
+cocompact piece the two assembly maps correspond under these bijections, and
+therefore on the colimit. The statement is for groups in one universe; with
+Theorem~\ref{thm:baum-connes-unit} it reaches the one-element groups in the
+lowest universe only, while Theorem~\ref{thm:baum-connes-subsingleton} covers
+one-element groups in every universe.
+\end{proof}
+
 \begin{proposition}\label{prop:kk-group-restriction}
 \uses{def:equivariant-kk}
 \lean{BC4lean.KKTheory.GroupRestriction.cycleComap,BC4lean.KKTheory.GroupRestriction.evenComap,BC4lean.KKTheory.GroupRestriction.oddComap,BC4lean.KKTheory.GroupRestriction.subsingletonParityEquiv}
@@ -594,9 +622,10 @@ $z\mapsto zP_1$ and $z\mapsto zP_\chi$ are the two coordinate inclusions. By the
 eigen split and additivity, the assembly map is the composite
 $KK_p(\mathbb C,\mathbb C)^2\cong K_p(\mathbb C)^2\cong K_p(\mathbb C\times\mathbb C)
 \cong K_p(C^*_r\Gamma)$ of additive equivalences. Groups of order two in higher
-universes would need either the universe generalisation of the point argument, as
-for one-element groups (Theorem~\ref{thm:baum-connes-subsingleton}), or invariance
-of the property under group isomorphism; neither is used here.
+universes would need the universe generalisation of the point argument, as for
+one-element groups (Theorem~\ref{thm:baum-connes-subsingleton}); invariance under
+group isomorphism (Theorem~\ref{thm:baum-connes-group-iso}) does not change the
+universe.
 \end{proof}
 
 \begin{proposition}\label{prop:finite-abelian-point-kk-split}
@@ -740,7 +769,8 @@ piecewise bijectivity criteria, the geometric and analytic calibrations,
 and the genuine assembly isomorphism for the literal Unit group, for
 every group with exactly one element, and for every finite group in the
 lowest universe (the order-two and finite-abelian cases are also proved
-directly). For every finite group the assembly map sends the trivial
+directly). The property is invariant under isomorphisms of groups in the same
+universe. For every finite group the assembly map sends the trivial
 representation to the class of the averaging projection; for every
 countable discrete group in the lowest universe and every finite subgroup $F$
 it sends the class of $\Gamma/F$ to $[p_F]$, so the canonical trace of its

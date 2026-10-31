@@ -995,3 +995,10 @@ import BC4lean.FiniteScalarCrossed
 import BC4lean.GreenJulgPoint
 import BC4lean.GreenJulgPointLeft
 import BC4lean.FiniteAssemblyEquivalence
+
+import BC4lean.GroupIsoReducedCStar
+import BC4lean.GroupIsoCrossedProduct
+import BC4lean.GroupIsoDescent
+import BC4lean.GroupIsoModel
+import BC4lean.GroupIsoKHomology
+import BC4lean.GroupIsoBaumConnes
