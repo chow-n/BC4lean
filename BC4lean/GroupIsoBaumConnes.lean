@@ -389,15 +389,7 @@ variable {Γ Γ' : Type u} [Group Γ] [Group Γ'] [Countable Γ] [Countable Γ']
   (X : Type u) [TopologicalSpace X] [MulAction Γ' X] [ContinuousConstSMul Γ' X]
   [LocallyCompactSpace X] [T2Space X] [SecondCountableTopology X] [ProperSMul Γ' X]
 
-local instance sq_piece_locallyCompact' (S : CocompactPiece Γ' X) :
-    LocallyCompactSpace S.toInvariantSubset := S.locallyCompact
-
-local instance sq_piece_locallyCompact (S : CocompactPiece Γ (Pull e X)) :
-    LocallyCompactSpace S.toInvariantSubset := S.locallyCompact
-
-local instance sq_piece_separable' (S : CocompactPiece Γ' X) :
-    TopologicalSpace.SeparableSpace C₀(S.toInvariantSubset, ℂ) :=
-  TopologicalKHomology.cZero_separableSpace
+attribute [local instance] piece_locallyCompact' piece_locallyCompact piece_separable'
 
 /-- The `Γ`-space of a relabelled piece is `e*` of the `Γ'`-piece, definitionally (needed to use
 the cutoff lemmas, which are stated for `Pull e Y`). -/
