@@ -2,8 +2,8 @@
   "schema": "chapter8.actual.process.v1",
   "status": "completed",
   "stage": "expected-types",
-  "run_id": "24429bca638c4abb9325e932895326c3",
-  "parent_pid": 12009,
+  "run_id": "c0ec727c0ed347e5921f40d295b9d045",
+  "parent_pid": 87860,
   "source_root": "/private/tmp/bc4lean-release",
   "command": [
     "lake",
@@ -15,13 +15,13 @@
     "-DrelaxedAutoImplicit=false",
     "/private/tmp/bc4lean-release/docs/audits/chapter8/ExpectedTypes.lean"
   ],
-  "started_utc": "2026-10-30T23:03:56.878797+00:00",
+  "started_utc": "2026-10-31T00:42:40.560076+00:00",
   "fixture": "docs/audits/chapter8/ExpectedTypes.lean",
-  "source_sha256": "3eb143fa0b3051dfde0ed01836b12c7178a81f1b4ef666ea33a0d5fee004d23e",
-  "pid": 20135,
-  "process_group": 20135,
+  "source_sha256": "6e088c9b5eb611866515ee4407c18c010e6a1eb92b9146cc8524a9addd9f00d4",
+  "pid": 94109,
+  "process_group": 94109,
   "exit_code": 0,
-  "finished_utc": "2026-10-30T23:07:16.615910+00:00",
+  "finished_utc": "2026-10-31T00:45:15.060331+00:00",
   "owned_process_group_quiescent": true,
   "stdout_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 }
