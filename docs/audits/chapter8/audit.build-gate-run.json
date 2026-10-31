@@ -2,8 +2,8 @@
   "schema": "chapter8.actual.process.v1",
   "status": "completed",
   "stage": "build-gate",
-  "run_id": "8c2b2f94876f4f76a252100a0d6061fd",
-  "parent_pid": 2019,
+  "run_id": "d186783656b14b589876f36ab14cff2f",
+  "parent_pid": 41985,
   "source_root": "/private/tmp/bc4lean-release",
   "command": [
     "lake",
@@ -13,11 +13,11 @@
     "build",
     "BC4lean"
   ],
-  "started_utc": "2026-10-31T15:52:39.521341+00:00",
-  "pid": 3092,
-  "process_group": 3092,
+  "started_utc": "2026-10-31T20:24:21.945370+00:00",
+  "pid": 42710,
+  "process_group": 42710,
   "exit_code": 0,
-  "finished_utc": "2026-10-31T15:52:58.467785+00:00",
+  "finished_utc": "2026-10-31T20:24:52.013620+00:00",
   "owned_process_group_quiescent": true,
-  "stdout_stderr_sha256": "2557a6bf0f85fd1ea091a654df89ac6bbc6e0c52b4d020f71d8a97d9cf1bdec7"
+  "stdout_stderr_sha256": "33f660718b28b91dd8199f069267015c925b4fb4fc0bb6408d6dc5dd55dde82e"
 }
