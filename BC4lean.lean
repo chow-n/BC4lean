@@ -964,3 +964,9 @@ import BC4lean.OrderTwoEigenSplitAdditive
 import BC4lean.OrderTwoPointKKSplit
 import BC4lean.OrderTwoPointKKScalar
 import BC4lean.OrderTwoAssemblyEquivalence
+
+import BC4lean.OperatorKMatrixStability
+import BC4lean.OperatorKFinitePi
+import BC4lean.FiniteGroupCStarMatrix
+import BC4lean.FiniteGroupOperatorK
+import BC4lean.ReducedGroupTrace

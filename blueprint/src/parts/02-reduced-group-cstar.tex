@@ -414,6 +414,56 @@ finite-dimensional subspace of $C_r^*(\Gamma)$, hence closed. It is also
 dense, so it is all of $C_r^*(\Gamma)$.
 \end{proof}
 
+\begin{lemma}[Unitary trick]\label{lem:finite-group-unitary-trick}
+\lean{BC4lean.GroupAlgebra.averagedGram,BC4lean.GroupAlgebra.star_mul_averagedGram_mul,BC4lean.GroupAlgebra.one_le_averagedGram,BC4lean.GroupAlgebra.isUnit_averagedGram,BC4lean.GroupAlgebra.unitarizer,BC4lean.GroupAlgebra.unitarized,BC4lean.GroupAlgebra.star_unitarized,BC4lean.GroupAlgebra.unitarizedHom,BC4lean.GroupAlgebra.starAlgEquivOfAlgEquiv,BC4lean.GroupAlgebra.starAlgEquivOfAlgEquiv_apply}
+\leanok
+\uses{def:group-algebra,prop:group-algebra-star-laws}
+Let $G$ be a finite group, $A$ a unital $C^*$-algebra and $\rho:G\to A$ a
+monoid homomorphism. The element $P=\sum_g\rho(g)^*\rho(g)$ satisfies $P\ge1$
+and $\rho(h)^*P\rho(h)=P$ for every $h$. With $S=P^{1/2}$, which is invertible
+and self-adjoint, every $S\rho(g)S^{-1}$ is unitary. Consequently, for every
+algebra isomorphism $e:\mathbb C[G]\to A$, the map $x\mapsto Se(x)S^{-1}$, with
+$S$ formed from $\rho(g)=e(\delta_g)$, is a $*$-isomorphism.
+\end{lemma}
+\begin{proof}
+\leanok
+The summand at $g=1$ is $1$ and the others are positive, so $P\ge1$ and $P$ is
+invertible. Reindexing the sum along $g\mapsto gh$ gives $\rho(h)^*P\rho(h)=P$.
+Then $(S\rho(g)S^{-1})^*(S\rho(g)S^{-1})=S^{-1}\rho(g)^*P\rho(g)S^{-1}=1$.
+Conjugation by $S$ composed with $e$ is an algebra isomorphism, and on the
+basis it sends $\delta_g^*=\delta_{g^{-1}}$ to
+$S\rho(g^{-1})S^{-1}=(S\rho(g)S^{-1})^*$, so it preserves the involution.
+\end{proof}
+
+\begin{proposition}[Finite groups: matrix decomposition]\label{prop:reduced-group-cstar-finite-matrix}
+\lean{BC4lean.GroupAlgebra.mem_center_iff_coeff_conj,BC4lean.GroupAlgebra.classFunctionEquivCenter,BC4lean.GroupAlgebra.finrank_center,BC4lean.centerLinearEquiv,BC4lean.finrank_center_congr,BC4lean.piScalarEquivCenter,BC4lean.finrank_center_pi_matrix,BC4lean.card_conjClasses_eq_of_algEquiv_pi,BC4lean.exists_groupAlgebra_algEquiv_pi,BC4lean.exists_groupAlgebra_starAlgEquiv_pi,BC4lean.exists_reducedStarAlgEquiv_pi,BC4lean.card_blocks_eq_card_conjClasses,BC4lean.sum_sq_blocks_eq_card,BC4lean.exists_reducedStarAlgEquiv_pi_conjClasses,BC4lean.exists_reducedStarAlgEquiv_pi_conjClasses_isometry}
+\leanok
+\uses{prop:reduced-group-cstar-finite,lem:finite-group-unitary-trick}
+Let $\Gamma$ be a finite group with $c$ conjugacy classes. There are integers
+$d_0,\dots,d_{c-1}\ge1$ and an isometric $*$-isomorphism
+\[
+ C_r^*(\Gamma)\cong\prod_{i<c}M_{d_i}(\mathbb C).
+\]
+In every $*$-isomorphism of $C_r^*(\Gamma)$ onto a finite product of full
+matrix algebras $M_{d_i}(\mathbb C)$ with all $d_i\ge1$, the number of blocks
+is $c$ and $\sum_i d_i^2=|\Gamma|$. The block sizes are not identified with the
+dimensions of the irreducible representations.
+\end{proposition}
+\begin{proof}
+\leanok
+By Maschke's theorem $\mathbb C[\Gamma]$ is semisimple, and Wedderburn--Artin
+over the algebraically closed field $\mathbb C$ gives an algebra isomorphism
+onto a finite product of full matrix algebras. Lemma~\ref{lem:finite-group-unitary-trick}
+corrects it to a $*$-isomorphism, and Proposition~\ref{prop:reduced-group-cstar-finite}
+replaces $\mathbb C[\Gamma]$ by $C_r^*(\Gamma)$. An element of $\mathbb C[\Gamma]$
+is central exactly when its coefficients are constant on conjugacy classes, so
+the centre has dimension $c$. The centre of $\prod_i M_{d_i}(\mathbb C)$ consists
+of the blockwise scalars, so it has dimension the number of blocks. An algebra
+isomorphism preserves centres, so the two numbers agree; comparing dimensions of
+the whole algebras gives $\sum_i d_i^2=|\Gamma|$. A $*$-isomorphism of
+$C^*$-algebras is isometric.
+\end{proof}
+
 \begin{proposition}[Groups of order two]\label{prop:reduced-group-cstar-order-two}
 \lean{BC4lean.orderTwoSign,BC4lean.orderTwoSign_one,BC4lean.orderTwoSign_of_ne_one,BC4lean.star_orderTwoSign,BC4lean.orderTwoSign_inv,BC4lean.orderTwoCharacters,BC4lean.orderTwoCharacters_single,BC4lean.orderTwoCharacters_delta,BC4lean.orderTwoCharacters_surjective,BC4lean.orderTwoCharacters_injective,BC4lean.orderTwoGroupAlgebraEquiv,BC4lean.orderTwoGroupAlgebraEquiv_apply,BC4lean.orderTwoReducedEquiv,BC4lean.orderTwoReducedEquiv_symm_regularOperator,BC4lean.orderTwoReducedEquiv_symm_regularOperator_of_ne_one,BC4lean.orderTwoReducedEquiv_apply}
 \leanok

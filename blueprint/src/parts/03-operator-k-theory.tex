@@ -615,6 +615,100 @@ projections, and the composites of projections with inclusions are the identity 
 zero.
 \end{proof}
 
+\begin{proposition}\label{prop:operator-k-matrix-stability}
+\uses{prop:unital-k0-isomorphism,prop:unital-k1-isomorphism,prop:unitary-stable-conjugation,def:rectangular-projection-equivalence}
+\lean{BC4lean.OperatorKTheory.matrixFlatten,BC4lean.OperatorKTheory.matrixFlatten_mul,BC4lean.OperatorKTheory.matrixFlatten_conjTranspose,BC4lean.OperatorKTheory.flattenStarAlgEquiv,BC4lean.OperatorKTheory.exists_rectEquivalent_prod,BC4lean.OperatorKTheory.FiniteProjection.equivalent_of_flatten,BC4lean.OperatorKTheory.StableProjectionMonoid.flattenEquiv,BC4lean.OperatorKTheory.k0EquivOfMonoidEquiv,BC4lean.OperatorKTheory.k0MatrixEquiv,BC4lean.OperatorKTheory.k0MatrixEquiv_projection,BC4lean.OperatorKTheory.K1.of_conj,BC4lean.OperatorKTheory.K1.unflattenPad,BC4lean.OperatorKTheory.k1MatrixEquiv,BC4lean.OperatorKTheory.k1MatrixEquiv_of}
+\leanok
+Let $A$ be a unital $C^*$-algebra and $n$ a nonempty finite set. Reading a
+matrix indexed by $\iota$ with entries in $M_n(A)$ as a matrix over $A$ indexed
+by $\iota\times n$ induces additive isomorphisms
+\[
+ K_0(M_n(A))\cong K_0(A),\qquad K_1(M_n(A))\cong K_1(A).
+\]
+The order on $M_n(A)$ is any order making it a star-ordered ring; it enters no
+construction.
+\end{proposition}
+\begin{proof}
+\leanok
+Regrouping is multiplicative on rectangular matrices and commutes with
+conjugate transposes, so it carries projections to projections and rectangular
+equivalences to rectangular equivalences, and it respects block sums up to
+reindexing. The reverse regrouping of a witness shows that the induced map of
+stable projection monoids is injective. It is surjective: a projection $p$ over
+$A$ at index $\kappa$ is equivalent, by the witness $pE$ with
+$E_{i,(j,b)}=[i=j\text{ and }b=b_0]$, to a projection at index $\kappa\times n$,
+and every projection at that index is a regrouped one. A monoid isomorphism
+induces an isomorphism of Grothendieck groups.
+
+For $K_1$, regrouping is a $*$-isomorphism
+$M_\iota(M_n(A))\cong M_{\iota\times n}(A)$, so it is continuous and respects
+homotopies, reindexing and identity padding. The inverse places a unitary $u$
+over $A$ in the $(b_0,b_0)$ corner of a unitary over $M_n(A)$, with the identity
+elsewhere. Over $A$ the round trip is a reindexed stabilisation of $u$. Over
+$M_n(A)$ it is a stabilisation conjugated by the permutation unitary that
+exchanges the two copies of $n$, and conjugation acts trivially on $K_1$
+(Proposition~\ref{prop:unitary-stable-conjugation}).
+\end{proof}
+
+\begin{proposition}\label{prop:operator-k-finite-product}
+\uses{prop:k-product-decomposition,prop:unital-k0-isomorphism,prop:unital-k1-isomorphism}
+\lean{BC4lean.OperatorKTheory.K0.subsingleton_of_subsingleton,BC4lean.OperatorKTheory.K1.subsingleton_of_subsingleton,BC4lean.OperatorKTheory.piFinSuccStarAlgEquiv,BC4lean.OperatorKTheory.k0PiEquiv,BC4lean.OperatorKTheory.k1PiEquiv,BC4lean.OperatorKTheory.k0OrderEquiv,BC4lean.OperatorKTheory.k1OrderEquiv}
+\leanok
+For unital $C^*$-algebras $A_0,\dots,A_{n-1}$, with the product order on
+$\prod_i A_i$,
+\[
+ K_j\Bigl(\prod_{i<n}A_i\Bigr)\cong\prod_{i<n}K_j(A_i),\qquad j=0,1.
+\]
+For two orders making the same algebra a star-ordered ring, the two $K_0$
+groups are isomorphic, and so are the two $K_1$ groups.
+\end{proposition}
+\begin{proof}
+\leanok
+Induction on $n$, through $\prod_{i<n+1}A_i\cong A_0\times\prod_{i<n}A_{i+1}$
+and Proposition~\ref{prop:k-product-decomposition}. The empty product is the
+zero algebra; every projection over it is zero and every unitary is the
+identity, so its $K$-groups vanish. The order is a parameter of the $K$-group
+types that no construction uses, so the identity $*$-isomorphism, taken between
+the two orders, gives the comparison.
+\end{proof}
+
+\begin{corollary}\label{cor:matrix-block-k-groups}
+\uses{prop:operator-k-matrix-stability,prop:operator-k-finite-product,thm:scalar-k0,thm:scalar-k1}
+\lean{BC4lean.OperatorKTheory.k0PiMatrixEquiv,BC4lean.OperatorKTheory.k1PiMatrix_eq_zero}
+\leanok
+For integers $d_0,\dots,d_{n-1}\ge1$, with any orders making the blocks
+star-ordered rings and the product order on the product,
+\[
+ K_0\Bigl(\prod_{i<n}M_{d_i}(\mathbb C)\Bigr)\cong\mathbb Z^n,\qquad
+ K_1\Bigl(\prod_{i<n}M_{d_i}(\mathbb C)\Bigr)=0.
+\]
+\end{corollary}
+\begin{proof}
+\leanok
+Compose Proposition~\ref{prop:operator-k-finite-product}, matrix stability
+(Proposition~\ref{prop:operator-k-matrix-stability}) in each block, and
+Theorems~\ref{thm:scalar-k0} and~\ref{thm:scalar-k1}.
+\end{proof}
+
+\begin{proposition}\label{prop:tracial-functional-k0}
+\uses{def:operator-k0,prop:operator-k0-universal,def:rectangular-projection-equivalence,prop:projection-block-sum}
+\lean{BC4lean.OperatorKTheory.TracialFunctional,BC4lean.OperatorKTheory.TracialFunctional.matrixTrace,BC4lean.OperatorKTheory.TracialFunctional.matrixTrace_mul_comm,BC4lean.OperatorKTheory.TracialFunctional.projectionTrace_eq_of_rectEquivalent,BC4lean.OperatorKTheory.TracialFunctional.projectionTrace_blockSum,BC4lean.OperatorKTheory.TracialFunctional.monoidTrace,BC4lean.OperatorKTheory.TracialFunctional.traceK0,BC4lean.OperatorKTheory.TracialFunctional.traceK0_k0Projection}
+\leanok
+Let $\tau:A\to\mathbb C$ be a complex-linear functional on a unital
+$C^*$-algebra with $\tau(ab)=\tau(ba)$ for all $a,b$. Then
+$[p]\mapsto\sum_i\tau(p_{ii})$ is a well-defined additive map
+$\tau_*:K_0(A)\to\mathbb C$.
+\end{proposition}
+\begin{proof}
+\leanok
+For rectangular matrices $v$ and $w$ over $A$,
+$\sum_i\tau((vw)_{ii})=\sum_{i,k}\tau(v_{ik}w_{ki})=\sum_k\tau((wv)_{kk})$.
+Rectangular equivalence of $p$ and $q$ means $p=vv^*$ and $q=v^*v$, so the matrix
+trace is constant on classes. It is additive on block sums and zero on the empty
+projection, so it is a monoid map out of the stable projection monoid, and the
+universal property of $K_0$ extends it. Positivity of $\tau$ is not used.
+\end{proof}
+
 \begin{definition}\label{def:star-homotopy}
 \lean{BC4lean.OperatorKTheory.UnitalStarHomotopy,BC4lean.OperatorKTheory.StarHomotopy,BC4lean.OperatorKTheory.UnitalStarHomotopy.toStarHomotopy,BC4lean.OperatorKTheory.StarHomotopy.unitization}
 \leanok
@@ -763,3 +857,44 @@ Both groups are defined using the canonical spectral order and the preceding
 unital constructions. The definitions also apply without countability.
 No computation of these groups or construction of the assembly map is asserted.
 \end{definition}
+
+\begin{proposition}\label{prop:reduced-group-trace}
+\uses{def:analytic-k0,prop:tracial-functional-k0,prop:reduced-group-cstar-generated}
+\lean{BC4lean.regularVectorState,BC4lean.regularVectorState_regularOperator,BC4lean.eq_on_reducedAlgebra,BC4lean.regularVectorState_mul_comm,BC4lean.regularVectorState_star_mul_self,BC4lean.reducedTrace,BC4lean.reducedTrace_one,BC4lean.reducedTraceK0,BC4lean.reducedUnitClass,BC4lean.reducedTraceK0_class,BC4lean.reducedTraceK0_unitClass,BC4lean.addOrderOf_reducedUnitClass}
+\leanok
+For every group $\Gamma$, $\tau(a)=\langle\delta_e,a\delta_e\rangle$ is a
+tracial complex-linear functional on $C_r^*(\Gamma)$ with $\tau(1)=1$, and
+$\tau(T^*T)=\|T\delta_e\|^2$ for every bounded operator $T$ on
+$\ell^2(\Gamma)$. The real part of the induced map on $K_0$ is an additive map
+$\tau_*:K_0(C_r^*(\Gamma))\to\mathbb R$ with $\tau_*[1]=1$. In particular $[1]$
+has infinite order, so $K_0(C_r^*(\Gamma))\neq0$.
+\end{proposition}
+\begin{proof}
+\leanok
+$\tau(\lambda_g\lambda_h)=[gh=e]=[hg=e]=\tau(\lambda_h\lambda_g)$. For fixed $g$,
+the maps $T\mapsto\tau(\lambda_gT)$ and $T\mapsto\tau(T\lambda_g)$ are continuous
+and linear and agree on every $\lambda_h$, so they agree on the closed span of
+the $\lambda_h$, which is $C_r^*(\Gamma)$. The same argument in the other
+variable gives $\tau(ST)=\tau(TS)$ on $C_r^*(\Gamma)$. Apply
+Proposition~\ref{prop:tracial-functional-k0} and take real parts. The class $[1]$
+is that of the $1\times1$ identity, so $\tau_*[1]=\tau(1)=1$, and $m[1]=0$ forces
+$m=\tau_*(m[1])=0$.
+\end{proof}
+
+\begin{proposition}\label{prop:finite-group-averaging-projection}
+\uses{prop:reduced-group-trace}
+\lean{BC4lean.reducedDelta,BC4lean.reducedDelta_mul,BC4lean.star_reducedDelta,BC4lean.reducedTrace_reducedDelta,BC4lean.averagingElement,BC4lean.averagingElement_isStarProjection,BC4lean.reducedTrace_averagingElement,BC4lean.averagingClass,BC4lean.reducedTraceK0_averagingClass,BC4lean.averagingClass_not_mem_zmultiples}
+\leanok
+Let $\Gamma$ be a finite group. Then $p_\Gamma=|\Gamma|^{-1}\sum_g\lambda_g$ is a
+projection in $C_r^*(\Gamma)$ and $\tau_*[p_\Gamma]=1/|\Gamma|$. If
+$|\Gamma|>1$, the class $[p_\Gamma]$ is not an integer multiple of $[1]$.
+\end{proposition}
+\begin{proof}
+\leanok
+Reindexing the sum along $g\mapsto hg$ gives $\lambda_hp_\Gamma=p_\Gamma$, so
+$p_\Gamma^2=|\Gamma|^{-1}\sum_h\lambda_hp_\Gamma=p_\Gamma$; reindexing along
+$g\mapsto g^{-1}$ gives $p_\Gamma^*=p_\Gamma$. Only the summand at $g=e$
+contributes to $\tau(p_\Gamma)$, so $\tau(p_\Gamma)=1/|\Gamma|$. If
+$[p_\Gamma]=m[1]$, applying $\tau_*$ gives $m=1/|\Gamma|$, which lies strictly
+between $0$ and $1$.
+\end{proof}
